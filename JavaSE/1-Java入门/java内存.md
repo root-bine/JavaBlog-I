@@ -22,5 +22,5 @@
 - 方法区【Method Area】：
   - <font color="#0099ff">**存储  .class文件相关信息，包含方法的信息；**</font>
   - <font color='red'>**该区存在一个静态区**</font>
-- 本地方法栈【Native Method Area】：与操作系统有关；
+- 本地方法区【Native Method Area】：与操作系统有关；
 - 寄存器【pc Register】：与CPU相关；
