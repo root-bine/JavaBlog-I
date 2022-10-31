@@ -1,5 +1,7 @@
 # java内存
 
+## <!--Java编程语言只有值传递，并没有引用传递-->
+
 - 栈【Stack】：
 
   - <font color="red">**存放的都是方法中的局部变量；**</font>
@@ -21,6 +23,7 @@
     - 如果是引用类型			默认为null；
 - 方法区【Method Area】：
   - <font color="#0099ff">**存储  .class文件相关信息，包含方法的信息；**</font>
-  - <font color='red'>**该区存在一个静态区**</font>
+  - <font color='red'>**该区存在一个静态区**</font>【static静态代码块】
+    - 程序中的字面量（literal）如直接书写的 100、“hello”和常量都 是放在静态存储区
 - 本地方法区【Native Method Area】：与操作系统有关；
 - 寄存器【pc Register】：与CPU相关；
