@@ -1,6 +1,6 @@
 # 常用API使用09
 
-## 1、<span style="color:brown">**StringBuilder类：**</span>Java.lang
+## 1、<span style="color:brown">**StringBuilder类：**</span>Java.lang、被final修饰
 
 ![image-20221027201155435](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/String%E3%80%81StringBuilder%E3%80%81StringBuffer.png)
 
