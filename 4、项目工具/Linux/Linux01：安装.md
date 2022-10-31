@@ -1,0 +1,75 @@
+# Linux安装
+
+## 1、<span style="color:brown">安装：</span>
+
+**1.1、虚拟机：**
+
+<u>使用软件模拟一台虚拟的电脑</u>
+
+这里使用：Vmware 16 pro虚拟机
+
+**1.2、VMware配置：**
+
+点击界面中的【新建虚拟机】，然后依次向下进行操作，直到：
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/VMware%E6%93%8D%E4%BD%9C01.png" alt="image-20220707163448778" style="zoom: 67%;" />
+
+先不进行具体内容创建，优先创建一个空的磁盘，然后选择【客户机操作系统】和【版本】。
+
+之后就是**对新创建的虚拟机命名**、为虚拟机分配空间，之后就是：
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/VMware%E6%93%8D%E4%BD%9C02.png" alt="image-20220707163741313" style="zoom:80%;" />
+
+选择【自定义硬件】，找到以下内容：
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/VMware%E6%93%8D%E4%BD%9C03.png" alt="image-20220707163831388" style="zoom:80%;" />
+
+ISO镜像文件根据**之前的客户端操作系统版本来确定**，然后将下载好的文件路径配置进去即可
+
+
+
+## 2、<span style="color:brown">使用：</span>
+
+**2.1、使用技巧：**
+
+在完成基本虚拟机的创建之后，此时的鼠标已经无法使用，可以使用：Ctrl + Alt，恢复键鼠操作！！！
+
+**2.2、获取IP地址：**
+
+在虚拟机界面，鼠标右键选择Open in Terminal，进入命令行界面。
+
+<u>*后期执行Linux命令是在安装远程连接的Linux上执行*</u>，**不在此处进行，仅作为作为服务器使用**。
+
+<span style="color:green">在当前虚拟机的命令框中，输入：**ifconfig**，可以获取本虚拟机的IP地址</span>
+
+**2.3、安装简化步骤：**
+
+如果之前安装好了虚拟机，但是由于某种原因进行移除，但是数据依旧保留。
+
+此时就可以找到安装虚拟机的位置，然后进入其中找到如下内容：
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Vmware%E6%93%8D%E4%BD%9C04.png" alt="image-20221022164212181" style="zoom:80%;" />
+
+**双击文件，可以直接进入Vmware界面，自动挂载虚拟机**！！！
+
+**2.4、无法运行虚拟机：**
+
+```apl
+VMware Workstation 未能启动 VMware Authorization Service。您可以尝试手动启动 VMware Authorization Service
+```
+
+<u>*方法1：*</u>
+
+按win+r快捷键，输入`services.msc`，点击确定
+服务列表找到 VMware Authorization Service 并双击
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Vmware%E6%93%8D%E4%BD%9C05.png" alt="image-20221022173338538" style="zoom:67%;" />
+
+修改启动类型为自动或手动，点击应用
+然后点击启动，等待启动完成后，点击确定即可
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Vmware%E6%93%8D%E4%BD%9C06.png" alt="image-20221022173400699" style="zoom: 67%;" />
+
+<u>*方法2：*</u>
+
+**<span style="color:red">直接以管理员身份运行即可</span>**
