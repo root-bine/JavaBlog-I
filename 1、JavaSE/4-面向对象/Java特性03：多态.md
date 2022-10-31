@@ -6,6 +6,8 @@
 
 <span style="color:orange">**多态性主要是针对于对象来说！！！**</span>
 
+<span style="color:green">**方法的重载和重写都是实现多态的方式，区别在于前者实现的是编译时的多态性，而后者实现的是运行时的多态性！！！**</span>
+
 ```apl
 现在有三个类，Student、Employee、Humen。
     其中，Humen是其他两个类的父类。
