@@ -1,4 +1,4 @@
-# 快速上手SpringBoot
+# SpringBoot创建
 
 ## 1、<span style="color:brown">SpringBoot入门案例：</span>idea联网版
 
@@ -36,8 +36,8 @@
 |  **@PostMapping**   |          **处理post请求，PostMapping("/get/{id}")**          |
 |   **@PutMapping**   | 和PostMapping作用等同，都是用来向服务器提交信息。如果是添加信息，倾向于用@PostMapping，如果是更新信息，倾向于用@PutMapping。两者差别不是很明显 |
 | **@DeleteMapping**  | 对于不需要的数据信息，客户端可以通过HTTP DELETE请求来要移除某个资源。而 @DeleteMapping 注解就能够非常便捷的声明能够处理DELETE请求的方法 |
-| **@RequestMapping** | 是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。 |
-|  **@ResponseBody**  | 将方法的返回值以 `json/xml` 的数据格式返回给客户端，如果是`JavaBean`对象，调用 `getxxx()`方法获取属性值，如果是 `map`集合，调用 `get(key)`方法获取属性值，然后以键值对的方式转成 `json字符串` |
+| **@RequestMapping** | 是**一个用来处理请求地址映射的注解**，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。 |
+|  **@ResponseBody**  | **将方法的返回值以 `json/xml` 的数据格式返回给客户端**，如果是`JavaBean`对象，调用 `getxxx()`方法获取属性值，如果是 `map`集合，调用 `get(key)`方法获取属性值，然后以键值对的方式转成 `json字符串` |
 |  **@RequestBody**   | 通过HttpMessageConverter读取Request Body并反序列化为Object（泛指）对象 |
 
 ​	

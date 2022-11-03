@@ -1,4 +1,4 @@
-# 入门案例解析
+# SpringBoot结构分析
 
 ## 1、<span style="color:brown">SpringBoot简介：</span>
 
@@ -8,7 +8,7 @@
 
 |     parent     | SpringBoot中常见项目名称，<span style="color:green">定义了当前项目使用的所有依赖坐标</span>，以达到<span style="color:brown">减少依赖配置</span>的目的。 |
 | :------------: | ------------------------------------------------------------ |
-|  **starter**   | **所有SpringBoot项目要继承的项目，<span style="color:red">定义了若干个坐标版本号(依赖管理，而非依赖)</span>，以达到<span style="color:brown">减少依赖冲突</span>的目的** |
+|  **starter**   | **所有SpringBoot项目要继承的项目，<span style="color:red">定义了若干个坐标、版本号(依赖管理，而非依赖)</span>，以达到<span style="color:brown">减少依赖冲突</span>的目的** |
 |   **引导类**   | **SpringBoot的引导类是Boot工程的执行入口，运行main方法就可以启动项目** |
 | **内嵌Tomcat** | **SpringBoot的辅助功能之一**                                 |
 
@@ -25,7 +25,6 @@
    <groupId>org.springframework.boot</groupId>
    <artifactId>spring-boot-starter-parent</artifactId>
    <version>2.7.1</version>
-   <relativePath/> <!-- lookup parent from repository -->
 </parent>
 ```
 
@@ -39,7 +38,7 @@
 
 如果采用**文件对比的方法**，操作如下：
 
-<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94.png" alt="image-20221004172554433" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E6%96%87%E4%BB%B6%E5%AF%B9%E6%AF%94.png" alt="image-20221004172554433" style="zoom: 50%;" />
 
 
 

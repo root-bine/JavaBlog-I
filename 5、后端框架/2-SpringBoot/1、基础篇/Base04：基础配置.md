@@ -4,7 +4,7 @@
 
 **1.1、修改端口号：**
 
-![image-20221006214034832](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE.png)
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE.png" alt="image-20221006214034832" style="zoom:67%;" />
 
 修改服务器端口号：
 
@@ -14,7 +14,7 @@ server.port = 80
 
 **1.2、修改其他配置：**
 
-![image-20221006220753492](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/SpringBoot%E9%85%8D%E7%BD%AE01.png)
+![image-20221006220753492](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/202211032120670.png)
 
 以上均为基础设置的部分内容，详情见：[Application Properties文件参数配置](https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html#appendix.application-properties)
 
