@@ -1,6 +1,6 @@
 # 常用API使用03
 
-## 1、<span style='color:brown'>String 类：</span>java.lang、被final修饰
+## <span style='color:brown'>String 类：</span>java.lang、被final修饰
 
 - **概述：**
   - Java程序中的所有字符串的***字面值*** 都是作为此类的实例来实现，即：<font color="red">**凡事双引号的String字符串都是String类的对象(没有new，也照样是对象)**</font>
