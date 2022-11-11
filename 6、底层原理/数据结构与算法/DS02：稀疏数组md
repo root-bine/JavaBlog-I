@@ -1,0 +1,149 @@
+# 稀疏数组
+
+## 1、<span style="color:brown">基础内容：</span>
+
+**1.1概述：**
+
+当**一个数组中大部分元素为0，或者为同一个值**时，可以使用稀疏数组来保存该数组
+
+**1.2、存储规则：**
+
+- 稀疏数组第一行记录：总行数、总列数、有效数的个数；
+- 第二行至以后，记录不同数据所在的行数、列数、有效数的数值；
+
+**1.3、图示：**
+
+> 数组索引都是以0开始，例如：第2行第3列，记作[1,2]
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84%E6%A8%A1%E5%9E%8B.png" alt="image-20221111151848873" style="zoom:67%;" />
+
+## 2、<span style="color:brown">二维数组 <---> 稀疏数组：</span>
+
+**2.1、原理分析：**
+
+> 二维数组 ---- > 稀疏数组
+
+- 遍历二维数组，记录有效数的个数sum；
+- 创建稀疏数组 `sparesArray = new int[sum+1][3]`；
+
+- 将二维数组中的有效数，存储到稀疏数组中；
+
+> 稀疏数组 ----> 二维数组
+
+- 读取稀疏数组第一行数据，创建原始的二维数组；
+- 再读取后几行数据，赋值给二维数组；
+
+**2.2、稀疏数组+IO流：**
+
+> 不建议使用序列化，因为对象序列化主要是以二进制存储对象数据，可能会造成乱码问题！！！
+
+- 二维数组转换稀疏数组
+
+  ```java
+  private static int[][] getSparesArray(int [][]array){
+      int sum = 0;
+      for (int i = 0; i < array.length; i++) {
+          for (int j = 0; j < array[i].length; j++) {
+              if(array[i][j] != 0){
+                  sum++;
+              }
+          }
+      }
+      int sparseArray[][] = new int[sum+1][3];
+      sparseArray[0][0] = 11;
+      sparseArray[0][1] = 11;
+      sparseArray[0][2] = sum;
+      int count = 0;
+      for (int i = 0; i < array.length; i++) {
+          for (int j = 0; j < array[i].length; j++) {
+              if(array[i][j] != 0){
+                  count++;
+                  sparseArray[count][0] = i;
+                  sparseArray[count][1] = j;
+                  sparseArray[count][2] = array[i][j];
+              }
+          }
+      }
+      return sparseArray;
+  }
+  ```
+
+- 稀疏数组转换二维数组
+
+  ```java
+  private static int[][] getArray(int [][]sparseArray){
+      int [][]array = new int[sparseArray[0][0]][sparseArray[0][1]];
+      for (int i = 1; i < sparseArray.length; i++) {
+          array[sparseArray[i][0]][sparseArray[i][1]] = sparseArray[i][2];
+      }
+      return array;
+  }
+  ```
+
+- 写入文件
+
+  ```java
+  private static void outFile(int [][]sparesArray) throws IOException {
+      BufferedWriter bw = new BufferedWriter(
+              new OutputStreamWriter(new FileOutputStream("C:\\Users\\root-bine\\Desktop\\稀疏数组.txt")));
+      for (int i = 0; i < sparesArray.length; i++) {
+          for (int j = 0; j < sparesArray[i].length; j++) {
+              bw.write(sparesArray[i][j]+",");
+          }
+          bw.newLine();
+      }
+      bw.flush();
+      bw.close();
+  }
+  ```
+
+- 读取文件
+
+  ```java
+  private static int[][] inFile() throws IOException {
+      BufferedReader br = new BufferedReader(
+              new InputStreamReader(new FileInputStream("C:\\Users\\root-bine\\Desktop\\稀疏数组.txt")));
+      List<String> list = new ArrayList<>();
+      String line;
+      while((line = br.readLine())!=null){
+          list.add(line);
+      }
+      int row = list.size();
+      int column = list.get(0).split(",").length;
+      int [][]sparesArray = new int [row][column];
+      int count = 0;
+      for (String str : list) {
+          String[] split = str.split(",");
+          for (int i = 0; i < column; i++) {
+              sparesArray[count][i] = Integer.valueOf(split[i]);
+          }
+          count++;
+      }
+      br.close();
+      return sparesArray;
+  }
+  ```
+
+- 主方法
+
+  ```java
+  int [][]chess = new int[11][11];
+  chess[2][3] = 1;
+  chess[3][4] = 2;
+  int[][] sparesArray = getSparesArray(chess);
+  try {
+      outFile(sparesArray);
+  } catch (IOException e) {
+      e.printStackTrace();
+  }
+  sparesArray = inFile();
+  int[][] array = getArray(sparesArray);
+  for (int[] ints : array) {
+      for (int anInt : ints) {
+          System.out.print(anInt+" ");
+      }
+      System.out.println();
+  }
+  ```
+
+  
