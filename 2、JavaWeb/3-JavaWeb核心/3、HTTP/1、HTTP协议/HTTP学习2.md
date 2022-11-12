@@ -4,10 +4,6 @@
 
 **1.1、方法分析：**
 
-```apl
-post就是你要登录时，不在地址栏把账号密码发送请求，如果get的话，地址栏都看到你的账号密码了
-```
-
 ![image-20220613143641104](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/HTTP%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.png)
 
 **1.2、get和post的区别：**

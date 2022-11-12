@@ -19,8 +19,6 @@
    - ServletConfig对象，就是**Servlet配置对象**；
 5. `String getServletInfo()`：获取Servlet的一些信息，如：作者、版本、作者等等
 
-
-
 **1.2、方法演示：**
 
 第一次执行：
@@ -55,7 +53,7 @@ destroy...
 
 
 
-## 2、<span style="color:brown">生命周期详解：</span>**从servlet出现到消亡(销毁)的全过程**
+## 2、<span style="color:brown">生命周期详解：</span>
 
 **2.1、生命周期的阶段：**
 
@@ -74,30 +72,32 @@ destroy...
 
 **2.2、Servlet被创建的时机：**
 
-1. 默认情况下，第一次被访问时创建Servlet：
+> 标记容器是否在启动的时候就加载这个servlet对象
 
-   - <load-on-startup>默认值为：<span style="color:blue">负数</span>；
-   - 无需配置，系统默认；
+```xml
+<servlet>
+	<load-on-startup>......</load-on-startup>
+</servlet>
+```
 
-2. 服务器启动时，被创建：
+- 当值为0或者大于0时，表示容器在应用启动时就加载这个servlet；
 
-   web.xml文件中，找到需要相应的Servlet配置中<servlet></servlet>，在其中配置：
+- 当是一个负数时或者没有指定时，则指示容器在该servlet被选择时才加载：
+  - **正数的值越小，启动该servlet的优先级越高**；
 
-   ```xml
-   <load-on-startup>【正数】或【0】</load-on-startup>
-   ```
+---
 
 init方法，只能执行一次，说明：
 
 ```apl
-Servlet在内存中，只存在一个对象。因此，Servlet是单例的
+Servlet在内存中, 只存在一个对象, 即: Servlet是单例的
 ```
 
 但是，当多个用户同时访问Servlet时，可能会出现线程安全的问题。解决方式：
 
 ```apl
-1. 尽量不要在Serclet接口的实现类中，定义成员变量;
-2. 如果定义了成员变量，那就只'获取这个变量，不对其进行数据操作';
+1. 尽量不要在Serclet接口的实现类中, 定义成员变量;
+2. 如果定义了成员变量, 那就只'获取这个变量, 不对其进行数据操作';
 ```
 
 

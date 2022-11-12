@@ -48,17 +48,19 @@ HttpServlet抽象类  extends  GenericServlet抽象类   implements  Servlet接�
 
 **2.2、GenericServlet抽象类：**
 
-GenericServlet实现类Servlet接口，但是只保留Servlet中的抽象方法。
+GenericServlet实现类Servlet接口，但是**只保留Servlet中的抽象方法**。
 
-对于其他的Servlet接口中的抽象方法，都做了空方法构造。
+<u>对于其他的Servlet接口中的抽象方法，都做了空方法构造</u>。
 
-**2.3、HttpServlet：**<span style="color:blue">**对HTTP协议的一种封装**</span>
+**2.3、HttpServlet：**
+
+> <span style="color:blue">**对HTTP协议的一种封装**</span>
 
 1. 定义一个类，继承HttpServlet抽象类；
 2. 覆盖重写`doGet()/doPost()方法`；
 3. 通过浏览器直接访问，是调用的doGet()方法；
 
-**2.4、Servlet访问路径：**urlPatterns
+**2.4、Servlet访问路径：**
 
 一个servlet可以定义多个访问路径：
 
@@ -67,7 +69,7 @@ GenericServlet实现类Servlet接口，但是只保留Servlet中的抽象方法�
 @WebServlet({"/servlet02","/aaa","/bbb"})
 ```
 
-对于urlPatterns，有相应的定义规则：【假定以ServletDemo实现类为例】
+对于urlPatterns，有相应的定义规则：
 
 1. 完全路径匹配：
 
@@ -79,8 +81,8 @@ GenericServlet实现类Servlet接口，但是只保留Servlet中的抽象方法�
 
    ```apl
    1. /aaa/bbb
-   2. /aaa/*      在浏览器中，输入完/aaa之后，输入任意值，都可以访问到ServletDemo
-   3. /*		   直接在浏览器中的'/'之后输入随意值，都可以访问到ServletDemo
+   2. /aaa/*      在浏览器中，输入完/aaa之后，输入任意值, 都可以访问到资源类
+   3. /*		   直接在浏览器中的'/'之后输入随意值, 都可以访问到资源类
    ```
 
 3. 扩展名匹配：
