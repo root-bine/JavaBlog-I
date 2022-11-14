@@ -1,5 +1,3 @@
-# 稀疏数组
-
 ## 1、<span style="color:brown">基础内容：</span>
 
 **1.1概述：**
@@ -25,7 +23,6 @@
 
 - 遍历二维数组，记录有效数的个数sum；
 - 创建稀疏数组 `sparesArray = new int[sum+1][3]`；
-
 - 将二维数组中的有效数，存储到稀疏数组中；
 
 > 稀疏数组 ----> 二维数组
@@ -49,7 +46,7 @@
               }
           }
       }
-      int sparseArray[][] = new int[sum+1][3];
+      int [][]sparseArray = new int[sum+1][3];
       sparseArray[0][0] = 11;
       sparseArray[0][1] = 11;
       sparseArray[0][2] = sum;

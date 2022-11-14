@@ -13,7 +13,7 @@
   - 作用域：一旦超出作用域，立刻就会从内存中释放；
 - 堆【Heap】：
 
-  - <font color="red">**凡事new出来的东西，都存放在Heap中**</font>；
+  - <font color="red">**数组和new的实例对象**，都存放在Heap中</font>；
 
   - <font color="orange">**字符串常量池也存在Heap中**</font>；
   - <u>方法中的局部 变量使用 final 修饰后，放在堆中</u>；
@@ -25,10 +25,9 @@
     - 如果是布尔值				默认为false；
     - 如果是引用类型			默认为null；
 - 方法区【Method Area】：
-  - <font color="#0099ff">**存储  .class文件相关信息，包含方法的信息；**</font>
-  - <font color='red'>**该区存在一个静态区**</font>【static静态代码块】
-    - 程序中的字面量（literal）如直接书写的 100、“hello”和常量都 是放在静态存储区
-- 本地方法区【Native Method Area】：与操作系统有关；
+  - <font color="#0099ff">**存储  .class文件**</font>；
+  - Class文件中，除了有<u>类版本、字段、方法、接口</u>等信息，还包含了**常量池，用于存放<u>*<span style="color:green">编译期生成的各种字面值和符号</span>*</u>**。
+- 本地方法栈【Native Method Stack】：与操作系统有关；
 - 寄存器【pc Register】：与CPU相关；
 
 
