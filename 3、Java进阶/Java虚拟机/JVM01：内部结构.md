@@ -13,19 +13,19 @@ Java虚拟机，就是<u>*Java二进制字节码的运行环境*</u>。
 
 **1.3、比较：**
 
-<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/JVM-JRE-JDK.png" alt="image-20221114165935547" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/JVM-JRE-JDK.png" alt="image-20221114165935547" style="zoom: 50%;" />
 
 **1.4、JVM内部组成：**
 
-<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/JVM-Structure.png" alt="image-20221114171449060" style="zoom:67%;" />
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/JVM-Structure.png" alt="image-20221114171449060" style="zoom: 67%;" />
 
 
 
-## 2、<span style="color:brown">程序计数器：</span>
+## 2、<span style="color:brown">程序计数器：</span>Program Counter Register
 
 **2.1、程序计数器存储内容：**
 
-`Program Counter Register`是<u>当前线程所执行的字节码的行号指示器</u>。
+程序计数器是<u>当前线程所执行的字节码的行号指示器</u>。
 
 字节码解释器工作时，就是**改变计数器中的数值**来<u>*选取下一条需要执行的字节码指令*</u>。
 
@@ -94,7 +94,7 @@ JVM的多线程实现：
 - 编译期可知的各种基本数据类型：
 
   ```scss
-  1. 64位(8比特)长度的long、double类型的数据会占用2个'局部变量空间(Slot)';
+  1. 64位(8字节)长度的long、double类型的数据会占用2个'局部变量空间(Slot)';
   2. 其余数据类型只占用1个;
   ```
 
@@ -130,7 +130,11 @@ JVM的多线程实现：
 
 
 
-## 4、<span style="color:brown">Java堆：</span>也称为“GC堆”
+## 4、<span style="color:brown">Java堆：</span>Java Heap
+
+### <!--JDK1.8以后, 方法区存在于Heap的元空间中-->
+
+![image-20221115165510181](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Heap-Xms.png)
 
 **4.1、作用：**
 
@@ -144,7 +148,7 @@ JVM的多线程实现：
 - JVM管理内存中最大的一块；
 - 被所有线程共享；
 - 虚拟机启动时创建；
-- 有垃圾回收机制；
+- 有垃圾回收机制，因此也被称为：GC堆；
 
 **4.3、堆内存划分：**
 
@@ -156,13 +160,11 @@ JVM的多线程实现：
 
 Java堆内存可以处于<u>物理上不连续的内存空间</u>，只需逻辑上连续即可。在实现时，可以实现成**固定大小/可扩展**。
 
-**4.4、异常状况：**
-
-当<u>*堆中没有内存完成实例分配*</u>，且也<u>*无法完成扩展*</u>时，抛出OutOfMemoryError异常！！！
 
 
+## 5、<span style="color:brown">方法区：</span>Method Area
 
-## 5、<span style="color:brown">方法区：</span>
+### <!--在HotSpot虚拟机上, 该区域被称为: 永久代-->
 
 **5.1、作用：**
 
@@ -179,31 +181,35 @@ Java堆内存可以处于<u>物理上不连续的内存空间</u>，只需逻辑
 
 而进行回收的目的主要是<u><span style="color:orange">对常量池的回收</span>和<span style="color:orange">对类型的卸载</span></u>，尽管在后者回收上效果不佳，但这是必须的回收！！！
 
-**5.4、运行时常量池：**
-
-Class文件中，除了有<u>类版本、字段、方法、接口</u>等信息，还包含了**常量池，用于存放<u>*<span style="color:green">编译期生成的各种字面值和符号</span>*</u>**。
-
-常量池相当于一张表，JVM根据这张表找到类名、方法名、参数类型、字面值等。
-
----
-
-当类被加载时，Class文件中的内容就会进入方法区的运行时常量池存放！！！
-
-**5.5、异常状况：**
-
-当**方法区/运行时常量池**无法满足内存分配需求，抛出OutOfMemoryError异常。
-
-**5.6、补充：**
-
-> 在IDEA中，可以查询已编译好的字节码文件信息
-
-在out目录下，找到需要查询程序的Class文件，在控制台找到`Terminal按钮`，之后进入到out目录下对应程序的包下.
-
-然后输入命令：`javap -v xxx.class`
 
 
+## 6、<span style="color:brown">运行时常量池：</span>Runtime Constant Pool
 
-## 6、<span style="color:brown">StringTable：</span>串池
+**6.1、Class文件内容：**
+
+类版本、字段、方法、接口等信息，还包含了<span style="color:violet">常量池</span>，用于<u>*存放**编译期生成的各种字面值和符号***</u>。
+
+**6.2、常量池：**
+
+Class常量池（又称常量池）是一张表，JVM根据这张表找到类名、方法名、参数类型、字面值等。
+
+当类被加载时，<u>Class文件中常量池的内容就会进入方法区的运行时常量池</u>存放！！！
+
+**6.3、特点：**
+
+- 具备**动态性**
+
+  ```scss
+  1. 并非'预置入Class文件中常量池的内容'才能进行方法区的运行时常量池
+  2. 在运行期间也是可以将'新的常量放入池中, 如: String的intern()方法'
+  ```
+
+- 属于方法区的一部分
+
+  ```scss
+  1. 由于运行时常量池是方法区的一部分, 因此也会存在OutOfMemoryError异常
+  2. '在JDK1.8后的方法区存放在元空间'中, 所以不容易出现OutOfMemoryError异常
+  ```
 
 
 
