@@ -157,8 +157,6 @@
 
 ## 2、<span style="color:brown">**System类：**</span>Java.lang
 
-## <span style="color:orange">**System类直接使用类名调用方法即可，无需构造对象！！！！！**</span>
-
 - **介绍：**
 
   1. 提供了大量的静态方法；

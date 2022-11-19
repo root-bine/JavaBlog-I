@@ -163,7 +163,7 @@ public class Demo02 {
 - `public bolean add(E e)`：
   - 向集合中添加一些数据,参数类型与泛型一致,它的返回值表示添加是否成功；
   
-- `public bolean add(int index, E e)`：
+- `public void add(int index, E e)`：
   - 在<u>列表指定位置</u>添加元素；
   
 - `public  E  get(int index)`：

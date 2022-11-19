@@ -1,6 +1,4 @@
-# 打印流
-
-## 1、<span style="color:brown">基础内容：</span>
+## 1、<span style="color:brown">打印流：</span>
 
 **1.1、概述：**
 
@@ -66,6 +64,8 @@ public void close()
 1. 如果使用继承自父类的write方法，那么查询数据时会自动查询编码表：97 --> a；
 2. 如果使用自己的特有方法：print、println，写的数据原样输出：97 --> 97；
 
+
+
 ## 3、<span style="color:brown">范例：</span>
 
 **3.1、测试PrintStream类中的各方法：**
@@ -84,7 +84,7 @@ public class Demo05 {
 
 **3.2、改变输出语句的目的地：**
 
-`使用System.setOut方法，把语句的输出路径改变为参数打印流路径`：
+<u>*使用System.setOut方法，把语句的输出路径改变为参数打印流路径*</u>：
 
 `public static void setOut(PrintStream ps)`
 

@@ -1,5 +1,7 @@
 ## 1、<span style='color:brown'>String 类：</span>java.lang、被final修饰
 
+### <!--String类重写了hashCode()、equals()、toString()三个方法-->
+
 **1.1、概述：**
 
 - Java程序中的<u>所有字符串的***字面值***</u> 都是作为*此类的实例*来实现，即：`String str = ''Hello world"`；
