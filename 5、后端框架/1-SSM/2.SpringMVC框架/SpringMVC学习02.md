@@ -1,5 +1,3 @@
-# SpringMVC学习02
-
 ## 1、<span style="color:brown">SpringMVC的数据响应：</span>
 
 **1.1、响应方式：**

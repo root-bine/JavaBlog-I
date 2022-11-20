@@ -1,5 +1,3 @@
-# Git学习01
-
 ## <span style="color:green">ssh是本地项目上传git云，http是git云下载项目到本地</span>
 
 ## 1、<span style="color:brown">基础内容：</span>

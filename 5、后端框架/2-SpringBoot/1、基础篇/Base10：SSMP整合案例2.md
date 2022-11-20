@@ -1,5 +1,3 @@
-# SSMP整合案例02
-
 ## 1、<span style="color:brown">业务层标准开发：</span>基础CRUD、分页
 
 **1.1、数据层与业务层的区别：**

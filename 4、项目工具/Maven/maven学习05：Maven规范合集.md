@@ -1,5 +1,3 @@
-# Maven学习05
-
 ## 1、<span style="color:brown">版本管理：</span>
 
 **1.1、工程版本：**

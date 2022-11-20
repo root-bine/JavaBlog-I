@@ -1,5 +1,3 @@
-# Git学习03
-
 ## 1、<span style="color:brown">分支管理：</span>
 
 ## <span style="color:violet">所有的分支，在项目开发过程中会逐渐合并到main分支中</span>！！！

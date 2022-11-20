@@ -1,5 +1,3 @@
-# JDBCTemplate学习02
-
 ## 1、<span style="color:brown">Spring JDBCTemplate基础：</span>
 
 **1.1、JDBCTempalte开发步骤：**

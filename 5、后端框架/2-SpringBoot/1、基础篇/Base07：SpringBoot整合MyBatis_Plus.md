@@ -1,5 +1,3 @@
-# SpringBoot整合03
-
 ## 1、<span style="color:brown">整合Mybatis-Plus：</span>
 
 **1.1、整合方式01：**

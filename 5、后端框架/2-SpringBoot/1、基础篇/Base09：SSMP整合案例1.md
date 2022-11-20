@@ -1,5 +1,3 @@
-# SSMP整合案例01
-
 ## 1、<span style="color:brown">基础内容：</span>
 
 **1.1、案例分析：**

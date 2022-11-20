@@ -1,5 +1,3 @@
-# SSMP整合案例04
-
 ## 1、<span style="color:brown">列表功能：</span>
 
 **1.1、分析：**

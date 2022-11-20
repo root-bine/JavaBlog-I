@@ -1,5 +1,3 @@
-# SpringMVC学习04
-
 ## 1、<span style="color:brown">SpringMVC的数据请求：</span>文件上传
 
 **1.1、文件上传客户端三要素：**

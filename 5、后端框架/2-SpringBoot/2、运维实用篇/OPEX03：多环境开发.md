@@ -1,5 +1,3 @@
-# 多环境开发
-
 ## 1、<span style="color:brown">YAML版：</span>
 
 **1.1、在多环境开发中，如何编写配置文件：**

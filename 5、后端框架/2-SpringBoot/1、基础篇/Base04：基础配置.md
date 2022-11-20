@@ -1,5 +1,3 @@
-# SpringBoot配置文件
-
 ## 1、<span style="color:brown">属性配置：</span>
 
 **1.1、修改端口号：**

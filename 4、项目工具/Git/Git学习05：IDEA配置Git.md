@@ -1,5 +1,3 @@
-# Git学习05
-
 ## 1、<span style="color:brown">在IDEA中使用Git：</span>
 
 **1.1、IDEA配置Git：**

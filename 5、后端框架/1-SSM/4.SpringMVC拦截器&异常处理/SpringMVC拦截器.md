@@ -1,5 +1,3 @@
-# SpringMVC拦截器
-
 ## 1、<span style="color:brown">基础内容：</span>
 
 **1.1、拦截器【interceptor】的作用：**

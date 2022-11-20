@@ -1,5 +1,3 @@
-# SpringMVC学习01
-
 ## 1、<span style="color:brown">SpringMVC简介：</span>
 
 **1.1、什么是MVC？**

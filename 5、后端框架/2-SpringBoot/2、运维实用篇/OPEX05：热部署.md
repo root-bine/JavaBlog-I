@@ -1,6 +1,4 @@
-# 热部署【hot deployment】
-
-## 1、<span style="color:brown">手动开启热部署：</span>
+## 1、<span style="color:brown">手动开启hot deployment：</span>
 
 **1.1、开启开发者工具：**`pom.xml`
 

@@ -1,5 +1,3 @@
-# Maven学习02
-
 ## 1、<span style="color:brown">依赖管理&依赖传递：</span>
 
 **1.1、依赖配置格式：**

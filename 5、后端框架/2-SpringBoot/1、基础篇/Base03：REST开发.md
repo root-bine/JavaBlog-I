@@ -1,5 +1,3 @@
-# REST开发
-
 ## 1、<span style="color:brown">REST简介：</span>
 
 **1.1、概述：**

@@ -1,5 +1,3 @@
-# SpringBoot创建
-
 ## 1、<span style="color:brown">SpringBoot入门案例：</span>idea联网版
 
 **1.1、创建方式：**

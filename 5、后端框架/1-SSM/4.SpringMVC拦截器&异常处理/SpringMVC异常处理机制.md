@@ -1,5 +1,3 @@
-#  SpringMVC异常处理机制
-
 ## 1、<span style="color:brown">基础内容：</span>
 
 **1.1、异常处理的思路：**

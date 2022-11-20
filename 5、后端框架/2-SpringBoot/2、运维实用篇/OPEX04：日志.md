@@ -1,5 +1,3 @@
-# 日志
-
 ## 1、<span style="color:brown">日志基础操作：</span>
 
 **1.1、Log的作用：**

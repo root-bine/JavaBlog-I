@@ -1,5 +1,3 @@
-# JDBCTemplate学习01【<span style="color:Green ">JavaWeb版本</span>】
-
 ## 1、<span style="color:brown">基础内容：</span>
 
 **1.1、概述：**

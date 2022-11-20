@@ -1,5 +1,3 @@
-# 工程打包与运行
-
 ## 1、<span style="color:brown">Windows：</span>
 
 **1.1、如何进行项目打包？**【有潜在问题】

@@ -1,5 +1,3 @@
-# 配置高级
-
 ## 1、<span style="color:brown">临时属性：</span>
 
 **1.1、CMD环境下如何设置临时属性？**

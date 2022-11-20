@@ -1,5 +1,3 @@
-# SpringMVC学习03
-
 ## 1、<span style="color:brown">SpringMVC的数据请求：</span>参数使用的问题解决方案
 
 **1.1、静态资源访问的开启：**

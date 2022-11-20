@@ -1,5 +1,3 @@
-# SpringBoot整合02
-
 ## 1、<span style="color:brown">整合MyBatis：</span>
 
 **1.1、项目配置：**

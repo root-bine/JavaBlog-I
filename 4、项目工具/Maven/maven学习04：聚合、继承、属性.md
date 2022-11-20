@@ -1,5 +1,3 @@
-# Maven学习04
-
 ## 1、<span style="color:brown">模块聚合：</span>
 
 **1.1、多模块构建维护：**

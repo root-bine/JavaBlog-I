@@ -1,5 +1,3 @@
-# Git学习04
-
 ## 1、<span style="color:brown">忽略文件操作：</span>
 
 **1.1、应用场景：**

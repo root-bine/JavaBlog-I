@@ -1,5 +1,3 @@
-# Spring学习02
-
 ## 1、<span style="color:brown">Spring配置数据源：</span>
 
 **1.1、数据源开发步骤：**

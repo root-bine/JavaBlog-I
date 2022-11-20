@@ -1,5 +1,3 @@
-# SSMP整合案例05
-
 ## 1、<span style="color:brown">异常信息处理：</span>【参考】
 
 **1.1、问题描述：**

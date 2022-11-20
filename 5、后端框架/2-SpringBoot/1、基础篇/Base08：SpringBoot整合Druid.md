@@ -1,5 +1,3 @@
-# SpringBoot整合04
-
 ## 1、<span style="color:brown">整合Druid：</span>
 
 **1.1、项目搭建：**

@@ -1,5 +1,3 @@
-# SSMP整合案例03
-
 ## 1、<span style="color:brown">表现层标准开发：</span>
 
 **1.1、功能实现：**
