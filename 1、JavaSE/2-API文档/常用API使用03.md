@@ -4,7 +4,7 @@
 
 **1.1、概述：**
 
-- Java程序中的<u>所有字符串的***字面值***</u> 都是作为*此类的实例*来实现，即：`String str = ''Hello world"`；
+- Java程序中的<u>所有字符串的***字面值***</u> 都是作为*此类的实例*来实现，即：`String str = "Hello world"`；
 - 由于<font color="red">**字符串内容是不可变的**</font>，则字符串可以<font color="blue">**共享的**</font>；
 
 **1.2、创建String字符串方法：**

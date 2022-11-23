@@ -2,6 +2,8 @@
 
 ## 1、<span style="color:brown">基础内容：</span>
 
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Java%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.png" alt="java运行机制" style="zoom:67%;" />
+
 - 栈【Stack】：
 
   - <font color="red">**方法中的局部变量**，存放在栈中</font>；

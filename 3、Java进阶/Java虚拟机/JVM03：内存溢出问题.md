@@ -3,9 +3,9 @@
 **1.1、原因：**
 
 - *<u>栈帧过多</u>导致栈内存溢出*；
-- *<u>栈帧过多</u>导致栈内存溢出*；
+- *<u>栈帧过大</u>导致栈内存溢出*；
 
-**1.2、JVM参数：**
+**1.2、栈内存划分配置：**
 
 > <u>可以在`Edit Configurations`中的`VM options`设置设置</u>。
 
@@ -34,7 +34,7 @@ public class demo {
 }
 ```
 
-上述范例就是没有设置递归界限，导致无限进行递归操作，最终导致栈内存耗尽，抛出：`java.lang.StackOverflowError`异常。
+上述范例就是<u>没有设置递归界限</u>，导致无限进行递归操作，最终导致栈内存耗尽，抛出：`java.lang.StackOverflowError`异常。
 
 ---
 
@@ -71,7 +71,7 @@ class Dept{
 
 由于Json转换对象是`Dept d`，所以会把部门名称转换，然后转换其中的`List<Emp> emp`对象。
 
-然后转换集合，又读取到了员工名称和部门信息，而部门信息又包含了部门名称和部门员工信息......
+在转换集合对象时，读取到了员工名称和部门信息，而部门信息又包含了部门名称和部门员工信息......
 
 按照上述读取转化步骤，数据格式如下：
 
@@ -92,9 +92,9 @@ class Dept{
 ```java
 public class demo {
     public static void main(String []args) {
-        int i = 0;
         List<String> list = new ArrayList<>();
         String str = "Hello";
+        int i = 0;
         try {
             while(true){
                 list.add(str);
@@ -113,7 +113,7 @@ public class demo {
 
 运行程序，会抛出：`java.lang.OutOfMemoryError: Java heap space`异常。
 
-**2.3、JVM参数：**
+**2.3、堆内存划分配置：**
 
 > <u>可以在`Edit Configurations`中的`VM options`设置设置</u>。
 
