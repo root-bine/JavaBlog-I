@@ -212,4 +212,75 @@ Java堆内存可以处于<u>物理上不连续的内存空间</u>，只需<u>逻
 
 
 
-## 7、<span style="color:brown">直接内存：</span>
+## 7、<span style="color:brown">直接内存：</span>Direct Memory
+
+**7.1、概述：**
+
+>  直接内存并不属于JVM，而是操作系统的内存
+
+- 常用于**NIO操作**，在进行NIO数据读写时，用于数据缓冲区；
+- 分配回收成本高，但读写能力强；
+- 不受JVM内存回收管理；
+
+**7.2、演示：**
+
+<u>*方式1*</u>：
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/direct-memory01.png" alt="image-20221130161724008" style="zoom:80%;" />
+
+<u>*方式2*</u>：
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/direct-memory02.png" alt="image-20221130162244652" style="zoom:80%;" />
+
+*<u>内存模型对比</u>*：
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/directmemory-model.png" alt="image-20221130163934355" style="zoom:80%;" />
+
+**7.3、内存释放分析：**
+
+```java
+public static final int _1Gb = 1024*1024*1024;
+public static void main(String[] args) throws IOException{
+    ByteBuffer byteBuffer = ByteBuffer.allocateDirect(_1Gb);
+    System.out.println("分配完成...");
+    System.in.read();
+    System.out.println("开始释放...");
+    System.in.read();
+    byteBuffer = null;
+    System.gc();
+    System.in.read();
+}
+```
+
+*通过查看ByteBuffer源码中的一个静态方法*：
+
+`public static ByteBuffer allocateDirect(int capacity) {return new DirectByteBuffer(capacity);}`
+
+<span style="color:red">然后查看**DirectByteBuffer类**，在<u>*构造器方法*</u>调用`base = unsafe.allocateMemory(size)`，完成***直接内存的分配任务***</span>。
+
+---
+
+<u>*而在构造器方法中`cleaner = Cleaner.create(this, new Deallocator(base, size, cap));`*</u>表明<span style="color:green">在 **回调类Deallocator** 的`run()`方法中，直接调用了`unsafe.freeMemory(address)`</span>，而Cleaner类在Java类库中是一种**虚引用类型**，当它所关联的<u>*对象(this)*</u>被回收时，就会触发<u>虚引用对象Cleaner</u>的clean()方法来**<u>实现直接内存的释放</u>**；
+
+---
+
+使用了<u>Unsafe对象</u>完成直接内存的分配回收，并且回收需要主动调用freeMemory方法；
+
+ByteBuffer的实现类内部，使用了Cleaner(虚引用)来监测ByteBuffer对象，一旦ByteBuffer对象被垃圾回收，那么就会由ReferenceHandler线程通过Cleaner的clean方法调用freeMemory 来释放直接内存；
+
+**7.4、直接内存调优：**
+
+采用<u>禁止显示内存回收机制</u>，而`System.gc()`是一种**显示内存回收机制**，此时会触发Full GC，并且影响直接内存性能。
+
+- 可以在VM options中设置：`-XX:+DisableExplicitGC`，禁用掉代码中的`System.gc()`，直接进行直接内存的垃圾回收；
+
+- 手动创建Unsafe对象，然后调用freeMemory()方法；
+
+  ```java
+  public static final int _1Gb = 1024*1024*1024;
+  public static void main(String[] args) throws IOException{
+  	Unsafe unsafe = Unsafe.getUnsafe();
+  	long l = unsafe.allocateMemory(_1Gb);
+  	unsafe.freeMemory(l);
+  }
+  ```

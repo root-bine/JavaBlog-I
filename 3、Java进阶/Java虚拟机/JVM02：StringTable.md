@@ -2,7 +2,7 @@
 
 **1.1、引言：**
 
-StringTable别名：串池、字符串常量池、Stringpool，<u>*串池为Hash表结构*</u>。
+StringTable别名：串池、字符串常量池、Stringpool，<u>*串池为Hash表存储结构*</u>。
 
 **1.2、特征：**
 
@@ -35,9 +35,9 @@ StringTable别名：串池、字符串常量池、Stringpool，<u>*串池为Hash
 <u>*底层原理：*</u>
 
 ```scss
-创建StringBuilder对象: new StringBuilder(), 然后再调用append(), 最后调用toString()
+创建StringBuilder对象: new StringBuilder(String str), 然后再调用append(), 最后调用toString()
 
-由于toString()方法的返回值为：return new String(value, 0, count)，相当于new String(...)
+由于toString()方法的返回值为：return new String(value, 0, count), 相当于new String(...)
 ```
 
 ---
@@ -77,13 +77,11 @@ System.out.println(s1 == s2);//true
 
 ## 3、<span style="color:brown">intern原理：</span>
 
-<!--自JDK1.7以后, 字符串常量池在堆中，因而存放的是: 引用地址-->
-
 **3.1、方法详解：**
 
 ```java
 // java.lang.String
-public native String intern() 
+public native String intern()  
 ```
 
 当intern()方法被调用的时候：
@@ -162,11 +160,62 @@ System.out.println(x1 == x2);// false
 
 
 
-## 4、<span style="color:brown">StringTable垃圾回收及调优：</span>
+## 4、<span style="color:brown">StringTable垃圾回收：</span>
 
-**4.1、演示：**
+**4.1、串池内存设置：**
 
 在Idea的Edit Configurations中的VM option配置`-Xmx10m -XX:+PrintStringTableStatistics -XX:+PrintGCDetails -verbose:gc`，主要作用是：划分堆内存空间为10M、打印串池的字符串个数，大小等信息、打印垃圾回收的详细信息。
 
+**4.2、演示：**
 
+```java
+public class Test {
+    public static void main(String[] args) throws InterruptedException{
+        int i = 0;
+        try {
+            for (int j = 0; j < 1000; j++) {
+                String.valueOf(j).intern();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(i);
+        }
+    }
+}
+```
+
+**4.3、结果：**
+
+当划分串池内存空间为：10M时，由于执行上述代码，导致串池空间耗尽，因而会执行一次垃圾回收，内容展示如下：
+
+```scss
+[GC (Allocation Failure) [PSYoungGen: 1024K->504K(1536K)] 1024K->612K(5632K), 0.0023232 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+```
+
+
+
+## 5、<span style="color:brown">StringTable性能调优：</span>
+
+**5.1、概述：**
+
+> 数组中的单个元素数称为桶
+
+**桶跟最大存储数量没关系**，限<u>制StringTable的最大存储量的是堆内存的大小</u>，设置方式：`-XX: StringTableSize=桶个数`。
+
+桶子越多，每个桶放的东东就越少，性能越高。
+
+**5.2、调优操作：**
+
+设置：-Xmx500m -XX:+PrintStringTableStatistics -XX:+PrintGCDetails -XX: StringTableSize = 20000
+
+![image-20221130153329513](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/StringTable%E8%B0%83%E4%BC%98.png)
+
+上述代码的内存分布占用情况，可以用**jvirsualvm工具**查看，结果为：<u>`java.lang.String`和`char[]`两部分占比80%，近300M</u>。
+
+而将上述代码的**address.add(line)**修改为：`address.add(line.intern())`，将字符串对象先进行入串池操作，然后再将串池中的对象返回给list集合。这样操作的结果为：<u>`java.lang.String`和`char[]`占比约为30%，`java.lang.Object[]`占比约为50%</u>。
+
+**5.3、应用场景：**
+
+在应用中，如果<u>*存在大量的字符串对象，且可能重复*</u>的情况，可以使用`intern()`方法进行入串池操作，减少堆内存的消耗！！！
 

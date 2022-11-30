@@ -130,8 +130,8 @@ public class demo {
 
 |  JDK版本   |        区域        |
 | :--------: | :----------------: |
-| 小于JDK1.8 | **永久代**内存溢出 |
-| 大于JDK1.8 | **元空间**内存溢出 |
+| 小于JDK1.7 | **永久代**内存溢出 |
+| 大于JDK1.7 | **元空间**内存溢出 |
 
 **3.2、抛出异常：**
 
@@ -151,14 +151,43 @@ public class demo {
 
 
 
-## 4、<span style="color:brown">诊断工具：</span>
+## 4、<span style="color:brown">Direct Memory内存溢出：</span>
+
+**4.1、演示：**
+
+```java
+public static final int _100Mb = 1024*1024*100;
+public static void main(String[] args) throws InterruptedException{
+    ArrayList<ByteBuffer> list = new ArrayList<>();
+    int i = 0;
+    try {
+        while(true){
+            ByteBuffer byteBuffer = ByteBuffer.allocateDirect(_100Mb);
+            list.add(byteBuffer);
+            i++;
+        }
+    } finally {
+        System.out.println(i);
+    }
+}
+```
+
+**4.2、抛出异常：**
+
+执行上述代码，会显示`Exception in thread "main" java.lang.outOfMemoryError: Direct buffer memory`。
+
+说明：<u>***直接内存也存在内存溢出的问题，但内存释放不受JVM内存管理***</u>！！！
+
+
+
+## 5、<span style="color:brown">诊断工具：</span>
 
 >  在控制台找到`Terminal按钮`，之后使用<u>*cd命令*</u>进入到out目录下对应程序的包
 
-|      名称      |                     功能                      |         使用         |
-| :------------: | :-------------------------------------------: | :------------------: |
-|   javap工具    |         查询已编译好的字节码文件信息          | `javap -v xxx.class` |
-|    jps工具     |         查询当前系统中有哪些Java进程          |        `jps`         |
-|    jmap工具    |           查看**堆内存**的占用情况            |   `jmap -heap pid`   |
-|  jconsole工具  | <u>有图形界面、可连续监测</u>的多功能监测工具 |      `jconsole`      |
-| jvirsualvm工具 |                 JVM可视化工具                 |     `jvirsualvm`     |
+|      名称      |                             功能                             |                             使用                             |
+| :------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|   javap工具    |                 查询已编译好的字节码文件信息                 |                     `javap -v xxx.class`                     |
+|    jps工具     |                 查询当前系统中有哪些Java进程                 |                            `jps`                             |
+|    jmap工具    | 查看**堆内存**的占用情况<br>获取**Heap内存中当前运行时状态**存储到xxx.bin中 | `jmap -heap pid`<br>jmap -dump: format=b,live,file=xxx.bin PID |
+|  jconsole工具  |        <u>有图形界面、可连续监测</u>的多功能监测工具         |                          `jconsole`                          |
+| jvirsualvm工具 |                        JVM可视化工具                         |                         `jvirsualvm`                         |
