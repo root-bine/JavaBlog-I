@@ -4,7 +4,7 @@
 
 一个类的完整生命周期如下：
 
-<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/ClassLoading01.png" alt="image-20221209214224339" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/ClassLoading01.png" alt="QQ图片1" style="zoom: 67%;" />
 
 **1.2、类加载过程：**
 
@@ -12,7 +12,7 @@
 
 系统加载 Class 类型的文件主要三步：**加载->连接->初始化**。连接过程又可分为三步：**验证->准备->解析**。
 
-<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/ClassLoading02.png" alt="image-20221209214303432" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/ClassLoading02.png" alt="QQ图片2" style="zoom:67%;" />
 
 **1.3、卸载：**
 
@@ -53,7 +53,7 @@
 
 ### [#](#验证)验证
 
-<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/ClassLoading03.png" alt="image-20221209221043920" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/ClassLoading03.png" alt="QQ图片3" style="zoom:67%;" />
 
 ### [#](#准备)准备
 
@@ -112,4 +112,12 @@
 4. 当虚拟机启动时，用户需要定义一个要执行的主类 (包含 `main` 方法的那个类)，虚拟机会先初始化这个类
 5. <u>*`MethodHandle` 和 `VarHandle` 可以看作是轻量级的反射调用机制*</u>，而要想使用这 2 个调用， 就必须先使用 `findStaticVarHandle` 来初始化要调用的类
 6. 当一个接口中定义了 JDK8 新加入的默认方法（被 default 关键字修饰的接口方法）时，如果这个接口的实现类发生了初始化，那该接口要在其之前被初始化
+
+
+
+## 3、<span style="color:brown">类加载过程图解：</span>
+
+### <!--图中红色部分, 可以是我们自定义实现的类加载器来进行加载-->
+
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/ClassLoading05.png" alt="QQ图片20221212215336" style="zoom:80%;" />
 
