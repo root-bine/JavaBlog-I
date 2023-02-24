@@ -54,7 +54,7 @@ YAML ( YAML Ain 't Markup Language) ，**一种数据序列化格式**。
 
 - YAML文件扩展名：
 
-  ```apl
+  ```vbscript
   .yml (主流)
   
   .yaml
@@ -132,8 +132,6 @@ YAML ( YAML Ain 't Markup Language) ，**一种数据序列化格式**。
   user1===>itzgy,19
 
 **3.2、变量引用：**
-
-![image-20221007000320749](C:\Users\root-bine\AppData\Roaming\Typora\typora-user-images\image-20221007000320749.png)
 
 - application.yml：
 

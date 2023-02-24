@@ -34,7 +34,7 @@
 
 **4.2、SqlSession工厂对象：SqlSessionFactory**
 
-<!--使用第二种方式,在后期实现JDBC中不需要编写sqlSession.commit()-->
+### <!--使用第二种方式,在后期实现JDBC中不需要编写sqlSession.commit()-->
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E8%8E%B7%E5%8F%96SqlSession%E5%AF%B9%E8%B1%A1.png" alt="image-20220926205155565" style="zoom:80%;" />
 

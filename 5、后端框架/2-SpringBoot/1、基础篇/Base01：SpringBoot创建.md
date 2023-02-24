@@ -2,9 +2,7 @@
 
 **1.1、创建方式：**
 
-通过IDEA创建一个空白项目，然后在**File中选择Setting选项中搜索Mavan**，设置Maven的基本配置。
-
-进入SpringBoot项目创建页面有两种方式：
+​		通过IDEA创建一个空白项目，然后在**File中选择Setting选项中搜索Mavan**，设置Maven的基本配置。进入SpringBoot项目创建页面有两种方式：
 
 1. File -> Project Structure -> Modules -> 选中项目，鼠标右键 -> add -> new Module -> 进入Module配置界面，选择Spring Initializr 
 

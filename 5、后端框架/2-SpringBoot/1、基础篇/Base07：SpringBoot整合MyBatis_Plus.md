@@ -100,7 +100,7 @@
          table-prefix: tb_
    ```
 
-2. 在数据封装实体类上加上注解：**@TableName("表名称")**
+2. 在数据封装**实体类**上加上注解：**@TableName("表名称")**
 
    ```java
    @TableName("tb_book")

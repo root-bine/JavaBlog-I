@@ -2,9 +2,7 @@
 
 ## 1、<span style="color:brown">Mybatis开发步骤：</span>
 
-![image-20220924204716858](C:\Users\root-bine\AppData\Roaming\Typora\typora-user-images\image-20220924204716858.png)
-
-
+![image-20230224162707392](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Mybatis%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4.png)
 
 ## 2、<span style="color:brown">功能实现：</span>
 

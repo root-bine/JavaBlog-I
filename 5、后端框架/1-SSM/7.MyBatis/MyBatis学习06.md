@@ -4,7 +4,7 @@
 
 ## 1、<span style="color:brown">传统开发方式的实现：</span>
 
-### <!--在resources文件下，`mapper/UserMapper.xml、SqlMapConfig.xml、jdbc.properties`不变-->
+### <!--在resources文件下，mapper/UserMapper.xml、SqlMapConfig.xml、jdbc.properties不变-->
 
 ### <!--在domain包下，实体类User不变，且pom.xml文件内容也不变-->
 

@@ -81,7 +81,6 @@ server:
 ```java
 // 由于数据库表名称有前缀, 采用该注解指定表名称, 避免无法识别
 @TableName("tb_book")
-
 // lombok开发
 /*// 生成Setter方法
 @Setter
