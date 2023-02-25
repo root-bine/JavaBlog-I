@@ -1,5 +1,3 @@
-# Mybatis简介 
-
 ## 1、<span style="color:brown">原始JDBC操作：</span>
 
 **1.1、查询数据：**

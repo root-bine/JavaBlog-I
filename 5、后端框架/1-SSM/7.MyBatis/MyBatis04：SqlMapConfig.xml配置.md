@@ -1,12 +1,8 @@
-# Mybatis核心文件：SqlMapConfig.xml
-
-## 1、<span style="color:brown">Mybatis的核心文件：</span>
+## 1、<span style="color:brown">SqlMapConfig配置文件：</span>
 
 **1.1、environments标签：**
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/environments%E6%A0%87%E7%AD%BE.png" alt="image-20220925204927067" style="zoom:80%;" />
-
-<!--详解-->：
 
 - 事务管理器（transactionManager）的类型有两种：
 
@@ -17,8 +13,6 @@
     ```
 
   - MANAGED 【基本不用！！！】
-
-    
 
 - 数据源（dataSource）的类型有三种：
 
@@ -55,15 +49,11 @@
 
 
 
-##  2、<span style="color:brown">Mybatis的核心文件深入：</span>typeHandlers
+##  2、<span style="color:brown">typeHandlers标签：</span>
 
-**2.1、typeHandlers标签：**
+**2.1、typeHandlers概述：**
 
-### <!--'类型处理器', 将获取的值以合适的方式转换成 Java 类型, 架起"数据库类型与Java类型一一映射的桥梁"-->
-
-```apl
-可以将Java类型转换成数据库兼容的类型, 也可以将数据库类型转换成Java兼容的类型
-```
+​		**类型处理器**，<u>将获取的值以合适的方式转换成 Java 类型</u>,，架起数据库类型与Java类型一对一映射的桥梁：<u>*可以将Java类型转换成数据库兼容的类型, 也可以将数据库类型转换成Java兼容的类型*</u>！！！
 
 **2.2、typeHandlers开发步骤：**
 
@@ -71,21 +61,71 @@
 
 **2.3、代码实现：**
 
-### 在User实体类中，编写`private Data birthday`[getter and setter]，然后在数据库中加入字段：`birthday  Bigint`
+<!--在User实体类中, 添加 Data birthday, 然后在数据库中加入字段: birthday  Bigint-->
+
+- 实体类User
+
+  ```java
+  public class User {
+      private int id;
+      private String name;
+      private String pwd;
+      private Data birthday
+  	// Getter and Setter
+      // toString()
+  }
+  ```
 
 - UersMapper.xml
 
   ```xml
-  <insert id="save" parameterType="user">
+  <mapper namespace="userMapper">
+      <insert id="save" parameterType="user">
           insert into user values(#{id}, #{username}, #{password}, #{birthday})
-  </insert>
+  	</insert>
+  </mapper>
   ```
 
 - SqlMapConfig.xml
 
-  ![image-20221001180116525](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/typeHandlers%E4%B9%8B%E6%A0%B8%E5%BF%83%E9%85%8D%E7%BD%AE.png)
+  在SqlMapConfig配置文件中，添加<u>*注册类型处理器*</u>，其中参数handler为**转换类路径**：
 
-- 自定义转换类：
+  ```xml
+  <configuration>
+      <!--通过properties标签加载jdbc.properties文件-->
+      <properties resource="jdbc.properties"/>
+      
+      <!--别名处理器-->
+      <typeAliases>
+      	<typeAlias type="com.zgy.domain.User" alias="user"/>
+  	</typeAliases>
+      
+      <!--数据源的环境-->
+      <environments default="development">
+          <environment id="development">
+              <transactionManager type="JDBC"></transactionManager>
+              <dataSource type="POOLED">
+                  <property name="driver" value="${jdbc.driver}"/>
+                  <property name="url" value="${jdbc.url}"/>
+                  <property name="username" value="${jdbc.username}"/>
+                  <property name="password" value="${jdbc.password}"/>
+              </dataSource>
+          </environment>
+      </environments>
+      <!--注册类型处理器-->
+      <typeHandlers>
+      	<typeHandler handler = "com.zgy.handler.DataTypeHandler"></typeHandler>
+      </typeHandlers>
+      <!--加载映射文件-->
+      <mappers>
+          <mapper resource="mapper/UserMapper.xml"/>
+      </mappers>
+  </configuration>
+  ```
+
+- 自定义转换类
+
+  创建handler包，在其中编写转换类：
 
   <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/typeHandler%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BD%AC%E6%8D%A2%E5%99%A8%E5%AE%9E%E7%8E%B0.png" alt="image-20221001175852787" style="zoom:80%;" />
 
@@ -95,20 +135,18 @@
 
 
 
-## 3、<span style="color:brown">Mybatis的核心文件深入：</span>plugins
+## 3、<span style="color:brown">plugins标签：</span>
 
-**3.1、plugins标签：**
+**3.1、plugins概述：**
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/plugins%E6%A0%87%E7%AD%BE.png" alt="image-20221001181626780" style="zoom:80%;" />
 
 **3.2、注意事项：**
 
-**PageHelper插件4.0.0以后的版本支持自动识别使用的数据库**，所以`不必再指定方言`！！！
+​		**PageHelper插件4.0.0以后的版本支持自动识别使用的数据库**，所以不必再指定方言！！！并且，<u>不能使用`pagehelper`，而应改为`PageInterceptor`</u>：
 
-其次呢，<u>不能使用pagehelper，而应该改为PageInterceptor</u>：
-
-```apl
-PageHelper5.0版本pagehelper是继承了PageMethod和实现了Dialect，PageInterceptor是实现了Interceptor接口
+```scss
+[PageHelper5.0版本] pagehelper是继承了PageMethod和实现了Dialect, PageInterceptor是实现了Interceptor接口
 ```
 
 **3.3、代码实现：**

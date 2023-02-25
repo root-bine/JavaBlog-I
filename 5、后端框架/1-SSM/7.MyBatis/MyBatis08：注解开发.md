@@ -1,18 +1,16 @@
-# Mybatis的注解开发
-
 ## 1、<span style="color:brown">Mybatis常用注解：</span>
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Mybatis%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3.png" alt="image-20221003002754000" style="zoom:80%;" />
 
 
 
-## 2、<span style="color:brown">使用 Mybatis 注解实现基本 CRUD：</span>
+## 2、<span style="color:brown">注解实现基本 CRUD：</span>
 
-###  项目目录结构：
+<u>***项目目录结构：***</u>
 
 ![image-20221003003559322](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png)
 
-### 编写实体类：domain层
+<u>***编写实体类：domain层：***</u>
 
 - User类
 
@@ -23,61 +21,12 @@
       private String address;
       private String sex;
       private Date birthday;
-  
-      public Integer getId() {
-          return id;
-      }
-  
-      public void setId(Integer id) {
-          this.id = id;
-      }
-  
-      public String getUsername() {
-          return username;
-      }
-  
-      public void setUsername(String username) {
-          this.username = username;
-      }
-  
-      public String getAddress() {
-          return address;
-      }
-  
-      public void setAddress(String address) {
-          this.address = address;
-      }
-  
-      public String getSex() {
-          return sex;
-      }
-  
-      public void setSex(String sex) {
-          this.sex = sex;
-      }
-  
-      public Date getBirthday() {
-          return birthday;
-      }
-  
-      public void setBirthday(Date birthday) {
-          this.birthday = birthday;
-      }
-  
-      @Override
-      public String toString() {
-          return "User{" +
-                  "id=" + id +
-                  ", username='" + username + '\'' +
-                  ", address='" + address + '\'' +
-                  ", sex='" + sex + '\'' +
-                  ", birthday=" + birthday +
-                  '}';
-      }
+  	// Getter and Setter
+      // toString()
   }
   ```
 
-### 使用注解方式开发持久层接口：dao层
+<u>***注解开发dao层接口：***</u>
 
 <span style="color:red">**通过注解方式，就不需要再去编写 UserMapper.xml 映射文件了！！！**</span>
 
@@ -85,67 +34,43 @@
 
   ```java
   public interface UserMapper {
-  
-      /**
-       * 查询所有用户
-       * @return
-       */
+  	// 查询所有用户
       @Select("select * from user")
       List<User> findAll();
-  
-      /**
-       * 保存用户
-       * @param user
-       */
+  	
+      // 保存用户
       @Insert("insert into user(username,address,sex,birthday)values(#{username},#{address},#{sex},#{birthday})")
       void saveUser(User user);
   
-      /**
-       * 更新用户
-       * @param user
-       */
+      // 更新用户
       @Update("update user set username=#{username},sex=#{sex},birthday=#{birthday},address=#{address} where id=#{id}")
       void updateUser(User user);
   
-      /**
-       * 删除用户
-       * @param userId
-       */
+  	// 删除用户
       @Delete("delete from user where id=#{id}")
       void deleteUser(Integer userId);
   
-      /**
-       * 根据id查询用户
-       * @param userId
-       * @return
-       */
+  	// 根据id查询用户
       @Select("select * from user where id=#{id}")
       User findById(Integer userId);
   
-      /**
-       * 根据用户名称模糊查询
-       * @param username
-       * @return
-       */
-      //@Select("select * from user where username like #{username}") //占位符
+  	// 根据用户名称模糊查询
+      // @Select("select * from user where username like #{username}") //占位符
       @Select("select * from user where username like '%${value}%'")  //字符串拼接
       List<User> findByName(String username);
   
-      /**
-       * 查询总数量
-       * @return
-       */
+  	// 查询总数量
       @Select("select count(*) from user")
       int findTotal();
   
   }
   ```
 
-### 编写 SqlMapConfig.xml、jdbc.properties：resource包
+<u>***编写 SqlMapConfig.xml、jdbc.properties：resource包***</u>
 
 - SqlMapConfig.xml
 
-  ```java
+  ```xml
   <!--引入外部配置文件-->
   <properties resource="jdbcConfig.properties"></properties>
       <!--配置别名-->
@@ -179,7 +104,7 @@
   jdbc.password=root
   ```
 
-### 编写测试类：
+<u>***编写测试类：***</u>
 
 - AnnotationCRUDTest：
 
@@ -259,8 +184,8 @@
 ## 3、<span style="color:brown">注解实现复杂关系映射：</span>
 
 ```apl
-1. 实现复杂关系映射之前我们可以在映射文件中通过配置<resultMap>来实现;
-2. 在使用注解开发时我们需要借助@Results 注解, @Result 注解, @One 注解, @Many 注解;
+1. 实现复杂关系映射之前, 我们可以在映射文件中通过配置<resultMap>来实现;
+2. 在使用注解开发时, 我们需要借助@Results 注解, @Result 注解, @One 注解, @Many 注解;
 ```
 
 ### 复杂关系映射的注解说明：

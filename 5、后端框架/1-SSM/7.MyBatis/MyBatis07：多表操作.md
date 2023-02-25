@@ -1,6 +1,4 @@
-# Mybatis的多表操作
-
-```apl
+```scss
 1. 多表之间的关系有: 一对一, 一对多, 多对一, 多对多，每一种都有建表的原则,以'用户-订单模型'为例
 2. 利用传统的方法进行多表查询无非是通过id来连接表然后封装返回结果，MyBatis中也是如此
 		# 在Mapper文件中写好表字段之间的映射关系, 定义好类型即可
@@ -15,13 +13,13 @@
 
 ![image-20221002230212058](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Mybatis%E4%B9%8B%E4%B8%80%E5%AF%B9%E4%B8%80.png)
 
-首先还是那套路，建好实体类，写好接口方法，配置Mapper文件，而多表操作的麻烦点就在于配置文件，这里通过例子细说一下
+首先建好实体类，写好接口方法，配置Mapper文件，而多表操作的麻烦点就在于配置文件，这里通过例子细说一下
 
 ---
 
 **1.2、建表：**<span style="color:blue">**根据数据库表的信息，建立相应的实体类**</span>
 
-```ABAP
+```sql
 CREATE TABLE orders (
 id INT PRIMARY KEY ,
 ordertime VARCHAR(20) NOT NULL DEFAULT '',
@@ -219,6 +217,7 @@ SQL环节和原来没什么区别，同样也是通过`resultMap`把字段和属
               <property name="password" value="${jdbc.password}"/>
           </dataSource>
       </environment>
+  </environments>
   ```
 
 - jdbc.properties

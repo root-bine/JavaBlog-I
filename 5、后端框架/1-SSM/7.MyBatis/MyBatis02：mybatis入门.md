@@ -1,5 +1,3 @@
-# Mybatis快速入门
-
 ## 1、<span style="color:brown">Mybatis开发步骤：</span>
 
 ![image-20230224162707392](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Mybatis%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4.png)
@@ -10,7 +8,9 @@
 
 1. Mybatis配置文件：
 
-   ```apl
+   > 除特殊说明外，其他配置文件一律位于resources包下
+
+   ```scss
    1. 在'resources文件'下创建一个mapper包, 建立UserMapping.xml;
    		---> 在resources目录下创建包, 需要使用'/'分割;
    2. 直接在'resources文件'下创建SqlMapConfig.xml;
@@ -31,9 +31,7 @@
 3. 关于mapper里面id爆红名的解决：
 
    ```apl
-   右键file ------>点击setting------>找到点击editor
-   ----->点击 Inspections ----->找到点击mybatis
-   ----->点击取消勾选 Mapper xml inspection
+   右键file --> 点击setting --> 点击editor -->点击 Inspections -->点击mybatis-->取消勾选 Mapper xml inspection
    ```
 
 4. config文件约束头：
@@ -50,7 +48,7 @@
 
 **2.2、代码范例：**
 
-- 添加mybatis坐标：
+- 添加mybatis依赖、数据库连接依赖：
 
   ```xml
   <dependency>

@@ -1,6 +1,4 @@
-# Mybatis的增删改查
-
-### <span style="color:orange">以下内容只需要修改：映射文件UserMapper.xml、测试类MybatisTest</span>！！！
+### <!--以下内容只需要修改：映射文件UserMapper.xml、测试类MybatisTest-->
 
 ## 1、<span style="color:brown">查询数据操作：</span>
 
