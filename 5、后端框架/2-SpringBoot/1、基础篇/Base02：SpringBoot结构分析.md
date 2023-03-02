@@ -6,7 +6,7 @@
 
 |     parent     | SpringBoot中常见项目名称，<span style="color:green">定义了当前项目使用的所有依赖坐标</span>，以达到<span style="color:brown">减少依赖配置</span>的目的。 |
 | :------------: | ------------------------------------------------------------ |
-|  **starter**   | **所有SpringBoot项目要继承的项目，<span style="color:red">定义了若干个坐标、版本号(依赖管理，而非依赖)</span>，以达到<span style="color:brown">减少依赖冲突</span>的目的** |
+|  **starter**   | **所有SpringBoot项目要继承的项目，<span style="color:red">定义了若干个坐标、版本号(依赖管理，而非依赖)</span>，<br>以达到<span style="color:brown">减少依赖冲突</span>的目的** |
 |   **引导类**   | **SpringBoot的引导类是Boot工程的执行入口，运行main方法就可以启动项目** |
 | **内嵌Tomcat** | **SpringBoot的辅助功能之一**                                 |
 
@@ -46,10 +46,8 @@
 
 在实际开发中，使用情况如下：
 
-```apl
-1. 使用任意坐标时, 仅书写GAV中的G和A, v由SpringBoot提供, 除非SpringBoot未提供对应版本V
-2. 如发生坐标错误, 再指定Version(要小心版本冲突)
-```
+1. 使用任意坐标时，仅书写GAV中的G和A,，V由SpringBoot提供，除非SpringBoot未提供对应版本V；
+2. 如果发生坐标错误，那么就需要<u>指定Version</u>，但要小心版本冲突；
 
 
 

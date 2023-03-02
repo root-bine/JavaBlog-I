@@ -70,38 +70,30 @@
 
 ## 2、<span style="color:brown">classes属性</span>
 
-## <!--Junit测试类原属：com.zgy.SpringbootJunitTest，如果将该类移到com下，则无法运行-->
-
 **2.1、错误展示：**
+
+Junit测试类原属：com.zgy.SpringbootJunitTest，如果将该类移到com下，则无法运行
 
 ![image-20221008221503772](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/SpringBoot%E6%95%B4%E5%90%88Junit03.png)
 
 - 问题描述：
 
-  ```apl
-  1. 不能找到@SpringBootConfiguration这个注解
-  2. 你需要使用@ContextConfiguration(...)或者@SpringBootTest(...)来进行指定
-  ```
+  不能找到@SpringBootConfiguration这个注解，需要使用@ContextConfiguration(...)或者@SpringBootTest(...)来进行指定！！！
 
-**2.2、根据Spring整合Junit原理分析：**
+**2.2、Spring整合Junit原理分析：**
 
-1. 使用：`@RunWith(SpringJUnit4ClassRunner.class)`，指定**运行器**；
-2. 使用`@ContextConfiguration(classes = {配置文件  or  配置类.class})`，指定**配置文件或者配置类**；
+​		首先，<u>使用：`@RunWith(SpringJUnit4ClassRunner.class)`，指定**运行器**</u>，然后<u>使用`@ContextConfiguration(classes = {配置文件  or  配置类.class})`，指定**配置文件或者配置类**</u>。
 
-所以：<span style="color:red">当SpringBootJunitTest测试类和SpringBootApplication启动类, 不在同一个Package目录下</span>, 可以在测试类进行如下配置：
+​		因此，<span style="color:red">当SpringBootJunitTest测试类和SpringBootApplication启动类, 不在同一个Package目录下</span>, 可以在测试类进行如下配置：
 
-```apl
+```scss
 @SpringBootTest(classes = 启动类.class)     【推荐】
-
 ------------------------------------------------------------------------------------------------------------
-
 @SpringBootTest
 @ContextConfiguration(classes = 启动类.class)
 ```
 
----
-
-关于**@SpringBootConfiguration**，在启动类的@SpringBootApplication注解中，就存在这个注解：
+​		另外，关于**@SpringBootConfiguration**，在启动类的@SpringBootApplication注解中，就存在这个注解：
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/SpringBoot%E6%95%B4%E5%90%88Junit04.png" alt="image-20221008223237393" style="zoom:80%;" />
 

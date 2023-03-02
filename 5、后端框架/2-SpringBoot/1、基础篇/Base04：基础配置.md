@@ -42,7 +42,7 @@ application.properties  >  application.yml  >  application.yaml
 
 **2.1、简介：**
 
-YAML ( YAML Ain 't Markup Language) ，**一种数据序列化格式**。
+YAML ( YAML Ain't Markup Language) ，**一种数据序列化格式**。
 
 - 优点：
 
@@ -78,9 +78,15 @@ YAML ( YAML Ain 't Markup Language) ，**一种数据序列化格式**。
 
 ## 3、<span style="color:brown">YAML读取数据：</span>
 
-**3.1、读取单一数据：**
+**3.1、注解补充：**
 
-使用@Value读取单个数据，属性名引用方式:${一级属性名.二级属性名.....}
+| `@ConfigurationProperties(profix="...")` | 用于获取配置文件中的属性定义并绑定到Java Bean或属性中     |
+| ---------------------------------------- | --------------------------------------------------------- |
+| **`@Value("${...}")`**                   | **用于获取配置文件中的属性定义并绑定到Java Bean或属性中** |
+
+**3.2、读取单一数据：**
+
+<u>*使用`@Value`读取单个数据，属性名引用方式:${一级属性名.二级属性名.....}*</u>
 
 - application.yml
 
@@ -131,7 +137,7 @@ YAML ( YAML Ain 't Markup Language) ，**一种数据序列化格式**。
   user===>zgy,20
   user1===>itzgy,19
 
-**3.2、变量引用：**
+**3.3、变量引用：**
 
 - application.yml：
 
@@ -168,7 +174,7 @@ YAML ( YAML Ain 't Markup Language) ，**一种数据序列化格式**。
   Dir1===>C:\win10\temp
   Dir2===>C:\win10	emp
 
-**3.3、读取全部属性：**
+**3.4、读取全部属性：**
 
 ```apl
 1. 使用Environment对象封装'全部配置信息'；
@@ -233,13 +239,15 @@ YAML ( YAML Ain 't Markup Language) ，**一种数据序列化格式**。
   china
   8081
 
-**3.4、读取引用类型数据：**
+**3.5、读取引用类型数据：**
 
-```apl
-1. 定义数据模型, 封装YAML文件中对应的数据
-2. 定义为Spring管理的bean
-3. 指定加载的数据
-4. 业务层调用数据
+```scss
+1. 创建类, 用于封装YAML文件的数据
+2. 定义为Spring管控的bean: @Component
+3. 指定加载的数据: @ConfigurationProperties("...")
+4. 业务层调用数据:
+    @Autowired
+    private MyDataSource datasource;
 ```
 
 - application.yml：

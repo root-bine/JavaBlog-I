@@ -1,4 +1,4 @@
-## 1、<span style="color:brown">SpringBoot入门案例：</span>idea联网版
+## 1、<span style="color:brown">SpringBoot创建：</span>idea联网
 
 **1.1、创建方式：**
 
@@ -38,7 +38,7 @@
 
 ​	
 
-## 2、<span style="color:brown">SpringBoot入门案例：</span>官网创建版		
+## 2、<span style="color:brown">SpringBoot创建：</span>官网
 
 **2.1、创建方式：**
 
@@ -46,7 +46,7 @@
 
 上述设置完成之后，点击下方的`Generate按钮`，之后会在网页中下载一个文件压缩包。
 
-**2.2、项目导入：**
+**2.2、外部项目导入：**
 
 点击File，选择Project Structure -> 进入界面，点击Modules -> 添加解压后的项目 
 
@@ -54,7 +54,7 @@
 
 
 
-## 3、<span style="color:brown">SpringBoot：</span>隐藏文件或者文件夹
+## 3、<span style="color:brown">SpringBoot隐藏文件或者文件夹：</span>
 
 **3.1、原因：**
 
@@ -83,7 +83,7 @@ mvnw.cmd
 
 
 
-## 4、<span style="color:brown">SpringBoot：</span>复制工程
+## 4、<span style="color:brown">复制SpringBoot工程：</span>
 
 **4.1、原则：**
 

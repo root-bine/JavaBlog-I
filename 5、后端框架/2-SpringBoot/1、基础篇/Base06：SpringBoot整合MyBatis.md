@@ -1,6 +1,13 @@
 ## 1、<span style="color:brown">整合MyBatis：</span>
 
-**1.1、项目配置：**
+**1.1、整合的内容：**
+
+- 核心配置：数据库连接相关信息（连什么？连谁？什么权限？)
+- 映射配置：SQL映射
+  - XML：详见SSM中Mybatis内容
+  - 注解
+
+**1.2、项目配置：**
 
 创建一个新的Module，进行项目名称、JDK选择等基础配置，之后选择整合MyBatis所需要的依赖：
 
@@ -18,7 +25,7 @@ spring:
     password: 123456
 ```
 
-**1.2、项目内容：**
+**1.3、项目实现：**
 
 ### <!--此处实现SQL数据查询方式，参照MyBatis接口代理方式开发-->
 
@@ -34,14 +41,11 @@ spring:
       private String type;
       private String name;
       private String description;
-      
       // Getter and Setter
-      ...
       // toString()
-      ...
   }
   ```
-
+  
 - BookDao【接口】：`dao`
 
   ```java
@@ -74,7 +78,7 @@ spring:
 
 - 作用：
 
-  ```apl
+  ```scss
   '给mapper接口自动生成一个实现类', 让spring对mapper接口的bean进行管理, 并且可以省略去写复杂的xml文件
   ```
 
@@ -107,7 +111,7 @@ spring:
 
 修改`.yml文件中的url内容`即可：
 
-```apl
+```scss
 jdbc:mysql://localhost:3306/xxx?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
 ```
 
@@ -119,7 +123,7 @@ jdbc:mysql://localhost:3306/xxx?serverTimezone=UTC&useUnicode=true&characterEnco
 
 解决方法：
 
-```apl
+```scss
 将driver-class-name的内容, 修改为: com.mysql.cj.jdbc.Driver
 ```
 

@@ -15,8 +15,6 @@
 
 首先建好实体类，写好接口方法，配置Mapper文件，而多表操作的麻烦点就在于配置文件，这里通过例子细说一下
 
----
-
 **1.2、建表：**<span style="color:blue">**根据数据库表的信息，建立相应的实体类**</span>
 
 ```sql
@@ -40,8 +38,6 @@ INSERT INTO USER VALUES(2,'myy',444);
 INSERT INTO USER VALUES(3,'xyy',555);
 ```
 
----
-
 **1.3、编写OrdersMapper.xml：**
 
 在写实体类时，**要把一个实体写到另一个实体的属性里面，这样才体现关联性**，<u>就比如`订单是用户拥有的`</u>。
@@ -53,9 +49,7 @@ INSERT INTO USER VALUES(3,'xyy',555);
 **通过`<association>`把两张表对应的实体类连接起来**，但是<u>主键ID要用单独的标签</u>
 
 - `property`: 当前实体(order)中的属性名称(private User user)
-- `javaType`: 当前实体(order)中的属性的类型(User)
-
-<!--这两个user有着本质上的却别，就好像前者是在一个人的名字，后者正是被叫的那个人，MyBatis好像就利用了这一特性，通过标签的形式连接了两个实体-->
+- `javaType`: 当前实体(order)中的属性的类型(User)，此处在SqlMapConfig文件中进行了别名配置
 
 然后就是写一对一的SQL：<span style="color:red">需要在OrderMapper接口中创建`List<Order> findAll();`</span>
 
@@ -76,7 +70,14 @@ SQL环节和原来没什么区别，同样也是通过`resultMap`把字段和属
         <id column="oid" property="id"></id>
         <result column="ordertime" property="ordertime"></result>
         <result column="total" property="total"></result>
-        
+    
+    	<!--方式一-->
+        <!--<id column="uid" property="user.id"></id>
+            <result column="username" property="user.username"></result>
+            <result column="password" property="user.password"></result>
+            <result column="birthday" property="user.birthday"></result>
+		-->
+    	<!--方式二-->
         <association property="user" javaType="user">
             <!--此处的uid是根据数据库中的显示出的字段名称-->
             <id column="uid" property="id"></id>

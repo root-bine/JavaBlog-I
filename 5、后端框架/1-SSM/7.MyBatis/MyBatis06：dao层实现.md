@@ -131,7 +131,7 @@
   </mapper>
   ```
   
-- 测试类：`MybatisTest.xml`
+- 测试类：`MybatisTest`
 
   ```java
   public class MybatisTest {

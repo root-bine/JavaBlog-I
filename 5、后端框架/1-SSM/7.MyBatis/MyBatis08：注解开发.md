@@ -4,7 +4,7 @@
 
 
 
-## 2、<span style="color:brown">注解实现基本 CRUD：</span>
+## 2、<span style="color:brown">注解实现 CRUD：</span>
 
 <u>***项目目录结构：***</u>
 
@@ -231,7 +231,7 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
 
 
 
-## 4、<span style="color:brown">使用注解实现复杂关系映射开发：</span>一对一
+## 4、<span style="color:brown">复杂关系映射开发：</span>
 
 ### 项目目录：
 
@@ -251,119 +251,27 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
   	
       //一对多关系映射：一个用户对应多个账户
       private List<Account> accounts;
-      public List<Account> getAccounts() {
-          return accounts;
-      }
-  
-      public void setAccounts(List<Account> accounts) {
-          this.accounts = accounts;
-      }
-  
-      public Integer getUserId() {
-          return userId;
-      }
-  
-      public void setUserId(Integer userId) {
-          this.userId = userId;
-      }
-  
-      public String getUserName() {
-          return userName;
-      }
-  
-      public void setUserName(String userName) {
-          this.userName = userName;
-      }
-  
-      public String getUserAddress() {
-          return userAddress;
-      }
-  
-      public void setUserAddress(String userAddress) {
-          this.userAddress = userAddress;
-      }
-  
-      public String getUserSex() {
-          return userSex;
-      }
-  
-      public void setUserSex(String userSex) {
-          this.userSex = userSex;
-      }
-  
-      public Date getUserBirthday() {
-          return userBirthday;
-      }
-  
-      public void setUserBirthday(Date userBirthday) {
-          this.userBirthday = userBirthday;
-      }
-  
-      @Override
-      public String toString() {
-          return "User{" +
-                  "userId=" + userId +
-                  ", userName='" + userName + '\'' +
-                  ", userAddress='" + userAddress + '\'' +
-                  ", userSex='" + userSex + '\'' +
-                  ", userBirthday=" + userBirthday +
-                  '}';
-      }
+      /**
+        *  Getter and Setter
+        *  toString()
+        */
   }
   ```
-
+  
 - Account：
 
   ```java
   public class Account implements Serializable {
-  
       private Integer id;
       private Integer uid;
       private Double money;
   
       //多对一（mybatis中称之为一对一）的映射，一个账户只能属于一个用户 *
       private User user;
-  
-      public User getUser() {
-          return user;
-      }
-  
-      public void setUser(User user) {
-          this.user = user;
-      }
-  
-      public Integer getId() {
-          return id;
-      }
-  
-      public void setId(Integer id) {
-          this.id = id;
-      }
-  
-      public Integer getUid() {
-          return uid;
-      }
-  
-      public void setUid(Integer uid) {
-          this.uid = uid;
-      }
-  
-      public Double getMoney() {
-          return money;
-      }
-  
-      public void setMoney(Double money) {
-          this.money = money;
-      }
-  
-      @Override
-      public String toString() {
-          return "Account{" +
-                  "id=" + id +
-                  ", uid=" + uid +
-                  ", money=" + money +
-                  '}';
-      }
+  	/**
+        *  Getter and Setter
+        *  toString()
+        */
   }
   ```
 
@@ -373,25 +281,20 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
 
   ```java
   public interface AccountMapper {
-      /**
-       * 查询所有账户，并且获取每个账户下的用户信息,一对一
-       * @return
-       */
+  	// 查询所有账户, 并且获取每个账户下的用户信息 [一对一]
+      // com.zgy.dao.UserMapper.findById, 根据用户得id进行关联
       @Select("select * from account")
       @Results(id="accountMap",value = {
               @Result(id = true,column = "id",property = "id"),
               @Result(column = "uid",property = "uid"),
               @Result(column = "money",property = "money"),
-              @Result(property = "user",column = "uid",one=@One(select="com.zgy.dao.IUserDao.findById",fetchType= FetchType.EAGER))
+              @Result(property = "user",column = "uid",one=@One(select="com.zgy.dao.UserMapper.findById",fetchType= FetchType.EAGER))
       })
       List<Account> findAll();
       
-      /**
-       * 根据用户id查询账户信息
-       * @param userId
-       * @return
-       */
+  	// 根据用户id查询账户信息
       @Select("select * from account where uid = #{userId}")
+      @ResultMap(value={"accountMap"})
       List<Account> findAccountByUid(Integer userId);
   }
   ```
@@ -402,10 +305,7 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
 
   ```java
   public interface UserMapper {
-      /**
-       * 查询所有用户
-       * @return
-       */
+  	// 查询所有用户
       @Select("select * from user")
       @Results(id="userMap",value={
               @Result(id = true,column = "id",property = "userId"),
@@ -413,28 +313,19 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
               @Result(column = "username",property = "userName"),
               @Result(column = "sex",property = "userSex"),
               @Result(column = "birthday",property = "userBirthday")
-          	 @Result(property = "accounts" ,column = "id",
-                      many = @Many(select = "com.zgy.dao.IAccountDao.findAccountByUid",
+          	@Result(property = "accounts" ,column = "id",
+                      many = @Many(select = "com.zgy.dao.AccountMapper.findAccountByUid",
                               fetchType = FetchType.LAZY))
   
       })
       List<User> findAll();
   
-      /**
-       * 根据id查询用户
-       * @param userId
-       * @return
-       */
+  	// 根据id查询用户
       @Select("select * from user where id=#{id}")
-      //@ResultMap(value={"userMap"})
-      @ResultMap("userMap")
+      @ResultMap(value={"userMap"})
       User findById(Integer userId);
   
-      /**
-       * 根据用户名称模糊查询
-       * @param username
-       * @return
-       */
+  	// 根据用户名称模糊查询
       @Select("select * from user where username like #{username}") //占位符
       @ResultMap("userMap")
       List<User> findByName(String username);
@@ -442,7 +333,7 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
   }
   ```
 
-### 测试一对一关联及立即加载：
+### 测试：
 
 - AccountTest：
 
@@ -451,14 +342,16 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
       private InputStream in;
       private SqlSessionFactory factory;
       private SqlSession session;
-      private IAccountDao accountDao;
+      private AccountMapper accountMapper;
+      private UserMapper userMapper;
   
       @Before
       public void init() throws Exception{
           in = Resources.getResourceAsStream("SqlMapConfig.xml");
           factory = new SqlSessionFactoryBuilder().build(in);
           session = factory.openSession();
-          accountDao = session.getMapper(IAccountDao.class);
+          accountMapper = session.getMapper(AccountMapper.class);
+          userMapper = session.getMapper(UserMapper.class);
       }
   
       @After
@@ -470,7 +363,7 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
   
       @Test
       public void testFindAll(){
-          List<Account> accounts = accountDao.findAll();
+          List<Account> accounts = accountMapper.findAll();
           for (Account account : accounts) {
               System.out.println("-----每个账户信息-----");
               System.out.println(account);
@@ -479,7 +372,7 @@ fetchType 会覆盖全局的配置参数 lazyLoadingEnabled。
       }
       @Test
       public void testFindAll(){
-          List<User> users = userDao.findAll();
+          List<User> users = userMapper.findAll();
           for (User user : users) {
               System.out.println("-----每个用户的信息");
               System.out.println(user);

@@ -167,6 +167,10 @@ mybatis-plus:
 
 - 数据层：dao
 
+  > 如果**想要每个接口都要变成实现类**，那么需要在每个接口类上加上`@Mapper`注解
+  >
+  > 解决办法：在SpringBoot启动类使用`@MapperScan(...)`注解
+
   ```java
   @Mapper
   public interface BookDao extends BaseMapper<Book> {

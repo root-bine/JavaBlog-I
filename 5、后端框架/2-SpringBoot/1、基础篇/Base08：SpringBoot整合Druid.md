@@ -12,7 +12,7 @@
 </dependency>
 ```
 
-**1.2、Application.yml文件配置：**
+**1.2、application.yml文件配置：**
 
 1. Druid配置01：
 
@@ -47,17 +47,16 @@
 - Book【数据封装实体类】：
 
   ```java
-  package com.zgy.domain;
-  
   public class Book {
       private Integer id;
       private String type;
       private String name;
       private String description;
-  	...
+  	// Getter and Setter
+      // toString()
   }
   ```
-
+  
 - BookDao【接口】：
 
   ```java

@@ -155,25 +155,27 @@
 
   ```xml
   <dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>8.0.27</version>
-      </dependency>
-      <dependency>
-        <groupId>org.mybatis</groupId>
-        <artifactId>mybatis</artifactId>
-        <version>3.4.6</version>
-      </dependency>
-      <dependency>
-        <groupId>com.github.pagehelper</groupId>
-        <artifactId>pagehelper</artifactId>
-        <version>5.3.2</version>
-      </dependency>
-      <dependency>
-        <groupId>com.github.jsqlparser</groupId>
-        <artifactId>jsqlparser</artifactId>
-        <version>4.5</version>
-      </dependency>
+     <groupId>mysql</groupId>
+     <artifactId>mysql-connector-java</artifactId>
+     <version>8.0.27</version>
+  </dependency>
+  <dependency>
+     <groupId>org.mybatis</groupId>
+     <artifactId>mybatis</artifactId>
+     <version>3.4.6</version>
+  </dependency>
+  <!--分页插件-->
+  <dependency>
+     <groupId>com.github.pagehelper</groupId>
+     <artifactId>pagehelper</artifactId>
+     <version>5.3.2</version>
+  </dependency>
+  <!--解析器-->
+  <dependency>
+     <groupId>com.github.jsqlparser</groupId>
+     <artifactId>jsqlparser</artifactId>
+     <version>4.5</version>
+  </dependency>
   ```
 
 - UserMapper.xml【部分】

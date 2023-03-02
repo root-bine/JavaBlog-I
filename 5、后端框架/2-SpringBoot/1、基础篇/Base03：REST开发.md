@@ -8,7 +8,7 @@
 
 ![image-20221005224328145](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/REST%E9%A3%8E%E6%A0%BC%E5%8C%BA%E5%88%86.png)
 
-## 2、<span style="color:brown">RESTful入门案例分析：</span>
+## 2、<span style="color:brown">案例分析：</span>
 
 ### <span style="color:orange">根据REST风格对资源进行访问</span>称为RESTful
 

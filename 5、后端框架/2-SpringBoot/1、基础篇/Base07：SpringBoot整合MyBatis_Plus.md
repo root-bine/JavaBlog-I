@@ -2,7 +2,7 @@
 
 **1.1、整合方式01：**
 
-新建模块，在该界面中**修改Server URL的内容**：
+新建一个模块，并进行基础配置。由于Spring官方并未收录Mybatis-Plus，因此需要**修改Server URL的内容**：
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/SpringBoot%E6%95%B4%E5%90%88MP01.png" alt="image-20221009164020550" style="zoom: 50%;" />
 
@@ -12,7 +12,7 @@
 
 **1.2、整合方式02：**
 
-进入模块创建界面，配置好基础信息，然后**仅导入MySQL Driver坐标**。在创建好基础项目之后，找到`pom.xml文件`，进行手动导入MyBatis-Plus的坐标【[Maven依赖网站查询](https://mvnrepository.com/)】：
+进入模块创建界面，进行基础内容的配置，然后**仅导入MySQL Driver坐标**。在创建好基础项目之后，找到`pom.xml文件`，进行手动导入MyBatis-Plus的坐标【[Maven依赖网站查询](https://mvnrepository.com/)】：
 
 ```xml
 <dependency>
@@ -51,14 +51,11 @@
       private String type;
       private String name;
       private String description;
-      
       // Getter and Setter
-      ...
       // toString()
-      ...
   }
   ```
-
+  
 - <span style="color:red">BookDao</span>：
 
   ```java
@@ -85,11 +82,17 @@
 
 ![image-20221009165730310](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/SpringBoot%E6%95%B4%E5%90%88MP04.png)
 
-**2.2、问题分析：**<span style="color:red">此时使用的数据库表名称为【tb_book】</span>；若是表名为【book】,则不会出现此错误！！！
 
-由上图可知：**在使用Mybatis-Plus技术下进行数据库操作，无法查找到db2下的book表**
 
-*解决方法：*
+**2.2、总结：**
+
+<u>*原因分析：*</u>
+
+- <span style="color:red">此时使用的数据库表名称为【tb_book】</span>；若是表名为【book】,则不会出现此错误；
+
+- **在使用Mybatis-Plus技术下进行数据库操作，无法查找到db2下的book表**；
+
+<u>*解决方法：*</u>
 
 1. 在application.yml中添加如下内容：
 
