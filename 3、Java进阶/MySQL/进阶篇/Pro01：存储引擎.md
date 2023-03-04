@@ -26,11 +26,97 @@
 
 ## 2、<span style="color:brown">存储引擎：</span>
 
-存储引擎就是存储数据、建立索引、更新/查询数据等技术的实现方式。存储引擎是基于表的，而不是基于库的，所以存储引擎也可被称为表类型。
+**2.1、概述：**
 
+> 在MySQL5.5版本之后，默认存储引擎为：`InnoDB`
+
+​		存储引擎就是<u>*存储数据、建立索引、更新/查询数据等技术的实现方式*</u>。存储引擎是基于表的，而不是基于库的，所以存储引擎也可被称为表类型。
+
+| `show create table 表名;` |           查看建表语句           |
+| :-----------------------: | :------------------------------: |
+|    **`show engine;`**     | **查看当前数据库支持的存储引擎** |
+
+**2.2、分析：**
+
+> 在建表时，如果想指定存储引擎，只需修改<u>属性ENGINE</u>即可
+
+```sql
+# 字段或列的注释，是用属性COMMENT来添加
 CREATE TABLE `account` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT COMMENT "主键",
+  `name` varchar(20) DEFAULT NULL COMMENT "姓名",
   `balance` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT="账户表";
+```
+
+- `ENGINE=InnoDB：存储引擎为InnoDB；`
+- `AUTO_INCREMENT=5：主键自增，插入下一条数据id为5；`
+- `DEFAULT CHARSET=utf8mb3：默认字符集；`
+
+
+
+## 3、<span style="color:brown">InnoDB：</span>
+
+**3.1、介绍：**
+
+InnoDB是一种兼顾高可靠性和高性能的通用存储引擎，在MySQL5.5之后，InnoDB是默认的MySQL存储引擎。
+
+**3.2、特点：**
+
+- <u>*DML（增删改表中数据）*</u>操作遵循**ACID摸型**，支持<span style="color:green">**事务**</span>;
+  - ACID，表示事务的四大特性：原子性、一致性、隔离性、持久性
+
+- <span style="color:green">**行级锁**</span>，提高并发访问性能;
+
+- 支持<span style="color:green">**外键**</span>FOREIGN KEY约束，保证数据的完整性和正确性;
+
+**3.3、文件：**
+
+​		`xxx.ibd`：xxx代表的是表名，innoDB引擎的每张表都会对应这样一个**表空间文件**，存储该表的<u>*表结构（frm、sdi) 、数据和索引*</u>。同时，关于**参数innodb_file_per_table**，在MySQL8.0中表示每一张表都对应一个表空间文件。
+
+| `show variables like "innodb_file_per_table"` | 查看MySQL系统中的innodb_file_per_table变量 |
+| --------------------------------------------- | ------------------------------------------ |
+
+---
+
+​		ibd文件存储在<u>*安装的mysql目录下data文件中对应的数据库*</u>，如果需要查看其内容，则在当前路径下CMD，执行指令：
+
+```scss
+ibd2sdi xxx.ibd
+```
+
+**3.4、逻辑存储结构：**
+
+Extend（*1M*）和Page（*16K*）都是由<u>磁盘</u>进行操作，且大小固定。因此，一个区可以容纳64个页！！！
+
+- Trx id：最后一次操作事务的id
+- Roll pointer：指针
+- col：字段
+
+![image-20230304163628744](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/MySQL_Pro02.png)
+
+
+
+## 4、<span style="color:brown">MyISAM</span>&<span style="color:brown">Memory</span>
+
+**4.1、MyISAM：**
+
+​		MyISAM是MySQL早期的默认存储引擎，特点为：<u>不支持*事务和外键*</u>、<u>支持*表锁*，不支持行锁</u>、<u>访问速度快</u>。而存储的文件类别有：
+
+- `xxx.sdi`：存储表结构信息
+- `xxx.MYD`：存储数据
+- `xxx.MYI`：存储索引
+
+**4.2、Memory：**
+
+> Memory存储引擎，
+
+​		<span style="color:green">Memory引擎的表数据是存储在***内存***中的</span>，由于受到硬件问题、或断电问题的影响，只能将<u>*这些表作为临时表或缓存使用*</u>。其特点为：访问速度快、默认支持哈希索引，而存储文件类别为：`xxx.sdi`。锁机制为：表锁，并存在缺陷：*对表的大小有限制，太大的表无法缓存在内存中，而且无法保障数据的安全性*。
+
+**4.3、InnocentDB与MyISAM的区别？**
+
+1. InnoDB支持事务，而MyISAM不支持；
+2. InnoDB的锁机制为：行级锁，而MyISAM是表锁；
+3. InnoDB支持外键，MyISAM不支持；
+
