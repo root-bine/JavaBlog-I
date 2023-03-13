@@ -1,6 +1,6 @@
 ### <!--以下内容只需要修改：映射文件UserMapper.xml、测试类MybatisTest-->
 
-## 1、<span style="color:brown">查询数据操作：</span>
+## 1、<span style="color:brown">查询数据操作</span>
 
 在UserMapper.xml文件的根标签<mapper></mapper>中添加以下内容：
 
@@ -26,7 +26,7 @@ public void test01() throws IOException {
 
 
 
-## 2、<span style="color:brown">新增数据操作：</span>
+## 2、<span style="color:brown">新增数据操作</span>
 
 在UserMapper.xml文件的根标签<mapper></mapper>中添加以下内容：
 
@@ -60,7 +60,7 @@ public void test02() throws IOException {
 
 
 
-## 3、<span style="color:brown">修改数据操作：</span>
+## 3、<span style="color:brown">修改数据操作</span>
 
 在UserMapper.xml文件的根标签<mapper></mapper>中添加以下内容：
 
@@ -95,7 +95,7 @@ public void test03() throws IOException {
 
 
 
-## 4、<span style="color:brown">删除数据操作：</span>
+## 4、<span style="color:brown">删除数据操作</span>
 
 在UserMapper.xml文件的根标签<mapper></mapper>中添加以下内容：
 
@@ -126,7 +126,7 @@ public void test04() throws IOException {
 
 
 
-## 5、<span style="color:brown">注意事项：</span>
+## 5、<span style="color:brown">注意事项</span>
 
 **5.1、程序正常运行，但获取的结果是null值？**
 
@@ -152,3 +152,61 @@ Mybatis跟JDBC不一样, 'Mybatis进行数据修改, 需要手动提交事务'�
 
 ![image-20220925003259269](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Mybatis%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.png)
 
+
+
+## 6、<span style="color:brown">开启运行日志</span>
+
+### <!--基于SSM项目, 配置Mybatis运行日志-->
+
+**6.1、导入log4J依赖：**
+
+```xml
+<dependency>
+	<groupId>log4j</groupId>
+	<artifactId>log4j</artifactId>
+	<version>1.2.12</version>
+</dependency>
+```
+
+**6.2、配置文件编写：**
+
+在resources中新建一个`log4j.properties`文件，内容如下：
+
+```properties
+#将等级为DEBUG的日志信息输出到console和file这两个目的地，console和file的定义在下面的代码
+log4j.rootLogger=DEBUG,console,file
+
+#控制台输出的相关设置
+log4j.appender.console = org.apache.log4j.ConsoleAppender
+log4j.appender.console.Target = System.out
+log4j.appender.console.Threshold=DEBUG
+log4j.appender.console.layout = org.apache.log4j.PatternLayout
+log4j.appender.console.layout.ConversionPattern=[%c]-%m%n
+
+#文件输出的相关设置
+log4j.appender.file = org.apache.log4j.RollingFileAppender
+# 日志输出的文件
+log4j.appender.file.File=./log/mybatis.log
+log4j.appender.file.MaxFileSize=10mb
+log4j.appender.file.Threshold=DEBUG
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=[%p][%d{yy-MM-dd}][%c]%m%n
+
+#日志输出级别
+log4j.logger.org.mybatis=DEBUG
+log4j.logger.java.sql=DEBUG
+log4j.logger.java.sql.Statement=DEBUG
+log4j.logger.java.sql.ResultSet=DEBUG
+log4j.logger.java.sql.PreparedStatement=DEBUG
+```
+
+**6.3、setting设置日志实现：**
+
+在mybatis-config.xml或者SqlMapconfig.xml中，配置：
+
+```xml
+<!--配置mybatis运行日志(一)-->
+<settings>
+    <setting name="logImpl" value="LOG4J"/>
+</settings>
+```

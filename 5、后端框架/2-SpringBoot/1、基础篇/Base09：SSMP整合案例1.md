@@ -148,16 +148,19 @@ spring:
 |     IdType.UUID      |                  全局唯一id；无序;字符串；                   |
 |    ID_WORKER_STR     |              全局唯一（idWorker的字符串表示)；               |
 
-**4.3、开启MP运行日志：**
+**4.3、开启日志：**
 
-在`application.yml`文件中，配置如下信息：
+ SpringBoot项目，在`application.yml`文件中：
 
-```yaml
-# 开启MP运行日志
-mybatis-plus:
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-```
+- <u>MP运行日志</u>：
+
+  ```yaml
+  mybatis-plus:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  ```
+
+---
 
 选择测试`testGetAll()`方法，结果展示如下：
 

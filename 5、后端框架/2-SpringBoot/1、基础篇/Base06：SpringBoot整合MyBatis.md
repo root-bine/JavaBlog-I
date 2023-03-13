@@ -1,4 +1,4 @@
-## 1、<span style="color:brown">整合MyBatis：</span>
+## 1、<span style="color:brown">整合MyBatis</span>
 
 **1.1、整合的内容：**
 
@@ -25,54 +25,31 @@ spring:
     password: 123456
 ```
 
-**1.3、项目实现：**
+**1.3、在SpringBoot开启Mybatis日志：**
 
-### <!--此处实现SQL数据查询方式，参照MyBatis接口代理方式开发-->
+```yml
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+```
 
-- 数据库：
+**1.4、别名设置：**
 
-  <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/SpringBoot%E6%95%B4%E5%90%88MyBatis01.png" alt="image-20221009153050863" style="zoom: 80%;" />
+​		在传统mybatis使用中，一般在SqlMapConfig.xml文件的<typeAliases>标签中配置。之后再Mapper.xml文件中，<u>resultMap的type、parameterType、resultType</u>会引用一些实体类，此时可以使用设置的别名。
 
-- Book【数据实体类】：`domain`
+​		而在SpringBoot项目中，别名只需在application.properties或application.yml中配置，然后在Mapper.xml文件中使`类名`即可：
 
-  ```java
-  public class Book {
-      private Integer id;
-      private String type;
-      private String name;
-      private String description;
-      // Getter and Setter
-      // toString()
-  }
-  ```
-  
-- BookDao【接口】：`dao`
-
-  ```java
-  @Mapper
-  public interface BookDao {
-      @Select("select * from book where id = #{id}")
-      public abstract Book getById(Integer id);
-  }
-  ```
-
-- SpringBootMyBatisTest【测试类】：`com.zgy`
-
-  ```java
-  @SpringBootTest
-  class SpringbootMybatisApplicationTests {
-      @Autowired
-      private BookDao bookDao;
-      @Test
-      void contextLoads() {
-          System.out.println(bookDao.getById(4));
-      }
-  }
-  ```
+```yml
+# 搜索指定包别名
+mybatis:
+  type-aliases-package: com.zgy.springboot_byte.domain
+```
 
 
 
-## 2、<span style="color:brown">问题与总结：</span>
+
+
+## 2、<span style="color:brown">问题与总结</span>
 
 **2.1、@Mapper注解：**
 
@@ -126,4 +103,51 @@ jdbc:mysql://localhost:3306/xxx?serverTimezone=UTC&useUnicode=true&characterEnco
 ```scss
 将driver-class-name的内容, 修改为: com.mysql.cj.jdbc.Driver
 ```
+
+
+
+## 3、<span style="color:brown">范例演示</span>
+
+### <!--此处实现SQL数据查询方式，参照MyBatis接口代理方式开发-->
+
+- 数据库：
+
+  <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/SpringBoot%E6%95%B4%E5%90%88MyBatis01.png" alt="image-20221009153050863" style="zoom: 80%;" />
+
+- Book【数据实体类】：`domain`
+
+  ```java
+  public class Book {
+      private Integer id;
+      private String type;
+      private String name;
+      private String description;
+      // Getter and Setter
+      // toString()
+  }
+  ```
+
+- BookDao【接口】：`dao`
+
+  ```java
+  @Mapper
+  public interface BookDao {
+      @Select("select * from book where id = #{id}")
+      public abstract Book getById(Integer id);
+  }
+  ```
+
+- SpringBootMyBatisTest【测试类】：`com.zgy`
+
+  ```java
+  @SpringBootTest
+  class SpringbootMybatisApplicationTests {
+      @Autowired
+      private BookDao bookDao;
+      @Test
+      void contextLoads() {
+          System.out.println(bookDao.getById(4));
+      }
+  }
+  ```
 
