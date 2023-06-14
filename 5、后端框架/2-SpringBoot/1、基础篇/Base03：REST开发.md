@@ -24,9 +24,9 @@
 
 |       类别        |                             用途                             |
 | :---------------: | :----------------------------------------------------------: |
-| **@RequestParam** |               用于接收**url地址传参/表单传参**               |
+| **@RequestParam** | 用于接收**url地址传参/表单传参**<br>https://localhost:8090?username=Tom&password=1234 |
 | **@RequestBody**  | 用于接收前端的参数（**json数据**），当<u>使用post请求</u>时，会将参数放在`request body`中用于接收 |
-| **@PathVariable** |      用于接收**路径参数**，使用`{参数名称}`描述路径参数      |
+| **@PathVariable** | 用于接收**路径参数**，使用`{参数名称}`描述路径参数，例如：<br>https://localhost:8090/id |
 
 ```scss
 语法：@RequestParam(value=”参数名”,required=”true/false”,defaultValue=””)

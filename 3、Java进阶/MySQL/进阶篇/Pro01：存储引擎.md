@@ -12,11 +12,13 @@
 
 - 服务层
 
-  第二层架构主要完成大多数的核心服务功能，如：SQL接口，并完成缓存的查询，SQL的分析和优化，部分内置函数的执行。所有跨存储引擎的功能也在这一层实现，如过程、函数等。
+  第二层架构主要完成大多数的核心服务功能，如：<u>*SQL接口，完成缓存的查询，SQL的分析和优化，部分内置函数的执行*</u>。所有跨存储引擎的功能也在这一层实现，如过程、函数等。
 
 - 引擎层
 
-  **存储引擎真正的负责了MySQL中数据的存储和提取，服务器通过API和存储引擎进行通信**。不同的存储引擎具有不同的功能，这样就可以根据自己的需要，来选取合适的存储引擎。
+  > `索引(Index)`是在引擎层实现
+
+  **存储引擎真正的负责了MySQL中数据的存储和提取，服务器通过API和存储引擎进行通信**。
 
 - 存储层
 
@@ -30,7 +32,7 @@
 
 > 在MySQL5.5版本之后，默认存储引擎为：`InnoDB`
 
-​		存储引擎就是<u>*存储数据、建立索引、更新/查询数据等技术的实现方式*</u>。存储引擎是基于表的，而不是基于库的，所以存储引擎也可被称为表类型。
+​		存储引擎就是*<u>存储数据、建立索引、更新/查询数据等技术</u>的实现方式*。存储引擎是<span style="color:red">基于表的</span>，而不是基于库的，所以存储引擎也可被称为**表类型**。
 
 | `show create table 表名;` |           查看建表语句           |
 | :-----------------------: | :------------------------------: |
@@ -50,9 +52,9 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COMMENT="账户表";
 ```
 
-- `ENGINE=InnoDB：存储引擎为InnoDB；`
-- `AUTO_INCREMENT=5：主键自增，插入下一条数据id为5；`
-- `DEFAULT CHARSET=utf8mb3：默认字符集；`
+- `ENGINE=InnoDB：存储引擎为InnoDB`
+- `AUTO_INCREMENT=5：主键自增，插入下一条数据id为5`
+- `DEFAULT CHARSET=utf8mb3：默认字符集`
 
 
 
@@ -64,23 +66,25 @@ InnoDB是一种兼顾高可靠性和高性能的通用存储引擎，在MySQL5.5
 
 **3.2、特点：**
 
-- <u>*DML（增删改表中数据）*</u>操作遵循**ACID摸型**，支持<span style="color:green">**事务**</span>;
+- <u>*DML（增删改表中数据）*</u>操作遵循**ACID摸型**，支持<span style="color:green">**事务**</span>
   - ACID，表示事务的四大特性：原子性、一致性、隔离性、持久性
 
-- <span style="color:green">**行级锁**</span>，提高并发访问性能;
+- <span style="color:green">**行级锁**</span>（`row-level locking`），提高并发访问性能
 
-- 支持<span style="color:green">**外键**</span>FOREIGN KEY约束，保证数据的完整性和正确性;
+- 支持<span style="color:green">**外键约束**</span>（`foreign key`），保证数据的完整性和正确性
 
 **3.3、文件：**
 
-​		`xxx.ibd`：xxx代表的是表名，innoDB引擎的每张表都会对应这样一个**表空间文件**，存储该表的<u>*表结构（frm、sdi) 、数据和索引*</u>。同时，关于**参数innodb_file_per_table**，在MySQL8.0中表示每一张表都对应一个表空间文件。
+> 在MySQL8.0中，**参数innodb_file_per_table**，表示<u>每一张表都对应一个表空间文件</u>
+
+`xxx.ibd`：xxx代表的是表名，innoDB引擎的每张表都会对应这样一个**表空间文件**，存储该表的<u>*表结构（frm、sdi) 、数据和索引*</u>。
 
 | `show variables like "innodb_file_per_table"` | 查看MySQL系统中的innodb_file_per_table变量 |
 | --------------------------------------------- | ------------------------------------------ |
 
 ---
 
-​		ibd文件存储在<u>*安装的mysql目录下data文件中对应的数据库*</u>，如果需要查看其内容，则在当前路径下CMD，执行指令：
+ibd文件存储在<u>*安装的mysql目录下data文件中对应的数据库*</u>，如果需要查看其内容，则在当前路径下CMD，执行指令：
 
 ```scss
 ibd2sdi xxx.ibd
@@ -102,7 +106,7 @@ Extend（*1M*）和Page（*16K*）都是由<u>磁盘</u>进行操作，且大小
 
 **4.1、MyISAM：**
 
-​		MyISAM是MySQL早期的默认存储引擎，特点为：<u>不支持*事务和外键*</u>、<u>支持*表锁*，不支持行锁</u>、<u>访问速度快</u>。而存储的文件类别有：
+​		MyISAM是MySQL早期的默认存储引擎，特点为：<u>不支持*事务和外键*</u>、<u>支持*表锁*，不支持行锁</u>、<u>访问速度快</u>。存储的文件类别有：
 
 - `xxx.sdi`：存储表结构信息
 - `xxx.MYD`：存储数据
@@ -110,13 +114,17 @@ Extend（*1M*）和Page（*16K*）都是由<u>磁盘</u>进行操作，且大小
 
 **4.2、Memory：**
 
-> Memory存储引擎，
+> Memory锁机制缺陷：对表的大小有限制，太大的表无法缓存在内存中，而且无法保障数据的安全性
 
-​		<span style="color:green">Memory引擎的表数据是存储在***内存***中的</span>，由于受到硬件问题、或断电问题的影响，只能将<u>*这些表作为临时表或缓存使用*</u>。其特点为：访问速度快、默认支持哈希索引，而存储文件类别为：`xxx.sdi`。锁机制为：表锁，并存在缺陷：*对表的大小有限制，太大的表无法缓存在内存中，而且无法保障数据的安全性*。
+<span style="color:green">Memory引擎的表数据是存储在**内存**中的</span>，由于受到硬件问题、或断电问题的影响，只能将<u>*这些表作为临时表或缓存使用*</u>。
 
-**4.3、InnocentDB与MyISAM的区别？**
+- 特点：访问速度快、默认支持哈希索引
+- 存储文件类别为：`xxx.sdi`
+- 锁机制为：表锁
 
-1. InnoDB支持事务，而MyISAM不支持；
-2. InnoDB的锁机制为：行级锁，而MyISAM是表锁；
-3. InnoDB支持外键，MyISAM不支持；
+**4.3、InnocentDB与MyISAM的区别？**🎶🎶🎶
+
+1. InnoDB支持事务，而MyISAM不支持
+2. InnoDB的锁机制为：行级锁，而MyISAM是表锁
+3. InnoDB支持外键，MyISAM不支持
 

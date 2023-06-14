@@ -225,7 +225,7 @@ spring:
   }
   ```
 
-**4.5、实现数据层的分页操作：**<span style="color:red">在层次结构中，查询子页面的子类型【Ctrl+h】</span>
+**4.5、实现分页操作：**<span style="color:red">在层次结构中，查询子页面的子类型【Ctrl+h】</span>
 
 <span style="color:violet">分页操作是**在MyBatisPlus的常规操作基础上增强得到**</span>，**内部是动态的拼写SQL语句**！！！
 
