@@ -255,20 +255,20 @@ public class Demo03 {
 }
 ```
 
-## 2、<span style="color:brown">Objects类与Object类在异常与多线程</span>
+
+
+## 3、<span style="color:brown">Objects类与Object类在异常与多线程</span>
 
 ### <!--注意：该类在异常章节，也有所涉及-->
 
-**2.1、Objects类在异常处理章节的应用：**
+**3.1、Objects类在异常处理章节的应用：**
 
 ```java
 public static <T> T requireNonNull(T obj)
     查看引用对象是不是null;
 ```
 
-
-
-**2.2、Object类在线程的等待唤醒机制中的应用：**
+**3.2、Object类在线程的等待唤醒机制中的应用：**
 
 ```java
 public void wait()

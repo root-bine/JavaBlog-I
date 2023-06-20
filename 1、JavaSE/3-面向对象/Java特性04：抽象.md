@@ -1,4 +1,4 @@
-## 1、<span style="color:brown">抽象方法和抽象类的使用：</span>
+## 1、<span style="color:brown">抽象：</span>定义一组规范和约束，使得对象的行为和属性更加统一和规范
 
 **1.1、抽象方法：**
 

@@ -11,7 +11,7 @@ StringTable别名：串池、字符串常量池、Stringpool，<u>*串池为Hash
   ```java
   String s1 = "a";
   String s2 = "a";
-  boolean isEqual = (s1 == s2);//为true，因为都是字符串池中的一个对象
+  boolean isEqual = (s1 == s2);//为true, 因为都是字符串池中的一个对象
   ```
 
 - 常量池中的字符串仅是符号，第一次用到时才变为对象；
@@ -24,7 +24,7 @@ StringTable别名：串池、字符串常量池、Stringpool，<u>*串池为Hash
 
 **1.3、位置：**
 
-在JDK1.6及其以前，StringTable存在在方法区中，但由于方法的常量池空间默认大小为4M，当存储内容超过这个空间大小就会抛出OutOfMemoryError异常。因而在JDK1.7、1.8以后，将StringTable存放到了Heap中。
+​		在JDK1.6及其以前，StringTable存在在方法区中，但由于方法的常量池空间默认大小为4M，当存储内容超过这个空间大小就会抛出OutOfMemoryError异常。因而在JDK1.7、1.8以后，将StringTable存放到了Heap中。
 
 
 
@@ -34,10 +34,10 @@ StringTable别名：串池、字符串常量池、Stringpool，<u>*串池为Hash
 
 <u>*底层原理：*</u>
 
-```scss
-创建StringBuilder对象: new StringBuilder(String str), 然后再调用append(), 最后调用toString()
+> toString()方法的返回值为：`return new String(value, 0, count)`，相当于`new String(...)`
 
-由于toString()方法的返回值为：return new String(value, 0, count), 相当于new String(...)
+```scss
+相当于创建一个StringBuilder对象: new StringBuilder(String str), 然后再调用append()将字符串逐个添加到StringBuilder中。最后, 通过调用toString()方法将StringBuilder对象转换为一个新的字符串对象
 ```
 
 ---

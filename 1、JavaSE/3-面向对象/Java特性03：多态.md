@@ -1,4 +1,4 @@
-## 1、<span style="color:brown">多态的概述：</span>
+## 1、<span style="color:brown">多态：</span>提高代码的灵活性和可扩展性
 
 - <u>**继承和接口**</u>，是多态的前提；
 

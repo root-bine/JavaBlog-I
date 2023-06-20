@@ -1,56 +1,42 @@
-## 1、<span style='color:brown'> static关键词</span>
+## 1、<span style='color:brown'> static关键词</span>：<font color='bulue'>**在内存中是先有静态，之后才有非静态**</font>！！！
 
-**1.1、static关键字作用：**
+**1.1、static关键词修饰成员变量:**
 
-<span style="color:orange">一旦使用static关键词，此时所赋值的内容**不再归于对象所有，由所在类主导**</span>！！！
+- <span style='color:red'>**静态性**</span>：`static`修饰的成员变量属于类本身，而不是属于类的实例；
+- <span style='color:green'>共享性</span>：由于静态成员变量只有一份拷贝，所以它被所有类的实例共享；
+- <span style='color:green'>生命周期</span>：静态成员变量的生命周期与类的生命周期相同，它在类加载时被初始化，直到程序结束或类被卸载时才会销毁；
 
-**1.2、static关键词修饰成员变量:**
+- 可以<span style='color:purple'>**通过类名直接访问**</span>；
+- 可以<span style='color:green'>用于共享数据或常量</span>；
 
-1. 成员变量一旦被static修饰，那么此变量只能有所在类主导使用!!
+**1.2、static关键词修饰成员方法:**
 
-2. 多个对象共享同一份数据！！
+- <span style='color:red'>**静态性**</span>：`static`修饰的成员方法属于类本身，而不是属于类的实例；
 
-3. <font color='red'>一般IDEA不允许用对象调用static修饰的成员变量，但可以使用类名调用该变量</font>；
+- 可以<span style='color:purple'>**通过类名直接访问**</span>；
 
-**1.3、static关键词修饰成员方法:**
+- <span style='color:violet'>不能访问非静态成员</span>：静态方法只能访问静态成员（包括静态成员变量和静态方法），这是因为<u>**非静态成员是属于类的实例的**</u>；
 
-- 一旦方法被static修饰，那么该方法就成为了**静态方法**，随所在类一起加载!!
+- <span style='color:violet'>不能被重写</span>：当子类中定义一个与父类具有相同名称和参数列表的静态方法时，并不是重写父类的静态方法，而是在子类中定义了一个新的静态方法；
 
-- <font color='red'>**IDEA不允许直接使用类创建的对象调用类中的静态方法，建议使用：类名.静态方法( );**</font>
-- <font color='red'>**对于本类自己中调用静态方法，可以省去类名调用，直接使用方法名；**</font>
+- <span style='color:violet'>可以访问静态成员</span>：静态方法可以直接访问类的静态成员变量和静态方法，无需通过实例来访问；
 
 ```java
-public class StaticDemo02 {
+public class MathUtils {
+    public static final double PI = 3.14159;
+
+    public static double multiply(double num1, double num2) {
+        return num1 * num2 * PI;
+    }
+}
+/*静态方法multiply通过类名MathUtils直接访问了静态变量PI, 并将其用于计算结果*/
+public class Main {
     public static void main(String[] args) {
-        MyClass one = new MyClass();
-        one.method();
-        MyClass.methodStatic();
-        methodCall();
-    }
-    public static void methodCall(){
-        System.out.println("自己的方法!!");
+        double result = MathUtils.multiply(2, 3);
+        System.out.println(result); // 输出：18.84954
     }
 }
 ```
-
-```java
-public class MyClass {
-    public void method(){
-        System.out.println("这是一个普通成员方法!!");
-    }
-    public static void methodStatic(){
-        System.out.println("这是一个静态方法!!");
-    }
-}
-```
-
-**1.4、static关键词的注意事项：**
-
-> <font color='bulue'>**在内存中是先有静态，之后才有非静态**</font>！！！
-
-- **静态不能够直接访问非静态**；
-  
-- **静态方法中不能使用this关键字**；
 
 
 
@@ -97,20 +83,7 @@ public class Person {
 
 **3.1、静态变量能被this访问吗？**
 
-```java
-public class Main {　　
-    static int value = 33;
-    public static void main(String[] args) throws Exception{
-        new Main().printValue();
-    }
-    private static void printValue(){
-        int value = 3;
-        System.out.println(this.value);
-    }
-}
-```
-
-<u>所有的</u>*静态方法和静态变量*都可以通过对象访问，**只要访问权限足够**。
+​		<span style='color:red'>**不能**</span>。`this`关键字是一个引用，它指向当前对象的实例。而静态变量是属于类本身的，不依赖于任何对象的实例。
 
 **3.2、下列代码的结果：**
 
@@ -138,19 +111,15 @@ class Base{
 
 分析：
 
-- 找到main方法入口，main方法是程序入口，但在执行main方法之前，要先加载Test类
+- 首先，程序执行`main`方法，创建一个`Test`对象。
 
-- 加载Test类的时候，发现Test类继承Base类，于是先去加载Base类
-
-- 加载Base类的时候，发现Base类有static块，而是先执行static块，输出**base static**结果
-
-- Base类加载完成后，再去加载Test类，发现Test类也有static块，而是执行Test类中的static块，输出**test static**结果
-
-- Base类和Test类加载完成后，然后执行main方法中的new Test()，<u>调用子类构造器之前会先调用父类构造器</u>
-
-- 调用父类构造器，输出**base constructor**结果
-
-- 然后再调用子类构造器，输出**test constructor**结果
+- 在创建`Test`对象之前，由于`Test`类继承自`Base`类，所以会先加载`Base`类。
+- 在加载`Base`类时，会执行静态代码块`static{}`，输出`base static`。
+- 接着，创建`Base`对象，调用`Base`类的构造方法，输出`base constructor`。
+- `Base`对象创建完成后，回到`Test`类的创建过程。
+- 在创建`Test`对象时，会执行静态代码块`static{}`，输出`test static`。
+- 接着，调用`Test`类的构造方法，输出`test constructor`。
+- `Test`对象创建完成，程序执行结束。
 
 **3.3、以下代码输出结果：**
 
@@ -188,17 +157,24 @@ class MyClass extends Test {
 
 分析：
 
-- 找到main方法入口，main方法是程序入口，但在执行new MyClass()之前，要先加载Test类
-- 加载Test类的时候，发现Test类有static块，而是先执行static块，输出**test static**结果
-- 加载MyClass类，发现MyClass类有static块，而是先执行static块，输出myclass static结果
-- 然后调用MyClass类的构造器生成对象，在生成对象前，需要先初始化父类Test的成员变量，而是执行Person person = new Person("Test")代码，发现Person类没有加载
-- 加载Person类，发现Person类有static块，而是先执行static块，输出**person static**结果
-- 接着执行Person构造器，输出**person Test**结果
-- 然后调用父类Test构造器，输出**test constructor**结果，这样就完成了父类Test的初始化了
-- 再初始化MyClass类成员变量，执行Person构造器，输出**person MyClass**结果
-- 最后调用MyClass类构造器，输出**myclass constructor**结果，这样就完成了MyClass类的初始化了
+- 首先，程序执行`main`方法，创建一个`MyClass`对象。
+- 在创建`MyClass`对象之前，由于`MyClass`类继承自`Test`类，所以会先加载`Test`类。
+- 在加载`Test`类时，会执行静态代码块`static{}`，输出`test static`。
+- 接着，创建`Test`对象，调用`Test`类的构造方法。
+- 在创建`Test`对象时，会先执行`Test`类中的实例变量初始化，即`Person person = new Person("Test")`。这会调用`Person`类的构造方法。
+- 在加载`Person`类时，会执行静态代码块`static{}`，输出`person static`。
+- 接着，调用`Person`类的构造方法，输出`person Test`。
+- `Person`对象创建完成后，回到`Test`类的构造方法，输出`test constructor`。
+- `Test`对象创建完成后，回到`MyClass`类的创建过程。
+- 在创建`MyClass`对象时，会执行静态代码块`static{}`，输出`myclass static`。
+- 接着，创建`MyClass`对象，调用`MyClass`类的构造方法。
+- 在创建`MyClass`对象时，会先执行`MyClass`类中的实例变量初始化，即`Person person = new Person("MyClass")`。这会调用`Person`类的构造方法。
+- 在加载`Person`类时，由于已经加载过，所以不会再执行静态代码块。
+- 接着，调用`Person`类的构造方法，输出`person MyClass`。
+- `Person`对象创建完成后，回到`MyClass`类的构造方法，输出`myclass constructor`。
+- `MyClass`对象创建完成，程序执行结束。
 
-**3.4、这段代码的输出结果是什么？**
+**3.4、以下代码输出结果：**
 
 ```java
 public class Test {

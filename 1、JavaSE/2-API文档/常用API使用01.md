@@ -23,13 +23,13 @@ public class Demo01_Scanner {
 
 **1.2、Scanner详解：**
 
-- next():读取输入的下一个单词；
+- next()：读取输入的下一个单词；
 
-- hasNext():检测输入中是否还有其他单词；
+- hasNext()：检测输入中是否还有其他单词；
 
-- nextLine():读取下一行内容；
+- nextLine()：读取下一行内容；
 
-- hasNextLine():检测是否还有下一个表示字符串的序列；
+- hasNextLine()：检测是否还有下一个表示字符串的序列；
 
   ***注意：***<span style='color:red'>**next()不能读取带有空白的单词，而nextLine()则可以**</span>；
 
@@ -53,7 +53,7 @@ public class Demo02_hasNexts {
 
 **1.3、Scanner对象释放：**
 
-对象名.close（）；
+<u>`对象名.close()`</u>
 
 ```java
 //输入三个数，输出其中最大的值
@@ -84,7 +84,7 @@ public class Demo03 {
 
 > <span style='color:red'>**匿名对象只能使用唯一的一次，下次使用就是另外一个新的对象**</span>
 
-`new 类名称()`
+<u>`new 类名称()`</u>
 
 **2.2、演示：**
 
@@ -120,7 +120,7 @@ public class Demo05 {
 //        int num=sc.nextInt();
 
         //匿名对象方式
-//        int num=new Scanner(System.in).nextInt();
+//        int num = new Scanner(System.in).nextInt();
 //        System.out.println("输入的是:"+num);
 
         //作为方法参数

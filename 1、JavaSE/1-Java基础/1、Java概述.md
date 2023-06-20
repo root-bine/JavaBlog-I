@@ -1,4 +1,4 @@
-## <!--Java编程语言只有值传递，并没有引用传递-->
+## <span style="color:orange">Java编程语言只有值传递，并没有引用传递</span>！！！
 
 ## 1、<span style="color:brown">基础内容：</span>
 
@@ -28,7 +28,7 @@
   - <font color="#0099ff">**存储  .class文件**</font>；
   - Class文件中，除了有<u>类版本、字段、方法、接口</u>等信息，还包含了**常量池，用于存放<u>*<span style="color:green">编译期生成的各种字面值和符号</span>*</u>**。
 - 本地方法栈【Native Method Stack】：与操作系统有关；
-- 寄存器【pc Register】：与CPU相关；
+- 程序计数器【pc Register】：与CPU相关；
 
 
 
@@ -49,8 +49,6 @@
 
 
 ## 3、<span style="color:brown"> 定义一个标准类：</span>
-
-- <span style='color:orange'>***格式：***</span>
 
 1. 所有的成员变量全部使用<span style='color:blue'>private关键词私有化</span>；
 2. 为每一个成员变量编写<span style='color:blue'>一对Getter和Setter</span>；
@@ -120,7 +118,7 @@ public class DemoClass {
 
 > 简单说，就是 JDK 包含 JRE 包含 JVM
 
-DK 即为 Java 开发工具包，包含编写 Java 程序所必须的编译、运行等开发工具以及 JRE。开发工具如：
+JDK 即为 Java 开发工具包，包含编写 Java 程序所必须的编译、运行等开发工具以及 JRE。开发工具如：
 
 - 用于编译 Java 程序的 javac 命令。
 - 用于启动 JVM 运行 Java 程序的 Java 命令。

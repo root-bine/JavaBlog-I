@@ -1,4 +1,4 @@
-## 1、<span style="color:brown">介绍：</span>
+## 1、<span style="color:brown">继承：</span>实现代码的重用和扩展
 
 ### <!--继承是多态的前提之一-->
 

@@ -4,7 +4,7 @@
 
 > <font color="#0099ff">Random类用来生成随机数</font>
 
-`Random r = new Random( )`
+<u>`Random r = new Random()`</u>
 
 **1.2、演示：**
 
@@ -103,7 +103,7 @@ public class Person {
 public class Demo01 {
     public static void main(String[] args) {
         //定义一个Person类型的数组
-        Person []array = new Person[3];
+        Person[] array = new Person[3];
         //定义三个Person对象
         Person one = new Person("Java", 120);
         Person two = new Person("Python", 100);
@@ -131,7 +131,7 @@ public class Demo01 {
 
 > <span style='color:orange'>**数组一旦定义之后，长度不能改变；集合的长度在集合之后能够进一步修改**</span>
 
-- <span style='color:green'>**API文档查询：class ArrayList<E>,对于ArrayList来说，有一个<E>表示泛型**</span>；
+- <span style='color:green'>**API文档查询：class ArrayList<E>，对于ArrayList来说，有一个<E>表示泛型**</span>；
 
 - <span style='color:red'>**泛型：储存在集合中的元素，应该统一的数据类型**</span>；
 

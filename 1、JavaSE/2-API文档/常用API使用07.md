@@ -77,6 +77,8 @@
   2. public   Date   parse  ( String   sourse )-------->解析
      - <span style="color:red">**把符合模式的字符串解析成为Date日期**</span>；
 
+
+
 ## 3、<span style="color:orange">***SimpleDateFormat类：***</span>Java.test
 
 ### <!--SimpleDateFromat具体代替DateFormat类的使用过程-->
@@ -93,57 +95,14 @@
 
     ***"yyyy-MM-dd  HH:mm:ss" 或者 "yyyy年MM月dd日HH时mm分ss秒"***
 
-    |y |年|
-
-    |M|月|
-
-    |d|日|
-
-    |H|时|
-
-    |m|分|
-
-    |s|秒|
-
 - **具体使用：**
+  
   1. 使用SimpleDateFormat类创建对象；
-  
   2. 使用Date类构造方法来获取或者转化时间和日期；
-  
   3. 使用SimpleDateFormat类创建对象调用：public   String   format( Date date );
   
-     ```java
-     public class Demo02 {
-         public static void main(String[] args) {
-             demo01();
-         }
-         private static void demo01() {
-             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-             Date date = new Date();
-             String str = sdf.format(date);
-             System.out.println(date);
-             System.out.println(str);
-         }
-     }
-     ```
-     
-  4. 使用SimpleDateFormat类创建对象调用：public   Date   parse( String   sourse );<span style="color:red">**由于parse方法具有异常**</span>，所以需要抛出异常：try--------catch--------或者   throws  Exception; 
-  
-     ```java
-     public class Demo03 {
-         public static void main(String[] args) throws Exception {
-             demo03();
-         }
-     
-         private static void demo03() throws Exception {
-             SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
-             Date date = sdf.parse("2021年07月23日20时32分40秒");
-             System.out.println(date);
-         }
-     }
-     ```
-     
-     
+  4. 使用SimpleDateFormat类创建对象调用：public   Date   parse( String   sourse );
+     - <span style="color:red">**由于parse方法具有异常**</span>，所以需要抛出异常：try--------catch--------或者   throws  Exception; 
   
 - **题目：**<span style="color:red">**请使用时间与日期的API，计算出一个人已经出生了多少天？**</span>
 

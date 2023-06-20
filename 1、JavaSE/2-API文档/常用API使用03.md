@@ -1,11 +1,12 @@
-## 1、<span style='color:brown'>String 类：</span>java.lang、被final修饰
+## 1、<span style='color:brown'>String 类：</span>java.lang
 
 ### <!--String类重写了hashCode()、equals()、toString()三个方法-->
 
 **1.1、概述：**
 
-- Java程序中的<u>所有字符串的***字面值***</u> 都是作为*此类的实例*来实现，即：`String str = "Hello world"`；
+- Java程序中的<u>所有字符串的***字面值***</u> 都是作为<u>此类的实例</u>来实现，即：`String str = "Hello world"`；
 - 由于<font color="red">**字符串内容是不可变的**</font>，则字符串可以<font color="blue">**共享的**</font>；
+- `String`类在Java中是被`final`修饰的，即`String`类不能被继承。这是由于需要考虑**字符串的不可变性**！！！
 
 **1.2、创建String字符串方法：**
 
@@ -53,7 +54,7 @@ public class DemoString02 {
     public static void main(String[] args) {
         String str1 = "a";
         String str2 = "b";
-
+		// 根据JVM串池的变量和常量拼接的底层原理
         char[] charArray = {'a','b'};
         String str3 = new String(charArray);
 		String str4 = "ab";
@@ -84,20 +85,25 @@ public class DemoString02 {
    - 而【offset】表示的是开始查找位置；
 4. `public boolean  endsWith(String prefix, int offset)`
    - 判断字符串是否以prefix为后缀；
+5. `public  boolean  contains(String str)`
+   - 判断字符串是否包含某个字符串；
 
 **1.5、常用获取方法：**
 
 - `public  int  length()`
   - 获取字符串中的字符个数，拿到字符串长度；
-- `public  String  concat (String  str)`
+- `public  String  concat(String  str)`
   - 将当前字符串和参数字符串拼接成一个新的字符串，并返回；
   - <span style='color:red'>**此方法只是单纯的拼接字符串，并不是改变了字符串的内容;**</span>
   - <span style='color:red'>**字符串的内容是不可以改变的;**</span>
-- `public  char  charAt (int  index)`
+- `public  char  charAt(int  index)`
   - 获取索引位置的单个字符  (索引从0开始)；
-- `public  int  indexOf (String  str)`
+- `public  int  indexOf(String  str)`
   - 查找参数字符串在本字符串当中首次出现的索引位置；
   - 如果没有返回-1；
+- `public native String intern()`
+  - 如果池中已经包含一个等于该String对象的字符串（由equals(Object)方法确定），则返回池中的字符串；
+  - 否则，将此String对象添加到池中并返回对该String对象的引用；
 
 **1.6、截取方法：**
 
@@ -139,10 +145,8 @@ public class DemoString02 {
      - 将字符串转换成小写格式
   5. `public  String  toUpperCase()`
      - 将字符串转换成大写格式
-  6. `public  boolean  contains(String str)`
-     - 判断字符串是否包含某个字符串；
 
-**1.8、分割字符串的方法：**
+**1.8、分割方法：**
 
 `public  String[]  split (String regex)`
 
@@ -208,7 +212,7 @@ public class Demo08 {
 
 
 
-## 2、<span style="color:brown">**StringBuilder类：**</span>Java.lang、被final修饰
+## 2、<span style="color:brown">**StringBuilder类：**</span>Java.lang
 
 **2.1、String、StringBuffer、StringBuilder的区别：**
 
@@ -216,9 +220,9 @@ public class Demo08 {
 
 **2.2、StringBuilder底层：**
 
-1. <span style="color:red">**字符缓冲区**</span>，可以提高字符串的操作效率；
+1. StringBuilder和StringBuffer都可作为<span style="color:red">**字符缓冲区**</span>，可以提高字符串的操作效率；
 2. <span style="color:orange">**底层是一个char[]，且长度可以变化**</span>；
-3. <span style="color:violet">**StringBuilder类的初始化容量是16，若超出该范围，会自动进行扩容**</span>；
+3. <span style="color:violet">StringBuilder类的初始化容量是**16字符**，若超出该范围，会自动进行扩容</span>；
 
 **2.3、构造方法：**
 

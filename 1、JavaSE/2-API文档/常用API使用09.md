@@ -13,41 +13,30 @@
 |    double    |                    Double                    |
 |   boolean    |                   Boolean                    |
 
-**1.2、装箱与拆箱：**
+**1.2、自动装箱&自动拆箱：**
 
 **装箱**指的是将基本数据类型转为包装类；
 
 **拆箱**指的是将包装类转为基本数据类型；
 
-```java
-public class Demo05 {
-    public static void main(String[] args) {
-        /**
-         * 自动装箱
-         * Integer in = new Integer(1);
-         */
-        Integer in = 1;
-        /**
-         * 自动拆箱
-         * in+2 == in.intValue()+2
-         * in = in+2 相当于 in = new Integer(3)
-         */
-        in = in+2;
-        System.out.println(in);
-        /**
-         * ArrayList无法存储整数，但可以存储包装类
-         */
-        ArrayList<Integer> list = new ArrayList<>();
-        //自动装箱
-        list.add(123);
-        System.out.println(list);
-        //自动拆箱
-        int i = list.get(0);
-        System.out.println(i);
+---
 
-    }
-}
-```
+- int转换为Integer：
+
+  ```java
+  int num = 10;
+  Integer integer = num; // 自动装箱
+  ```
+
+- Integer转换为int：
+
+  ```java
+  Integer integer = 10;
+  int num = integer; // 自动拆箱
+  ```
+
+​		当进行int和Integer之间的转换时，需要注意<span style="color:red">空指针异常</span>。如果Integer对象为null，进行拆箱操作时会抛出NullPointerException异常。因此，<u>***在进行拆箱操作前，需要先进行null的判断***</u>。
+
 
 
 ## 2、<span style="color:brown">包装类类型转换：</span>
@@ -68,7 +57,7 @@ int i = integer.intValue();
 
 ```java
 // float > Float
-float i = 13;
+float i = 13F;
 Float fo = Float.valueOf(i);
 ------------------------------------------------------------------------------------------------------------
 // Float > float

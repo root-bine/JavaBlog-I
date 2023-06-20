@@ -26,7 +26,8 @@
 
      - 获取给定日历字段的值；
      - 参数：传递指定的日历字段（YEAR、DATE.......）；
-
+     - Calendar类中的月份是从0开始计数的，即0表示一月，1表示二月，以此类推！！！
+     
      ```java
      public class Demo06 {
          public static void main(String[] args) {
@@ -154,6 +155,8 @@
   	public  static   final   int   MINUTE = 12;  // 分
   	
   	public  static   final   int   SECOND = 13;  // 秒
+  	
+  	......
 
 ## 2、<span style="color:brown">**System类：**</span>Java.lang
 
@@ -166,10 +169,9 @@
 
   1. `public static long currentTimeMillis()`
   
-     - 返回毫秒值为单位的当前时间；
-     - 获取当前系统的时间；
+     - 获取当前时间的毫秒值；
      - 用来测试程序的效率；
-  
+     
      ```java
      //验证for循环打印数字1-999所需要的时间（毫秒）
      public class Demo10 {
@@ -188,7 +190,7 @@
          }
      }
      ```
-  
+     
   2. `public static native void arraycopy(Object src, int srcPos, Object dest, int destPos, int length)`
   
      <!--Arrays类的copyOf()应用了该方法的原理-->
@@ -229,16 +231,11 @@
      - 功能：
   
        ```scss
-       # 在一个Java 程序中的执行是自动的, 不能强制执行
-       1. 即使程序员能明确地判断出有一块内存已经无用了, 是应该回收的, 序员也不能强制垃圾收集器回收该内存块;
+       GC在一个Java 程序中的执行是自动的, 不能强制执行
+       1. 即使程序员能明确地判断出有一块内存已经无用了, 是应该回收的, 程序员也不能强制垃圾收集器回收该内存块;
        2. 程序员唯一能做的就是'通过调用System.gc()方法':
-              ---> 来"建议"垃圾收集器去进行垃圾回收处理，但其是否可以执行，什么时候执行却都是不可知的。
+          ---> 来"建议"垃圾收集器去进行垃圾回收处理，但其是否可以执行，什么时候执行却都是不可知的。
        ```
        
-  
-  4. `public native String intern()`
-  
-     - 如果池中已经包含一个等于该String对象的字符串，由equals(Object)方法确定，则返回池中的字符串；
-     - 否则，将此String对象添加到池中并返回对该String对象的引用；
   
 
