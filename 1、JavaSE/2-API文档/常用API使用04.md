@@ -5,9 +5,7 @@
 - <span style='color:red'>**静态性**</span>：`static`修饰的成员变量属于类本身，而不是属于类的实例；
 - <span style='color:green'>共享性</span>：由于静态成员变量只有一份拷贝，所以它被所有类的实例共享；
 - <span style='color:green'>生命周期</span>：静态成员变量的生命周期与类的生命周期相同，它在类加载时被初始化，直到程序结束或类被卸载时才会销毁；
-
 - 可以<span style='color:purple'>**通过类名直接访问**</span>；
-- 可以<span style='color:green'>用于共享数据或常量</span>；
 
 **1.2、static关键词修饰成员方法:**
 

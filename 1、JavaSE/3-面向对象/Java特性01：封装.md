@@ -94,12 +94,12 @@ public class DEMO {
 
 **3.3、注意事项：**
 
-- <span style='color:red'>构造方法的名称与类名称一致</span>
+- <span style='color:red'>构造方法的名称与类名称一致</span>；
 
-- <span style='color:red'>构造方法不能写返回值，void也不需要</span>
+- <span style='color:red'>构造方法不能写返回值，void也不需要</span>；
 
-- <span style='color:red'>构造方法中不能够return一个具体的返回值</span>
+- <span style='color:red'>构造方法中不能够return一个具体的返回值</span>；
 
-- <span style='color:red'>如果方法中没有具体的构造方法，但是会有一个默认的构造方法</span>
+- <span style='color:red'>如果方法中没有具体的构造方法，但是会有一个默认的构造方法</span>；
 
-- <span style='color:red'>构造方法也可以重载，即：名称相同，参数列表不同</span>
+- <span style='color:green'>构造方法也可以重载，即：名称相同，参数列表不同</span>；

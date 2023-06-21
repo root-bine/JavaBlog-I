@@ -2,8 +2,8 @@
 
 ### <!--继承是多态的前提之一-->
 
-- 接口定义关键词：interface（定义）、implements（实现）；
 - 继承关键词：extends；
+
 - 类与类之间的关系定义：父类、子类；
 - <span style="color:red">**继承的核心**</span>：<span style="color:">**共性抽取**</span>
   - 子类继承父类的所有**可继承的“内容”**；
@@ -253,7 +253,7 @@ public class Text {
 
 
 
-## 6、<span style="color:brown">继承中方法的覆盖重写：</span>
+## 6、<span style="color:brown">覆盖重写（Overwrite）：</span>
 
 **6.1、概念与特点：**
 
@@ -279,11 +279,7 @@ public class Text {
    - public > protected > (default) >private
      - <span style="color:red">(default)不是关键词default，而是什么都不写，留空</span>;
 
-**6.3、应用场景：**
-
-**<span style="color:violet">对于已经投入使用的类，尽量不要进行修改。推荐定义一个新的类，从而实现重复利用其中共性内容，并添加新的内容</span>**
-
-​																																																------继承的本质			
+**6.3、应用场景：**		
 
 ```java
 //旧手机
@@ -333,9 +329,9 @@ public class Demo01 {
 
 ## 7、<span style="color:brown">继承中构造方法的访问：</span>
 
-- **继承关系中，父类与子类构造方法的访问特点：**
+**7.1、继承关系中，父类与子类构造方法的访问特点：**
 
-1. 子类构造方法中，有一个默认的**super( )**<span style="color:red">[子类中一般不会显示]</span>调用。因此，先调用父类构造，再调用子类构造；
+1. 子类构造方法中，有一个默认的**super( )**<span style="color:green">[子类中一般不会显示]</span>调用。因此，<span style="color:red">先调用父类构造，再调用子类构造</span>；
 
    ```java
    //父类
@@ -395,12 +391,13 @@ public class Demo01 {
 3. <span style="color:red">**super的父类构造调用，必须是子类构造方法中的第一句！！！！**</span>
 
    - <span style="color:green">**只有子类构造方法才能够调用父类的构造方法**</span>；
-   - <span style="color:green">**对于super( ) 与 super(参数)，子类构造方法中只能出现一个**</span>;
+   - <span style="color:green">对于super( ) 与 super(参数)，子类的**同一个构造方法中只能出现一个**</span>;
 
-- **总结：子类调用父类构造方法：**
-  - 如果调用<span style="color:orange">**父类的无参构造方法**</span>，子类只需要继承父类即可。因为子类中有默认的 super( ) 构造；
-  - 如果调用父类的<span style="color:orange">**有参构造方法**</span>，子类中必须编写 super(参数) 构造；
-  - <span style="color:violet">**super( )构造只能有一个，且必须是子类构造方法中的第一个**</span>！！
+**7.2、总结：子类调用父类构造方法：**
+
+- 如果调用<span style="color:orange">**父类的无参构造方法**</span>，子类只需要继承父类即可。因为子类中有默认的 `super()` 构造；
+- 如果调用父类的<span style="color:orange">**有参构造方法**</span>，子类中必须编写 `super(参数)` 构造；
+- <span style="color:violet">**super( )构造只能有一个，且必须是子类构造方法中的第一个**</span>！！
 
 
 
@@ -423,12 +420,7 @@ public class Demo01 {
    class C extends B{} //正确
    ```
 
-3. <span style="color:green">一个子类只能由一个直接父类，但父类可以有许多的子类</span>；
+3. <span style="color:green">继承关系是is-a关系</span>；
 
-   ```xml
-   class A{}
-   class B extends A{} //正确
-   class C extends A{} //正确
-   ```
-
-4. <span style="color:red">接口与接口之间是多继承</span>；
+   - 继承关系表示一个类是另一个类的一种特殊类型，例如，狗是动物的一种，学生是人的一种；
+   - 使得子类对象可以被当作父类对象使用，实现了Java的多态特性；

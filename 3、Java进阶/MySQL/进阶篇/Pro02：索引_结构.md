@@ -25,7 +25,7 @@
 
 
 
-## 2、<span style="color:brown">索引数据结构：</span>
+## 2、<span style="color:brown">索引结构：</span>
 
 **2.1、类别：**
 

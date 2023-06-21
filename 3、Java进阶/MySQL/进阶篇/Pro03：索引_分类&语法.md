@@ -17,7 +17,7 @@
 
 |            分类             | 含义                                                         | 特点                 |
 | :-------------------------: | ------------------------------------------------------------ | -------------------- |
-| 聚集索引(`Clustered Index`) | 将<span style="color:brown">**数据存储与索引放到一块**</span>，索引结构的叶子节点保存了行数据 | 必须有，而且只有一个 |
+| 聚集索引(`Clustered Index`) | 将<span style="color:brown">**数据与索引放到一块存储**</span>，索引结构的叶子节点保存了行数据 | 必须有，而且只有一个 |
 | 二级索引(`Secondary Index`) | 将<span style="color:green">**数据与索引分开存储**</span>，索引结构的叶子节点关联的是对应的主键 | 可以存在多个         |
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/MySQL_Pro11.png" alt="image-20230305163308225" style="zoom: 50%;" />
