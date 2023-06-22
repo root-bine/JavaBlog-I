@@ -160,21 +160,21 @@ public class Demo02 {
 
 > ***注意：索引是从0开始***。
 
-- `public bolean add(E e)`：
+- `bolean add(E e)`：
   - 向集合中添加一些数据,参数类型与泛型一致,它的返回值表示添加是否成功；
   
-- `public void add(int index, E e)`：
+- `void add(int index, E e)`：
   - 在<u>列表指定位置</u>添加元素；
   
-- `public  E  get(int index)`：
+- `E get(int index)`：
 - 根据索引从集合中读取元素；
   - 返回值为：对应索引的元素；
 
-- `public  E  remove(int index)`：
+- `E remove(int index)`：
   - 根据索引从集合中删除元素；
   - 返回值为被删除的元素；
   
-- `public int size( )`：
+- `int size( )`：
   - 获取集合的尺寸长度；
   - 返回值是集合中包含元素的个数；
   

@@ -1,6 +1,6 @@
 ## 1、<span style="color:brown">final关键词概述：</span>
 
-### <!--对于类、方法来说，abstract 和 final 关键词不能后同时出现-->
+### <!--对于类、方法来说，abstract 和 final 关键词不能同时出现-->
 
 **1.1、含义：**
 
@@ -15,6 +15,12 @@ final代表的是: 最终的、不可变更的
 - 变量：使用final修饰的变量是常量，一旦赋值后就不能再修改。可以在声明时初始化，或在构造函数中初始化。例如：`final int myVariable = 10;`
 - 参数：使用final修饰的方法参数表示该参数是只读的，不能在方法内部被修改。例如：`public void myMethod(final int param) { }`
 - 局部变量：使用final修饰的局部变量表示该变量是只读的，不能再次赋值。例如：`final int myVariable = 10;`
+
+**1.3、final、finalize 和 finally 的不同之处?**😴😴😴
+
+- final 是一个修饰符，可以修饰变量、方法和类；
+- ava 技术允许使用 finalize() 方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作；
+- finally 是一个关键字，与 try 和 catch 一起用于异常的处理；
 
 
 

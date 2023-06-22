@@ -22,7 +22,7 @@
   
 - ***成员方法：***
 
-  1. `public int get(int field)`  
+  1. `int get(int field)`  
 
      - 获取给定日历字段的值；
      - 参数：传递指定的日历字段（YEAR、DATE.......）；
@@ -50,7 +50,7 @@
              System.out.println(day1);
          }
      }
-2. `public void set(int field, int value)`
+2. `void set(int field, int value)`
   
    -  将指定日历字段设置为指定值；
    
@@ -88,7 +88,7 @@
      ```
      
    
-  3. `public abstract void add(int field, int value)` 
+  3. `void add(int field, int value)` 
 
      - 将指定日历字段<u>增加/减少</u>指定值；
      
@@ -121,7 +121,7 @@
        }
        ```
      
-  4. `public Date getTime()`
+  4. `Date getTime()`
      
      - 返回一个Calendar时间值的Date对象；
      

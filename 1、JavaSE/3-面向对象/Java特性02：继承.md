@@ -2,36 +2,28 @@
 
 ### <!--继承是多态的前提之一-->
 
-- 继承关键词：extends；
+**1.1、概述：**
 
-- 类与类之间的关系定义：父类、子类；
-- <span style="color:red">**继承的核心**</span>：<span style="color:">**共性抽取**</span>
-  - 子类继承父类的所有**可继承的“内容”**；
-  - 子类除了父类继承的内容以外，还可以拥有**自己的专属内容**；
+<span style="color:red">**继承的核心**</span>是**共性抽取**，子类中重新定义父类中已有的方法，并修改或扩展父类的方法实现
 
-
-
-## 2、<span style="color:brown">继承格式：</span>
-
-***父类格式定义：***
+**1.2、格式：**
 
 ```java
-public class 父类名称 {   
+public class 父类名称 {   //父类
 	......
 }
-```
-
-***子类格式定义：***
-
-```java
-public class 子类名称 extends 父类名称 {
+public class 子类名称 extends 父类名称 {	//子类
     ......
 }
 ```
 
+**1.3、this() & super()在构造方法中的区别？**
+
+this()关键字用于调用同一个类的其他构造方法，而super()关键字用于调用父类的构造方法
 
 
-## 3、<span style="color:brown">继承中成员变量的访问特点：</span>
+
+## 2、<span style="color:brown">继承中成员变量的访问特点：</span>
 
 1、创建子类对象时，成员变量不重名：
 
@@ -140,7 +132,7 @@ public class Text02 {
 
 
 
-## 4、<span style="color:brown">区分子类方法中重名的三种变量：</span>
+## 3、<span style="color:brown">区分子类方法中重名的三种变量：</span>
 
 <span style="color:red">父类与子类重名的三种变量，子类中调用三种变量的访问方式</span>：
 
@@ -182,7 +174,7 @@ public class Text {
 
 
 
-## 5、<span style="color:brown">继承中成员方法的访问特点：</span>
+## 4、<span style="color:brown">继承中成员方法的访问特点：</span>
 
 **在父子类的继承关系中，创建子类对象，访问成员方法的规则：**
 
@@ -249,28 +241,15 @@ public class Text {
    }
    ```
 
-## 注意：<span style="color:violet">无论是成员方法还是成员变量，如果没有都是向上查找父类，绝不会向下查找子类！！！</span>
 
 
+## 5、<span style="color:brown">重写（Overwrite）：</span>
 
-## 6、<span style="color:brown">覆盖重写（Overwrite）：</span>
+**5.1、概念与特点：**
 
-**6.1、概念与特点：**
+重写也称为<span style="color:orange">**覆盖、覆写**</span>，一般重写的方法前面会带有：@Override
 
-**重写的概念**：也称为<span style="color:orange">**覆盖、覆写**</span>
-
-- 一般重写的方法前面会带有：@Override
-  - 检测是否是一个有效的覆盖重写;
-  - 这相当于一个标签;
-- <span style="color:red">在继承关系中，方法名称一样，参数列表也一样！！</span>
-  - 区分于Overload（重载）：方法名称一样，但参数列表不一样;
-
-**重写的特点：**
-
-- <span style="color:orange">**如果创建的是子类对象，则优先使用子类方法**</span>;
-  - 即：new 类名，就优先使用该类的方法;
-
-**6.2、注意事项：**
+**5.2、注意事项：**
 
 1. <span style="color:orange">**必须保证父类与子类之间，方法名称相同，参数列表相同**</span>;
 
@@ -279,7 +258,7 @@ public class Text {
    - public > protected > (default) >private
      - <span style="color:red">(default)不是关键词default，而是什么都不写，留空</span>;
 
-**6.3、应用场景：**		
+**5.3、应用场景：**		
 
 ```java
 //旧手机
@@ -327,9 +306,9 @@ public class Demo01 {
 
 
 
-## 7、<span style="color:brown">继承中构造方法的访问：</span>
+## 6、<span style="color:brown">继承中构造方法的访问：</span>
 
-**7.1、继承关系中，父类与子类构造方法的访问特点：**
+**6.1、继承关系中，父类与子类构造方法的访问特点：**
 
 1. 子类构造方法中，有一个默认的**super( )**<span style="color:green">[子类中一般不会显示]</span>调用。因此，<span style="color:red">先调用父类构造，再调用子类构造</span>；
 
@@ -393,7 +372,7 @@ public class Demo01 {
    - <span style="color:green">**只有子类构造方法才能够调用父类的构造方法**</span>；
    - <span style="color:green">对于super( ) 与 super(参数)，子类的**同一个构造方法中只能出现一个**</span>;
 
-**7.2、总结：子类调用父类构造方法：**
+**6.2、总结：子类调用父类构造方法：**
 
 - 如果调用<span style="color:orange">**父类的无参构造方法**</span>，子类只需要继承父类即可。因为子类中有默认的 `super()` 构造；
 - 如果调用父类的<span style="color:orange">**有参构造方法**</span>，子类中必须编写 `super(参数)` 构造；
@@ -401,7 +380,7 @@ public class Demo01 {
 
 
 
-## 8、<span style="color:brown">Java继承的特点：</span>
+## 7、<span style="color:brown">Java继承的特点：</span>
 
 1. <span style="color:orange">单继承的</span>，<span style="color:violet">一个类的直接父类只能是一个</span>；
 

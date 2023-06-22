@@ -2,27 +2,25 @@
 
 **1.1、抽象方法：**
 
-```xml
-在方法返回值类型前加上abstract，然后去掉{ }，直接以；结尾！！
+```Java
+修饰符 abstract 返回值类型 方法名称(参数列表) {
+	//...
+}
 ```
 
 **1.2、抽象类：**
 
-1. 抽象方法所在的类，必须是抽象类；
-
-2. 格式：
-
-   ```xml
-   在class前面加上abstract！！！
-   ```
+>  抽象方法所在的类，必须是抽象类
+>
+> 接口是一种完全抽象的类，它只包含抽象方法和常量的声明，没有任何实现
 
 ```java
-public abstract class AbstractTest01 {
-    public abstract void show();
+public abstract class 类名称 {
+    //...
 }
 ```
 
-**1.3、抽象方法和抽象类的具体使用：**
+**1.3、具体使用：**
 
 具体操作：
 
@@ -30,7 +28,7 @@ public abstract class AbstractTest01 {
 
 2. <span style="color:violet">必须要使用一个子类来继承这个父类</span>；
 
-3. <span style="color:violet">子类必须覆盖**重写**父类中所有的抽象方法</span>：<span style="color:orange">去掉abstract，然后实现父类中确实的方法体的内容</span>；
+3. <span style="color:violet">子类必须覆盖**重写**父类中所有的抽象方法</span>；
 
 ```java
 public abstract class Animal {
@@ -58,104 +56,14 @@ public class Demo01 {
 
 
 
-## 2、<span style="color:brown">抽象类和抽象方法的注意事项：</span>
+## 2、<span style="color:brown">注意事项：</span>
 
-1. 抽象类不能直接创建对象：
-   - 如果创建，则会编译出错。因此，只能通过创建非抽象子类的对象来实现；
-
-2. 抽象类中可以有构造方法：
-
-   - 提供子类创建对象时，初始化父类的成员使用；
-   - <span style="color:red">父类构造方法 > 子类构造方法 > 子类方法</span>;
-
-   ```java 
-   public abstract class Animal {
-       public Animal(){
-           System.out.println("父类方法执行！！！");
-       }
-       public abstract void eat();
-   }
-   ```
-
-   ```java
-   public class Cat extends Animal{
-       public Cat(){
-   		//super()
-           //优先执行父类构造方法，然后执行子类的构造方法
-           System.out.println("子类方法执行！！！");
-       }
-       @Override
-       public void eat() {
-           System.out.println("猫吃鱼！！");
-       }
-   }
-   ```
-
-   ```java
-   public class Demo01 {
-       public static void main(String[] args) {
-           Cat cat = new Cat();
-           cat.eat();
-       }
-   }
-   ```
-
-   ```java
-   父类方法执行！！！
-   子类方法执行！！！
-   猫吃鱼！！
-   ```
+1. 抽象类不能直接创建对象；
+   
+2. <span style="color:green">抽象类中可以有**构造方法和静态代码块**</span>；
 
 3. 抽象类中可以没有抽象方法，但有抽象方法的类一定是抽象类；
 4. 抽象类的子类，必须覆盖重写父类中所有的抽象方法；
-
-```java
-public abstract class Animal {
-    public abstract void eat();
-    public abstract void sleep();
-}
-```
-
-```java
-public abstract class Dog extends Animal{
-    @Override
-    public void eat() {
-        System.out.println("狗吃骨头！！");
-    }
-}
-```
-
-```java
-public class DogHa extends Dog{
-    @Override
-    public void sleep() {
-        System.out.println("嘿嘿嘿");
-    }
-}
-```
-
-```java
-public class DogHH extends Dog{
-    @Override
-    public void sleep() {
-        System.out.println("哈哈哈");
-    }
-}
-```
-
-```java
-public class Demo01 {
-    public static void main(String[] args) {
-        DogHa dogHa = new DogHa();
-        dogHa.eat();		//狗吃骨头！！
-        dogHa.sleep();		//嘿嘿嘿
-        System.out.println("============");
-        DogHH dogHH = new DogHH();
-        dogHH.eat();		//狗吃骨头！！
-        dogHH.sleep();		//哈哈哈
-    }
-}
-```
 
 
 

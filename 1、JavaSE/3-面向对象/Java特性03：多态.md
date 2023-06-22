@@ -5,7 +5,7 @@
 | 继承 | 接口 |
 | :--: | :--: |
 
-**1.2、多态的实现方式：**
+**1.2、多态的实现方式：**🍔🍔🍔
 
 <span style="color:green">**方法的重载**和**方法的重写**都是实现多态的方式</span>，区别在于：
 
@@ -17,7 +17,63 @@
 |  **返回类型**  | **Overload可以有相同或不同的返回值类型，<br>Overwrite要求返回值类型相同，或是其子类** |
 |    **功能**    | **OverLoad用于实现相似功能但参数不同的方法，<br>Overwrite用于在子类中修改或扩展父类的方法实现** |
 
+**1.3、多态的分类：**✨✨✨
 
+- 编译时多态（静态多态）：在编译阶段确定调用的方法，根据方法的声明类型来决定调用哪个方法，采用Overload方式实现
+
+  ```java
+  public class Example {
+      public void print(int num) {
+          System.out.println("Printing integer: " + num);
+      }
+      
+      public void print(String str) {
+          System.out.println("Printing string: " + str);
+      }
+      
+      public static void main(String[] args) {
+          Example example = new Example();
+          example.print(10); // 编译时确定调用print(int num)方法
+          example.print("Hello"); // 编译时确定调用print(String str)方法
+      }
+  }
+  ```
+
+- 运行时多态（动态多态）：在程序运行时根据对象的实际类型确定调用的方法，而不是根据方法的声明类型，采用Overwrite实现
+
+  ```java
+  public class Animal {
+      public void makeSound() {
+          System.out.println("Animal is making a sound");
+      }
+  }
+  
+  public class Dog extends Animal {
+      @Override
+      public void makeSound() {
+          System.out.println("Dog is barking");
+      }
+  }
+  
+  public class Cat extends Animal {
+      @Override
+      public void makeSound() {
+          System.out.println("Cat is meowing");
+      }
+  }
+  
+  public class Main {
+      public static void main(String[] args) {
+          Animal animal1 = new Dog();
+          Animal animal2 = new Cat();
+          
+          animal1.makeSound(); // 运行时确定调用Dog类的makeSound方法
+          animal2.makeSound(); // 运行时确定调用Cat类的makeSound方法
+      }
+  }
+  ```
+
+  
 
 ## 2、<span style="color:brown">多态的格式与使用：</span>
 

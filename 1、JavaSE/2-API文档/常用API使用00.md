@@ -115,12 +115,12 @@ public enum Season{
 
 **2.3、Enum类中的方法：**(<span style="color:orange">类名直接调用方法</span>)
 
-1. `public String toString()`
+1. `String toString()`
 - <span style="color:red">**获取的是对象的名字**</span>；
-2. `public static T[] values()`
+2. `T[] values()`
    - <span style="color:red">**返回一个枚举类对象数组**</span>；
    - <span style="color:red">**主要作用是将枚举类中所有内容装入一个枚举数组中**</span>；
-3. `public static T valuesOf(String name)` 
+3. `T valuesOf(String name)` 
    - <span style="color:red">**通过对象名获取这个枚举对象**</span>；
    - <span style="color:red">**主要作用是将枚举对象装入一个新的对象**</span>；
      - <span style="color:blue">**对象的名字必须传正确，否则会抛出异常**</span>；

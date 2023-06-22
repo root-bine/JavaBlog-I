@@ -37,7 +37,7 @@
   
 - **Date类的成员方法：**
 
-  <font color="orange">**public  long  getTime (  )：把日期转换成毫秒值**</font>;
+  <font color="orange">**long  getTime (  )：把日期转换成毫秒值**</font>;
 
   ```java
   public class Demo01 {
@@ -72,9 +72,9 @@
   3. 标准化：将得到的日期按照一种输出模式输出出来；
 
 - **DateFormat类的成员方法：**
-  1. public   String   format  ( Date   date )------->格式化
+  1. String   format  ( Date   date )------->格式化
      - <span style="color:red">**按照指定模式，把Date日期格式化为符合模式的字符串**</span>；
-  2. public   Date   parse  ( String   sourse )-------->解析
+  2. Date   parse  ( String   sourse )-------->解析
      - <span style="color:red">**把符合模式的字符串解析成为Date日期**</span>；
 
 
