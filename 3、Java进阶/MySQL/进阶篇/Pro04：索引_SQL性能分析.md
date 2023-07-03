@@ -29,3 +29,4 @@ show [global|session] status like'Com_______';
 在MySQL的配置文件（`/etc/my.cnf`〉中配置如下信息：
 
 ![image-20230620225204522](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/MySQL_Pro14.png)
+

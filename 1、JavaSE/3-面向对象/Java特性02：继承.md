@@ -372,12 +372,6 @@ public class Demo01 {
    - <span style="color:green">**只有子类构造方法才能够调用父类的构造方法**</span>；
    - <span style="color:green">对于super( ) 与 super(参数)，子类的**同一个构造方法中只能出现一个**</span>;
 
-**6.2、总结：子类调用父类构造方法：**
-
-- 如果调用<span style="color:orange">**父类的无参构造方法**</span>，子类只需要继承父类即可。因为子类中有默认的 `super()` 构造；
-- 如果调用父类的<span style="color:orange">**有参构造方法**</span>，子类中必须编写 `super(参数)` 构造；
-- <span style="color:violet">**super( )构造只能有一个，且必须是子类构造方法中的第一个**</span>！！
-
 
 
 ## 7、<span style="color:brown">Java继承的特点：</span>

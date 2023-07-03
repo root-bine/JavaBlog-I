@@ -2,6 +2,10 @@
 
 **1.1、概述：**
 
+Number类（`java.lang`）是<span style="color:red">Java中的一个抽象类</span>，它是<span style="color:blue">所有数值类型</span>的基类。
+
+在包装类中，除<u>`Character类`和`Boolean类`</u>外，<span style="color:green">其他包装类都继承了Number类</span>。
+
 | 基本数据类型 |                    包装类                    |
 | :----------: | :------------------------------------------: |
 |     byte     |                     Byte                     |
@@ -101,4 +105,3 @@ String string = integer.toString();
 String string = "13";
 Integer integer = Integer.valueOf(string);
 ```
-
