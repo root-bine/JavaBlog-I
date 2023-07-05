@@ -122,6 +122,11 @@ public class Test19{
 
 - `public static double abs(double num)`
   - 获取绝对值，有多重重载；
+
+- `public static double pow(double base, double exponent)`
+  - 用于计算一个数的指定次幂
+  - base为底数，exponent是指数
+
 - `public static double ceil(double num)`
   - 向上取整；
   - 正数实质就是整数部分加1，无论小数点后面是否满足四舍五入；
