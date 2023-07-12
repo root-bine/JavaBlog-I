@@ -23,6 +23,8 @@ public class Demo01_Scanner {
 
 **1.2、Scanner详解：**
 
+> <span style='color:red'>next()不能读取带有空白的单词，而nextLine()则可以</span>
+
 - next()：读取输入的下一个单词；
 
 - hasNext()：检测输入中是否还有其他单词；
@@ -31,7 +33,6 @@ public class Demo01_Scanner {
 
 - hasNextLine()：检测是否还有下一个表示字符串的序列；
 
-  ***注意：***<span style='color:red'>**next()不能读取带有空白的单词，而nextLine()则可以**</span>；
 
 <span style='color:green'>后续的nextInt()、nextDouble()、nextByte()、hasNextInt()、hasNextDouble()、hasNextByte()等类似于上述作用及功能。</span>
 
@@ -51,7 +52,34 @@ public class Demo02_hasNexts {
 }
 ```
 
-**1.3、Scanner对象释放：**
+**1.3、处理换行符：**
+
+​		<span style='color:brown'>**在读取完整数或其他类型的输入后，通常会留下一个换行符在输入缓冲区中**</span>，这会造成后续内容输入为null值。为了避免这个问题，可以在读取完整数后使用`nextLine()`来消耗掉换行符！！！
+
+```java
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        scanner.nextLine();
+        int line = scanner.nextInt();
+        scanner.nextLine();
+        HashMap<Integer, String> map = new HashMap<>();
+        for (int i = 0; i < line; i++) {
+            map.put(i,scanner.nextLine());
+        }
+        String[][] str = new String[line][1];
+        Set<Map.Entry<Integer, String>> set = map.entrySet();
+        for (Map.Entry<Integer, String> entry:set) {
+            String value = entry.getValue();
+            Integer key = entry.getKey();
+            System.out.println(key+value);
+        }
+    }
+}
+```
+
+**1.4、关闭Scanner对象：**
 
 <u>`对象名.close()`</u>
 
