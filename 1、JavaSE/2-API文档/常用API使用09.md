@@ -41,6 +41,10 @@ Number类（`java.lang`）是<span style="color:red">Java中的一个抽象类</
 
 ​		当进行int和Integer之间的转换时，需要注意<span style="color:red">空指针异常</span>。如果Integer对象为null，进行拆箱操作时会抛出NullPointerException异常。因此，<u>***在进行拆箱操作前，需要先进行null的判断***</u>。
 
+**1.3、int和Integer有什么区别，二者在做==运算时会得到什么结果？**🎉🎋🎋
+
+​		int是基本数据类型，Integer是int的包装类。二者在做==运算时，Integer会自动拆箱为int类型，然后再进行比较。届时，如果两个int值相等则返回true，否则就返回false。
+
 
 
 ## 2、<span style="color:brown">包装类类型转换：</span>

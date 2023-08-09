@@ -58,7 +58,7 @@ str2 + num // "26"
   ```
   
 
-**1.3、字符串的常量池:**
+**1.4、字符串的常量池:**
 
 > JDK1.6在方法区中，JDK1.7以后在堆中
 
@@ -79,13 +79,14 @@ public class DemoString02 {
 }
 ```
 
-- <span style='color:orange'>**程序中直接写上双引号的字符串，就在字符串的常量池中；**</span>
-- <span style='color:green'>**字符串常量池在Heap中；**</span>
-- <span style='color:red'>**"=="在**引用类型*** 和*** 基本类型**的区别：**</span>
-  - 基本类型：数值间的比较；
-  - 引用类型：地址值的比较；
+`String a = "abc"`与`new String("abc")`的创建过程？🎈🎈🎈
 
-**1.4、常用比较方法：**
+```scss
+1. JVM会使用常量池来管理字符串直接量. 在执行这句话时, JVM会先检查常量池中是否已经存有"abc", 若没有则将"abc"存入常量池, 否则就复用常量池中已有的"abc", 将其引用赋值给变量a.
+2. 在执行这句话时, JVM会先使用常量池来管理字符串直接量, 即将"abc"存入常量池. 然后再创建一个新的String对象, 这个对象会被保存在堆内存中. 并且, 堆中对象的数据会指向常量池中的直接量.
+```
+
+**1.5、常用比较方法：**
 
 1. `boolean equals(Object  obj)`：在判断时区分大小写
 2. `boolean equalsIgnoreCase(Object  obj)`：在判断时不区分大小写
@@ -101,7 +102,7 @@ public class DemoString02 {
 5. `boolean contains(String str)`
    - 判断字符串是否包含某个字符串；
 
-**1.5、常用获取方法：**
+**1.6、常用获取方法：**
 
 - `int length()`
   - 获取字符串中的字符个数，拿到字符串长度；
@@ -118,7 +119,7 @@ public class DemoString02 {
   - 如果池中已经包含一个等于该String对象的字符串（由equals(Object)方法确定），则返回池中的字符串；
   - 否则，将此String对象添加到池中并返回对该String对象的引用；
 
-**1.6、截取方法：**
+**1.7、截取方法：**
 
 1. `String substring(int  index)`
 
@@ -141,7 +142,7 @@ public class DemoString02 {
    }
    ```
 
-**1.7、转换方法：**
+**1.8、转换方法：**
 
 1. `char[] toCharArray()`
    - 将字符串转换成字符数组；
@@ -159,7 +160,7 @@ public class DemoString02 {
   5. `String toUpperCase()`
      - 将字符串转换成大写格式
 
-**1.8、分割方法：**
+**1.9、分割方法：**
 
 `String[] split (String regex)`
 
@@ -198,7 +199,7 @@ public class Demo07 {
 }
 ```
 
-**1.9、演示：**
+**1.10、演示：**
 
 定义一个方法，使数组{1，2，3}按指定格式拼接成新的字符串，格式例如：[word1#word2#word3]
 

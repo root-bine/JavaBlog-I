@@ -1,21 +1,23 @@
-## 1、<span style="color:brown">什么是JVM？</span>
+## 1、<span style="color:brown">JVM详解</span>🦺🦺🦺
 
 **1.1、本质：**
 
-Java虚拟机，就是<u>*Java二进制字节码的运行环境*</u>。
+Java虚拟机，就是<u>*Java二进制字节码的运行环境*</u>。它保证了<span style="color:red">**Java跨平台特性**</span>，<u>负责自动管理内存，提供垃圾回收机制</u>！！！
 
-**1.2、优点：**
-
-- 保证Java跨平台特性；
-- 自动管理内存，提供垃圾回收机制；
-- 数组下标越界的检查；
-- 多态；
-
-**1.3、比较：**
+**1.3、JDK、JRE、JVM之间的关联：**
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/JVM-JRE-JDK.png" alt="image-20221114165935547" style="zoom: 50%;" />
 
-**1.4、JVM内部组成：**
+**1.4、JVM是如何运行的？**
+
+1. `JVM`的装入环境和配置；
+2. 装载`JVM`；
+3. 初始化`JVM`，获得本地调用接口；
+4. 运行`Java`程序；
+
+**1.5、JVM内部组成：**
+
+​		JVM 主要由四大部分组成：`ClassLoader`（类加载器），`Runtime Data Area`（运行时数据区，内存分区），`Execution Engine`（执行引擎），`Native Interface`（本地库接口）
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/JVM-Structure.png" alt="image-20221114171449060" style="zoom: 67%;" />
 
@@ -51,13 +53,11 @@ Java虚拟机，就是<u>*Java二进制字节码的运行环境*</u>。
 
 ## 3、<span style="color:brown">虚拟机栈、本地方法栈：</span>
 
-<!--线程私有，生命周期与线程相同-->
+**3.1、分析：**
 
-<!--栈内存中栈帧是自动弹出, 因此不需要进行垃圾回收-->
+​		每一个线程都共享进程的堆内存和方法区，但<u>各线程都具备私有的程序计数器、虚拟机栈、本地方法栈</u>。其中<span style="color:red">虚拟机栈、本地方法栈的生命周期与线程相同</span>！！！
 
-<!--每个线程在创建的时候都会创建一个虚拟机栈, 而物理内存是固定的, 栈内存划分的越大, 可分配的线程数就越少-->
-
-**3.1、功能：**
+​		<span style="color:purple">每个线程在创建的时候都会创建一个虚拟机栈，而物理内存是固定的，栈内存划分的越大，可分配的线程数就越少</span>！！！
 
 |      |                Java Virtual Machine Stacks                 |      Native Method Stack       |
 | :--: | :--------------------------------------------------------: | :----------------------------: |
@@ -73,6 +73,8 @@ Java虚拟机，就是<u>*Java二进制字节码的运行环境*</u>。
 ```apl
 局部变量表、操作数栈、动态链接、方法出口......
 ```
+
+<span style="color:green">栈内存中栈帧是**自动弹出**，因此<u>不需要进行垃圾回收</u></span>！！！
 
 **3.3、局部变量表的<u>线程安全分析</u>：**
 

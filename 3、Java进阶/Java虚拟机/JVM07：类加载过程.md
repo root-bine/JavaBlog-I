@@ -16,7 +16,7 @@
 
 **1.3、卸载：**
 
-<span style="color:brown">卸载类即该类的 Class 对象被 GC</span>。
+<span style="color:brown">卸载类，即：该类的 Class 对象被 GC</span>。
 
 卸载类需要满足 3 个要求:
 

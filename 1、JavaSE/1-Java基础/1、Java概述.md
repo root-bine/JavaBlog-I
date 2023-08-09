@@ -2,16 +2,24 @@
 
 ## 1、<span style="color:brown">基础内容：</span>
 
+**1.1、为什么Java代码可以实现一次编写、到处运行？**
+
+​		JVM（Java虚拟机）是Java跨平台的关键。
+
+​		在程序运行前，<u>Java源代码`(.java)`</u>需要经过编译器编译成<u>字节码`(.class)`</u>。在程序运行时，**不同平台的JVM**负责将字节码翻译成特定平台下的机器码并运行。
+
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Java%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.png" alt="java运行机制" style="zoom:67%;" />
 
-- 栈【Stack】：
+**1.2、Java内存分布概述：**
+
+- 栈`(Stack)`：
 
   - <font color="red">**方法中的局部变量**，存放在栈中</font>；
 
   - <font color="#0099ff">方法是要在栈中运行</font>；
   - 局部变量：方法中的参数或者方法｛｝内部的变量；
   - 作用域：一旦超出作用域，立刻就会从内存中释放；
-- 堆【Heap】：
+- 堆`(Heap)`：
 
   - <font color="red">**数组和new的实例对象**，都存放在Heap中</font>；
 
@@ -24,11 +32,11 @@
     - 如果是字符					默认为'\u0000'；
     - 如果是布尔值				默认为false；
     - 如果是引用类型			默认为null；
-- 方法区【Method Area】：
+- 方法区`(Method Area)`：
   - <font color="#0099ff">**存储  .class文件**</font>；
   - Class文件中，除了有<u>类版本、字段、方法、接口</u>等信息，还包含了**常量池，用于存放<u>*<span style="color:green">编译期生成的各种字面值和符号</span>*</u>**。
-- 本地方法栈【Native Method Stack】：与操作系统有关；
-- 程序计数器【pc Register】：与CPU相关；
+- 本地方法栈`(Native Method Stack)`：与操作系统有关；
+- 程序计数器`(pc Register)`：与CPU相关；
 
 
 
