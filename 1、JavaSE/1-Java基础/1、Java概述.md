@@ -1,12 +1,12 @@
-## <span style="color:orange">Java编程语言只有值传递，并没有引用传递</span>！！！
-
 ## 1、<span style="color:brown">基础内容：</span>
+
+## <span style="color:orange">Java编程语言只有值传递，并没有引用传递</span>！！！
 
 **1.1、为什么Java代码可以实现一次编写、到处运行？**
 
-​		JVM（Java虚拟机）是Java跨平台的关键。
+​		`JVM`（`Java`虚拟机）是`Java`跨平台的关键。
 
-​		在程序运行前，<u>Java源代码`(.java)`</u>需要经过编译器编译成<u>字节码`(.class)`</u>。在程序运行时，**不同平台的JVM**负责将字节码翻译成特定平台下的机器码并运行。
+​		在程序运行前，<u>`Java`源代码`(.java)`</u>需要经过编译器编译成<u>字节码`(.class)`</u>。在程序运行时，**不同平台的`JVM`**负责将字节码翻译成特定平台下的机器码并运行。
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Java%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.png" alt="java运行机制" style="zoom:67%;" />
 
@@ -23,7 +23,7 @@
 
   - <font color="red">**数组和new的实例对象**，都存放在Heap中</font>；
 
-  - <font color="orange">**字符串常量池也存在Heap中**</font>；【JDK1.7之后】
+  - <font color="orange">**字符串常量池也存在Heap中**</font>；【`JDK1.7`之后】
   - <u>方法中的局部 变量使用 final 修饰后，放在堆中</u>；
   - 堆内存中的东西都有一个<font color="#0099">**地址值**</font>：16进制；
   - 堆内存中的数据都有一个默认值，规则：
