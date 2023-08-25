@@ -23,6 +23,8 @@ Number类（`java.lang`）是<span style="color:red">Java中的一个抽象类</
 
 **拆箱**指的是将包装类转为基本数据类型；
 
+​		当进行int和Integer之间的转换时，需要注意<span style="color:red">空指针异常</span>。如果Integer对象为null，进行拆箱操作时会抛出NullPointerException异常。因此，<u>***在进行拆箱操作前，需要先进行null的判断***</u>。
+
 ---
 
 - int转换为Integer：
@@ -38,8 +40,6 @@ Number类（`java.lang`）是<span style="color:red">Java中的一个抽象类</
   Integer integer = 10;
   int num = integer; // 自动拆箱
   ```
-
-​		当进行int和Integer之间的转换时，需要注意<span style="color:red">空指针异常</span>。如果Integer对象为null，进行拆箱操作时会抛出NullPointerException异常。因此，<u>***在进行拆箱操作前，需要先进行null的判断***</u>。
 
 **1.3、int和Integer有什么区别，二者在做==运算时会得到什么结果？**🎉🎋🎋
 

@@ -1,40 +1,16 @@
-## 1、<span style='color:brown'> static关键词</span>：<font color='bulue'>**在内存中是先有静态，之后才有非静态**</font>！！！
+## 1、<span style='color:brown'> static关键词</span>：
 
-**1.1、static关键词修饰成员变量:**
+### <font color='bulue'>**在内存中是先有静态，之后才有非静态**</font>！！！
 
-- <span style='color:red'>**静态性**</span>：`static`修饰的成员变量属于类本身，而不是属于类的实例；
-- <span style='color:green'>共享性</span>：由于静态成员变量只有一份拷贝，所以它被所有类的实例共享；
-- <span style='color:green'>生命周期</span>：静态成员变量的生命周期与类的生命周期相同，它在类加载时被初始化，直到程序结束或类被卸载时才会销毁；
-- 可以<span style='color:purple'>**通过类名直接访问**</span>；
+**1.1、static关键词修饰成员变量：**
 
-**1.2、static关键词修饰成员方法:**
+- `static`修饰的成员变量属于类本身，且被所有类的实例共享；
+- 静态成员变量的生命周期与类的生命周期相同，它在类加载时被初始化，直到程序结束或类被卸载时才会销毁；
 
-- <span style='color:red'>**静态性**</span>：`static`修饰的成员方法属于类本身，而不是属于类的实例；
+**1.2、static关键词修饰成员方法：**
 
-- 可以<span style='color:purple'>**通过类名直接访问**</span>；
-
-- <span style='color:violet'>不能访问非静态成员</span>：静态方法只能访问静态成员（包括静态成员变量和静态方法），这是因为<u>**非静态成员是属于类的实例的**</u>；
-
-- <span style='color:violet'>不能被重写</span>：当子类中定义一个与父类具有相同名称和参数列表的静态方法时，并不是重写父类的静态方法，而是在子类中定义了一个新的静态方法；
-
-- <span style='color:violet'>可以访问静态成员</span>：静态方法可以直接访问类的静态成员变量和静态方法，无需通过实例来访问；
-
-```java
-public class MathUtils {
-    public static final double PI = 3.14159;
-
-    public static double multiply(double num1, double num2) {
-        return num1 * num2 * PI;
-    }
-}
-/*静态方法multiply通过类名MathUtils直接访问了静态变量PI, 并将其用于计算结果*/
-public class Main {
-    public static void main(String[] args) {
-        double result = MathUtils.multiply(2, 3);
-        System.out.println(result); // 输出：18.84954
-    }
-}
-```
+- `static`修饰的成员方法属于类本身，但只能访问静态成员（包括静态成员变量和静态方法）；
+- 子类不能`Overwrite`父类的静态方法；
 
 
 
@@ -109,7 +85,7 @@ class Base{
 
 分析：
 
-- 首先，程序执行`main`方法，创建一个`Test`对象。
+- 首先，程序执行`main`方法，会创建一个`Test`对象。
 
 - 在创建`Test`对象之前，由于`Test`类继承自`Base`类，所以会先加载`Base`类。
 - 在加载`Base`类时，会执行静态代码块`static{}`，输出`base static`。
@@ -155,7 +131,7 @@ class MyClass extends Test {
 
 分析：
 
-- 首先，程序执行`main`方法，创建一个`MyClass`对象。
+- 首先，程序执行`main`方法，会创建一个`MyClass`对象。
 - 在创建`MyClass`对象之前，由于`MyClass`类继承自`Test`类，所以会先加载`Test`类。
 - 在加载`Test`类时，会执行静态代码块`static{}`，输出`test static`。
 - 接着，创建`Test`对象，调用`Test`类的构造方法。

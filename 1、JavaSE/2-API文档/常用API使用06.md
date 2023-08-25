@@ -4,7 +4,7 @@
 
 <span style="color:brown">Object类是Java中所有类的超类</span>，它定义了所有对象都具有的通用方法和属性。所有的类都直接或间接地继承自Object类。
 
-**1.2、Object类常用方法：**
+**1.2、Object类常用方法：**7类
 
 - `boolean equals(Object obj)`：默认情况下，用于比较两个<u>*对象的引用*</u>是否相等
 - `int hashCode()`：返回对象的哈希码值

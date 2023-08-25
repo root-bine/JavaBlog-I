@@ -1,15 +1,14 @@
 ## 1、<span style="color:brown">**Calendar类：**</span>Java.util
 
-## <span style="color:purple">**Calendar类中的许多方法比Date类的方法更为方便**</span>
-
-## <span style="color:red">**Calendar类是一个抽象类，无法直接创建对象**</span>
+## <span style="color:red">**Calendar类是一个抽象类**</span>
 
 - ***创建对象：***
 
-  - <span style="color:green">**public   static   Calendar   getInstance( )**</span>
-  - 返回了Calendar类的子类对象
-    
-  - 获取日历类对象
+  - <span style="color:green">**`public   static   Calendar   getInstance( )`**</span>
+  
+    - 返回了Calendar类的子类对象
+  
+    - 获取日历类对象
   
   ```java
   public class Demo05 {
@@ -157,6 +156,8 @@
   	public  static   final   int   SECOND = 13;  // 秒
   	
   	......
+
+
 
 ## 2、<span style="color:brown">**System类：**</span>Java.lang
 

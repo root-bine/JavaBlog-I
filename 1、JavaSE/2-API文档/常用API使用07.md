@@ -60,16 +60,16 @@
 
 ## 2、<span style="color:brown">**DateFormat类：**</span>Java.text
 
-## <span style="color:purple">**注意：DateFormat类是一个抽象类，无法直接创建对象使用其中的成员方法，因此选择使用它的子类：SimpleDateFormat类！！！！**</span>
+## <span style="color:purple">**DateFormat类是一个抽象类，SimpleDateFormat类 extends DateFormat！！！！**</span>
 
 - **DateFormat类的介绍：**
-  1. <span style="color:red">**日期/时间格式化子类的抽象类**</span>;
-  2. <span style="color:orange">**主要展示的结果不是Date类展示的纯英文日期和时间**</span>，<span style="color:green">**DateFormat类展示的是我们现实当中的时间和日期展示方式**</span>;
+  1. <span style="color:red">**日期/时间格式化子类的抽象类**</span>；
+  2. <span style="color:orange">**主要展示的结果不是Date类展示的纯英文日期和时间**</span>，<span style="color:green">**DateFormat类展示的是我们现实当中的时间和日期展示方式**</span>；
 
 - **DateFormat类的作用：**
   1. 格式化：Date日期------------>String类型文本；
   2. 解析：文本-------------->Date日期；
-  3. 标准化：将得到的日期按照一种输出模式输出出来；
+  3. 标准化：规范日期输出的格式；
 
 - **DateFormat类的成员方法：**
   1. String   format  ( Date   date )------->格式化
@@ -99,10 +99,10 @@
   
   1. 使用SimpleDateFormat类创建对象；
   2. 使用Date类构造方法来获取或者转化时间和日期；
-  3. 使用SimpleDateFormat类创建对象调用：public   String   format( Date date );
+  3. 使用SimpleDateFormat类创建对象调用：`String format(Date date)`；
   
-  4. 使用SimpleDateFormat类创建对象调用：public   Date   parse( String   sourse );
-     - <span style="color:red">**由于parse方法具有异常**</span>，所以需要抛出异常：try--------catch--------或者   throws  Exception; 
+  4. 使用SimpleDateFormat类创建对象调用：`Date parse(String sourse)`；
+     - <span style="color:red">**由于parse方法具有异常**</span>，所以需要抛出异常：try--------catch--------或者   throws  Exception；
   
 - **题目：**<span style="color:red">**请使用时间与日期的API，计算出一个人已经出生了多少天？**</span>
 
@@ -128,5 +128,3 @@
   }
   ```
   
-  
-

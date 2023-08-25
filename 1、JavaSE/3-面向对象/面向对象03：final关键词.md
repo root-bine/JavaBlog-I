@@ -1,20 +1,18 @@
 ## 1、<span style="color:brown">final关键词概述：</span>
 
-### <!--对于类、方法来说，abstract 和 final 关键词不能同时出现-->
+**1.1、概述：**
 
-**1.1、含义：**
-
-```apl
-final代表的是: 最终的、不可变更的
-```
+final代表的是: 最终的、不可变更的。对于类、方法来说，abstract 和 final 关键词不能同时出现！！！
 
 **1.2、使用方法：**
 
-- 类：使用final修饰的类是最终类，不能被继承。例如：`final class MyClass { }`
-- 方法：使用final修饰的方法是最终方法，不能被子类重写。例如：`public final void myMethod() { }`
-- 变量：使用final修饰的变量是常量，一旦赋值后就不能再修改。可以在声明时初始化，或在构造函数中初始化。例如：`final int myVariable = 10;`
-- 参数：使用final修饰的方法参数表示该参数是只读的，不能在方法内部被修改。例如：`public void myMethod(final int param) { }`
-- 局部变量：使用final修饰的局部变量表示该变量是只读的，不能再次赋值。例如：`final int myVariable = 10;`
+- 类：使用final修饰的类是最终类，<span style="color:red">不能被继承</span>；
+- 方法：使用final修饰的方法是最终方法，<span style="color:red">不能被子类重写</span>；
+- 成员变量：<span style="color:green">**使用final修饰的变量是常量，一旦赋值后就不能再修改**</span>：
+  - 在声明时初始化；
+  - 在构造函数中初始化；
+- 方法参数：使用final修饰的方法参数表示该参数是<span style="color:blue">只读的，不能在方法内部被修改</span>；
+- 局部变量：使用final修饰的局部变量表示该变量是<span style="color:blue">只读的，不能再次赋值</span>；
 
 **1.3、final、finalize 和 finally 的不同之处?**😴😴😴
 
