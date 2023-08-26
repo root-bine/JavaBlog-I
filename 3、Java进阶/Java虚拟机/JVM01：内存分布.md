@@ -4,20 +4,20 @@
 
 Java虚拟机，就是<u>*Java二进制字节码的运行环境*</u>。它保证了<span style="color:red">**Java跨平台特性**</span>，<u>负责自动管理内存，提供垃圾回收机制</u>！！！
 
-**1.3、JDK、JRE、JVM之间的关联：**
+**1.2、JDK、JRE、JVM之间的关联：**
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/JVM-JRE-JDK.png" alt="image-20221114165935547" style="zoom: 50%;" />
 
-**1.4、JVM是如何运行的？**
+**1.3、JVM是如何运行的？**
 
 1. `JVM`的装入环境和配置；
 2. 装载`JVM`；
 3. 初始化`JVM`，获得本地调用接口；
 4. 运行`Java`程序；
 
-**1.5、JVM内部组成：**
+**1.4、JVM内部组成：**
 
-​		JVM 主要由四大部分组成：`ClassLoader`（类加载器），`Runtime Data Area`（运行时数据区，内存分区），`Execution Engine`（执行引擎），`Native Interface`（本地库接口）
+​		JVM 主要由四大部分组成：`ClassLoader`（类加载器），`Runtime Data Area`（运行时数据区/内存分区），`Execution Engine`（执行引擎），`Native Interface`（本地库接口）。
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/JVM-Structure.png" alt="image-20221114171449060" style="zoom: 67%;" />
 
