@@ -11,8 +11,8 @@ final代表的是: 最终的、不可变更的。对于类、方法来说，abst
 - 成员变量：<span style="color:green">**使用final修饰的变量是常量，一旦赋值后就不能再修改**</span>：
   - 在声明时初始化；
   - 在构造函数中初始化；
-- 方法参数：使用final修饰的方法参数表示该参数是<span style="color:blue">只读的，不能在方法内部被修改</span>；
 - 局部变量：使用final修饰的局部变量表示该变量是<span style="color:blue">只读的，不能再次赋值</span>；
+- 方法参数：使用final修饰的方法参数表示该参数是<span style="color:blue">只读的，不能在方法内部被修改</span>；
 
 **1.3、final、finalize 和 finally 的不同之处?**😴😴😴
 

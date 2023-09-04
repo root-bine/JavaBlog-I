@@ -66,40 +66,22 @@ public class text{
 
 **3.1、格式：**
 
+<span style='color:green'>**在构造方法的主体中，this关键词可以省略！！！**</span>
+
 ```java
 public 类名称（参数列表）｛
 		方法体;
 ｝
 ```
 
-**3.2、演示：**
+**3.2、特性：**😃😃😃
 
-<span style='color:green'>**在构造方法的主体中，this关键词可以省略！！！**</span>
+- 方法名称和类同名 ；
+- 不用定义返回值类型 ；
+- 不可以写retrun语句 ；
+- 构造方法可以被重载；
 
-```java
-public class DEMO {
-    private String name;
-    public DEMO(String s_name) {
-        name = s_name;
-    }
-}
----------------------------------------------------------------------------------------------------------
-public class DEMO {
-    private String name;
-    public DEMO(String s_name) {
-        this.name = s_name;
-    }
-}
-```
+**3.3、一个类的构造方法的作用是什么？若一个类没有声明构造方法，该程序能正确执行吗？为什么？**🍳🍳🍳
 
-**3.3、注意事项：**
-
-- <span style='color:red'>构造方法的名称与类名称一致</span>；
-
-- <span style='color:red'>构造方法不能写返回值，void也不需要</span>；
-
-- <span style='color:red'>构造方法中不能够return一个具体的返回值</span>；
-
-- <span style='color:red'>如果方法中没有具体的构造方法，但是会有一个默认的构造方法</span>；
-
-- <span style='color:green'>构造方法也可以重载，即：名称相同，参数列表不同</span>；
+- 主要作用是完成对类对象的初始化工作；
+- 可以执行。因为一个类即使没有声明构造方法，也会有默认的不带参数的构造方法；

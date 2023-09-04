@@ -1,8 +1,12 @@
 ## 1、<span style="color:brown">基础内容：</span>
 
-## <span style="color:orange">Java编程语言只有值传递，并没有引用传递</span>！！！
+**1.1、Java是值传递还是引用传递？编码是什么？**
 
-**1.1、为什么Java代码可以实现一次编写、到处运行？**
+- <span style="color:red">Java中只有**值传递**，没有引用传递</span>；
+
+- <span style="color:green">Java语言采用**Unicode编码标准**，它为每个字符制订了一个唯一的数值</span>；
+
+**1.2、为什么Java代码可以实现一次编写、到处运行？**
 
 ​		`JVM`（`Java`虚拟机）是`Java`跨平台的关键。
 
@@ -10,7 +14,7 @@
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Java%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.png" alt="java运行机制" style="zoom:67%;" />
 
-**1.2、Java内存分布概述：**
+**1.3、Java内存分布概述：**
 
 - 栈`(Stack)`：
 

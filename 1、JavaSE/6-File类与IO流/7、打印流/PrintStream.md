@@ -18,16 +18,16 @@
 **2.1、构造方法：**
 
 ```java
-public PrintStream(String filename)
+PrintStream(String filename)
     使用指定的文件名，创建一个打印流;
 ```
 
 ```java
-public PrintStream(File file)
+PrintStream(File file)
 ```
 
 ```java
-public PrintStream(OutputStream out)
+PrintStream(OutputStream out)
 ```
 
 **2.2、特有成员方法：**
@@ -40,23 +40,23 @@ println(任意类型的数据+换行)
 **2.3、共性成员方法：**
 
 ```java
-public void write(int b)
+void write(int b)
 ```
 
 ```java
-public void write(byte[] b)
+void write(byte[] b)
 ```
 
 ```java
-public void write(byte[] b, int offset, int len)
+void write(byte[] b, int offset, int len)
 ```
 
 ```java
-public void flush()
+void flush()
 ```
 
 ```java
-public void close()
+void close()
 ```
 
 **<span style="color:orange">2.4、注意事项：</span>**
