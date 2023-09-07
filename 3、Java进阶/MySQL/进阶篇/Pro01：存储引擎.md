@@ -125,6 +125,6 @@ Extend（*1M*）和Page（*16K*）都是由<u>磁盘</u>进行操作，且大小
 **4.3、InnocentDB与MyISAM的区别？**🎶🎶🎶
 
 1. InnoDB支持事务，而MyISAM不支持
-2. InnoDB的锁机制为：行级锁，而MyISAM是表锁
+2. InnoDB的锁机制为：行级锁，而MyISAM是表级锁
 3. InnoDB支持外键，MyISAM不支持
 
