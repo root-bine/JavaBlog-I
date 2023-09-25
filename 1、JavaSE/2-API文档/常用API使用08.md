@@ -11,12 +11,7 @@
     - 获取日历类对象
   
   ```java
-  public class Demo05 {
-      public static void main(String[] args) {
-          Calendar c = Calendar.getInstance();
-          System.out.println(c);
-      }
-  }
+   Calendar c = Calendar.getInstance();
   ```
   
 - ***成员方法：***
@@ -28,62 +23,33 @@
      - Calendar类中的月份是从0开始计数的，即0表示一月，1表示二月，以此类推！！！
      
      ```java
-     public class Demo06 {
-         public static void main(String[] args) {
-             demo06();
-         }
-         private static void demo06() {
-             //使用getInstance()获取Calender对象
-             Calendar c = Calendar.getInstance();
-             //获取年的日历字段值
-             //系统按照的是西方计时算法：月份0-11月
-             int year = c.get(Calendar.YEAR);
-             System.out.println(year);
-             //获取月的日历字段值
-             int month = c.get(Calendar.MONTH);
-             System.out.println(month);
-             //获取日的日历字段值
-             int day = c.get(Calendar.DAY_OF_MONTH);
-             int day1 = c.get(Calendar.DATE);
-             System.out.println(day);
-             System.out.println(day1);
-         }
-     }
+     //使用getInstance()获取Calender对象
+     Calendar c = Calendar.getInstance();
+     //获取年的日历字段值
+     //系统按照的是西方计时算法：月份0-11月
+     int year = c.get(Calendar.YEAR);
+     System.out.println(year);
+     //获取月的日历字段值
+     int month = c.get(Calendar.MONTH);
+     //获取日的日历字段值
+     int day = c.get(Calendar.DAY_OF_MONTH);
+     int day1 = c.get(Calendar.DATE);
 2. `void set(int field, int value)`
   
    -  将指定日历字段设置为指定值；
    
      ```java
-     public class Demo07 {
-         public static void main(String[] args) {
-             demo07();
-         }
-         private static void demo07() {
-             //使用getInstance()获取Calender对象
-             Calendar c = Calendar.getInstance();
-             //将年设置成9999
-             c.set(Calendar.YEAR,9999);
-             //将月设置成9
-             c.set(Calendar.DAY_OF_MONTH,9);
-             c.set(Calendar.MONTH,9);
-             //将日设置成9
-             c.set(Calendar.DATE,9);
-             //同时修改年月日
-             //c.set(8888,8,8);
-             //获取年的日历字段值
-             int year = c.get(Calendar.YEAR);
-             System.out.println(year);
-             //获取月的日历字段值
-             int month = c.get(Calendar.MONTH);
-             System.out.println(month);
-             //获取日的日历字段值
-             int day = c.get(Calendar.DAY_OF_MONTH);
-             int day1 = c.get(Calendar.DATE);
-             System.out.println(day);
-             System.out.println(day1);
-     
-         }
-     }
+     //使用getInstance()获取Calender对象
+     Calendar c = Calendar.getInstance();
+     //将年设置成9999
+     c.set(Calendar.YEAR,9999);
+     //将月设置成9
+     c.set(Calendar.DAY_OF_MONTH,9);
+     c.set(Calendar.MONTH,9);
+     //将日设置成9
+     c.set(Calendar.DATE,9);
+     //同时修改年月日
+     c.set(8888,8,8);
      ```
      
    
@@ -92,32 +58,14 @@
      - 将指定日历字段<u>增加/减少</u>指定值；
      
        ```java
-       public class Demo08 {
-           public static void main(String[] args) {
-               demo08();
-           }
-           private static void demo08() {
-               //使用getInstance()获取Calender对象
-               Calendar c = Calendar.getInstance();
-               //把年增加2年
-               c.add(Calendar.YEAR,2);
-               //把月减少5月
-               c.add(Calendar.MONTH,-5);
-               //把日增加5天
-               c.add(Calendar.DATE,5);
-               //获取年的日历字段值
-               int year = c.get(Calendar.YEAR);
-               System.out.println(year);
-               //获取月的日历字段值
-               int month = c.get(Calendar.MONTH);
-               System.out.println(month);
-               //获取日的日历字段值
-               int day = c.get(Calendar.DAY_OF_MONTH);
-               int day1 = c.get(Calendar.DATE);
-               System.out.println(day);
-               System.out.println(day1);
-           }
-       }
+       //使用getInstance()获取Calender对象
+       Calendar c = Calendar.getInstance();
+       //把年增加2年
+       c.add(Calendar.YEAR,2);
+       //把月减少5月
+       c.add(Calendar.MONTH,-5);
+       //把日增加5天
+       c.add(Calendar.DATE,5);
        ```
      
   4. `Date getTime()`
@@ -127,16 +75,8 @@
      - 把日历对象转换成Date对象；
      
        ```java
-       public class Demo09 {
-           public static void main(String[] args) {
-               demo09();
-           }
-           private static void demo09() {
-               Calendar c = Calendar.getInstance();
-               Date date = c.getTime();
-               System.out.println(date);
-           }
-       }
+       Calendar c = Calendar.getInstance();
+       Date date = c.getTime();
        ```
 
 - ***静态成员变量：***
@@ -177,9 +117,6 @@
      //验证for循环打印数字1-999所需要的时间（毫秒）
      public class Demo10 {
          public static void main(String[] args) {
-             demo10();
-         }
-         private static void demo10() {
              //程序执行前，获取一次毫秒值
              long l = System.currentTimeMillis();
              for (int i = 1; i < 999; i++) {
@@ -207,9 +144,6 @@
      //将src数组的前三个元素复制到dest数组的前三个位置上
      public class Demo11 {
          public static void main(String[] args) {
-             demo11();
-         }
-         private static void demo11() {
              int [] src = {1,2,3,4,5};
              int [] dest = {6,7,8,9,10};
              System.out.println("复制前:"+ Arrays.toString(src));
@@ -218,7 +152,7 @@
          }
      }
      ```
-  
+     
   3. `public static void gc()`
   
      - 源码：

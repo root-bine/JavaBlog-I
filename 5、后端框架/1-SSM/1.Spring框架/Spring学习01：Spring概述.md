@@ -53,6 +53,8 @@
 
 ![image-20220713212350023](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Spring%E5%BC%80%E5%8F%91%E6%AD%A5%E9%AA%A4.png)
 
+
+
 ## 3、<span style="color:brown">Spring配置文件：</span>
 
 **3.1、Bean标签的基本配置：**
@@ -136,6 +138,8 @@
 **<u>Properties类型：</u>**
 
 ![image-20220714202739196](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Bean%E6%B3%A8%E5%85%A5%E9%9B%86%E5%90%88%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B04.png)
+
+
 
 ## 4、<span style="color:brown">Spring相关API：</span>
 

@@ -1,6 +1,36 @@
-## 1、<span style="color:brown">Mybatis常用注解：</span>
+## 1、<span style="color:brown">常用注解：</span>
+
+**1.1、注解详解：**
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Mybatis%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3.png" alt="image-20221003002754000" style="zoom:80%;" />
+
+**1.2、Mybatis传递多个参数**
+
+<u>使用`mybatis`注解形式的`sql`</u>，则首先需要在启动类上使用`@MapperScan` 注解扫描到`sql`所在的**`dao接口`**或者**`mapper接口`**。
+
+- **顺序传参法**（<span style="color:red">**不推荐**</span>）
+
+  ![image-20230917204504516](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/MybatisElements01.png)
+
+  `#{}`里面的参数如果使用arg，则从0开始。如果使用param，则从1开始，例如：param1。 
+
+- **@Param注解传参法** 
+
+  ![image-20230917204622638](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/MybatisElements02.png)
+
+  `#{}`里面的名称对应的是：注解 `@Param`括号里面修饰的名称。
+
+- **Map传参法** 
+
+  ![image-20230917204708841](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/MybatisElements03.png)
+
+  `#{}`里面的名称对应的是 ：`Map`里面的key名称。
+
+- **Java Bean传参法** （本方法需要一个实体类）
+
+  ![image-20230917204740607](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/MybatisElements04.png)
+
+  `#{}`里面的名称对应的是 `User`类里面的成员属性。
 
 
 

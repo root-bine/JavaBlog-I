@@ -58,6 +58,7 @@
   ```
 
 
+
 ## 2、<span style="color:brown">**DateFormat类：**</span>Java.text
 
 ## <span style="color:purple">**DateFormat类是一个抽象类，SimpleDateFormat类 extends DateFormat！！！！**</span>
@@ -83,48 +84,50 @@
 
 ### <!--SimpleDateFromat具体代替DateFormat类的使用过程-->
 
-- **构造方法：**
+**3.1、构造方法：**
 
-  SimpleDateFormat( String   pattern )
+SimpleDateFormat( String   pattern )
 
-  - 用给定的模式和默认语言环境的日期格式构造SimpleDateFormat
+- 用给定的模式和默认语言环境的日期格式构造SimpleDateFormat
 
-  - <span style="color:red">**String   pattern----------->传递指定的模式**</span>
+- <span style="color:red">**String   pattern----------->传递指定的模式**</span>
 
-  - <span style="color:red">**模式区分大小写**</span>，且写对应的模式会把模式替换成对应的日期和时间
+- <span style="color:red">**模式区分大小写**</span>，且写对应的模式会把模式替换成对应的日期和时间
 
-    ***"yyyy-MM-dd  HH:mm:ss" 或者 "yyyy年MM月dd日HH时mm分ss秒"***
+  ***"yyyy-MM-dd  HH:mm:ss" 或者 "yyyy年MM月dd日HH时mm分ss秒"***
 
-- **具体使用：**
-  
-  1. 使用SimpleDateFormat类创建对象；
-  2. 使用Date类构造方法来获取或者转化时间和日期；
-  3. 使用SimpleDateFormat类创建对象调用：`String format(Date date)`；
-  
-  4. 使用SimpleDateFormat类创建对象调用：`Date parse(String sourse)`；
-     - <span style="color:red">**由于parse方法具有异常**</span>，所以需要抛出异常：try--------catch--------或者   throws  Exception；
-  
-- **题目：**<span style="color:red">**请使用时间与日期的API，计算出一个人已经出生了多少天？**</span>
+**3.2、具体使用：**
 
-  ```java
-  public class Demo04 {
-      public static void main(String[] args) throws Exception{
-          //获取出生日期
-          System.out.println("请输入出生日期,格式为:yyyy-MM-dd");
-          Scanner sc = new Scanner(System.in);
-          String str = sc.nextLine();
-          //将出生日期解析成为Date格式日期
-          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-          Date date = sdf.parse(str);
-          //将出生日期的Date格式转换成毫秒值
-          long time = date.getTime();
-          //将今天日期转换成毫秒值
-          Date date1 = new Date();
-          long todaytime = date1.getTime();
-          //计算出出生多少天
-          long texttime = todaytime-time;
-          System.out.println(texttime/1000/60/60/24);
-      }
-  }
-  ```
-  
+1. 使用SimpleDateFormat类创建对象；
+2. 使用Date类构造方法来获取或者转化时间和日期；
+3. 使用SimpleDateFormat类创建对象调用：`String format(Date date)`；
+
+4. 使用SimpleDateFormat类创建对象调用：`Date parse(String sourse)`；
+   - <span style="color:red">**由于parse方法具有异常**</span>，所以需要抛出异常：try--------catch--------或者   throws  Exception；
+
+**3.3、请使用时间与日期的API，计算出一个人已经出生了多少天？**
+
+```java
+public class Demo04 {
+    public static void main(String[] args) throws Exception{
+        //获取出生日期
+        System.out.println("请输入出生日期,格式为:yyyy-MM-dd");
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        //将出生日期解析成为Date格式日期
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse(str);
+        //将出生日期的Date格式转换成毫秒值
+        long time = date.getTime();
+        //将今天日期转换成毫秒值
+        Date date1 = new Date();
+        long todaytime = date1.getTime();
+        //计算出出生多少天
+        long texttime = todaytime-time;
+        System.out.println(texttime/1000/60/60/24);
+    }
+}
+```
+
+
+

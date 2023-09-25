@@ -1,12 +1,27 @@
-## 1、<span style="color:brown">基础内容：</span>
+## 1、<span style="color:brown">基础内容：</span>😶‍🌫️😶‍🌫️😶‍🌫️
 
-**1.1、Java是值传递还是引用传递？编码是什么？**
+**1.1、Java组成概述：**
+
+- `Java`三大版本
+
+  `JavaSE`：标准版（桌面程序、控制台开发......）
+
+  `JavaME`：嵌入式开发（手机、小家电......）
+
+  `JavaEE`：E企业级开发（web端、服务器开发......）
+
+- `JDK、JRE、JVM`之间的关系？
+  1. `JDK`是整个`Java`的核心，包括了`Java`运行环境`JRE`、`Java`工具和`Java`基础类库；
+  2. `JRE`是运行`Java`程序所必须的环境的集合，包含`JVM`、`Java`核心类库；
+  3. `JVM` 即为 **`Java 虚拟机`**，是整个`java`实现跨平台的最核心的部分；
+
+**1.2、Java是值传递还是引用传递？编码是什么？**
 
 - <span style="color:red">Java中只有**值传递**，没有引用传递</span>；
 
 - <span style="color:green">Java语言采用**Unicode编码标准**，它为每个字符制订了一个唯一的数值</span>；
 
-**1.2、为什么Java代码可以实现一次编写、到处运行？**
+**1.3、为什么Java代码可以实现一次编写、到处运行？**
 
 ​		`JVM`（`Java`虚拟机）是`Java`跨平台的关键。
 
@@ -14,7 +29,83 @@
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Java%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.png" alt="java运行机制" style="zoom:67%;" />
 
-**1.3、Java内存分布概述：**
+## 2、<span style="color:brown">UnicodeBolck详解：</span>🍔🍔🍔
+
+**2.1、什么是UnicodeBlock？** 
+
+​	`UnicodeBlock`是**`Java中的一个枚举类型`**，用于表示**`Unicode字符的块范围`**。它提供了一系列常量，每个常量代表一个Unicode字符块的范围。
+
+**2.2、UnicodeBlock有哪些常见的字符块？ **
+
+基本拉丁字母、汉字、日文假名、希腊字母等，还包括一些特殊的字符块，如控制字符、私用区等。
+
+**2.3、如何判断一个字符属于哪个UnicodeBlock？**
+
+```Java
+public static UnicodeBlock of(char c) {
+    return of((int)c);
+}
+```
+
+**2.4、输入一个字符串，计算字符串中字符个数、汉字个数、空格个数、其它字符个数？**
+
+**`原理分析`**：
+
+-  中文汉字判断：
+   是否属于中日韩越统一表意文字`(CJK_UNIFIED_IDEOGRAPHS)`，若是,则代表是中文
+
+-  英文字母判断：
+   是否属于小写字母的ASCII值范围：`[97,122]`，或者大写字母的ASCII值范围：`[65,90]`
+
+-  空格判断：
+   是否等于空格对应的`ASCII=32`
+-  数字判断：
+   是否属于数字对应的ASCII值范围：`[48,57]`
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner=new Scanner(System.in);
+        String a=scanner.nextLine();
+        char[] charArrays=a.toCharArray();
+        //UnicodeBlock是Java中的一个枚举类型，用于表示Unicode字符的块范围。在这段代码中，ub被赋值为null，表示还没有指定具体的Unicode块范围。
+        Character.UnicodeBlock ub=null;
+        int chineseCount=0,englishCount=0,blankCount=0,numberCount=0,otherCharacterCount=0;
+        for(int i=0;i<charArrays.length;i++){
+            if(Character.UnicodeBlock.of(charArrays[i])==Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS){
+                chineseCount++;
+                continue;
+            }
+            if((charArrays[i]>=65&&charArrays[i]<=90)||(charArrays[i]>=97&&charArrays[i]<=122)){
+                englishCount++;
+                continue;
+            }
+            if(charArrays[i]==32){
+                blankCount++;
+                continue;
+            }
+            if((charArrays[i]>=48&&charArrays[i]<=57)){
+                numberCount++;
+                continue;
+            }
+            otherCharacterCount++;
+        }
+        System.out.println("中文汉字的个数为: "+chineseCount);
+        System.out.println("英文字母的个数为: "+englishCount);
+        System.out.println("空格的个数为: "+blankCount);
+        System.out.println("数字的个数为: "+numberCount);
+        System.out.println("其他字符的个数为: "+otherCharacterCount);
+    }
+}
+```
+
+
+
+
+
+## 3、<span style="color:brown">Java内存分布概述：</span>🛺🛺🛺
+
+**3.1、Java内存：**
 
 - 栈`(Stack)`：
 
@@ -42,11 +133,9 @@
 - 本地方法栈`(Native Method Stack)`：与操作系统有关；
 - 程序计数器`(pc Register)`：与CPU相关；
 
+**3.2、heap 和 stack 的区别？**
 
-
-## 2、<span style="color:brown"> heap 和 stack 的区别：</span>
-
-**Java 的内存分为两类，一类是栈内存，一类是堆内存**。
+> **Java 的内存分为两类，一类是栈内存，一类是堆内存**。
 
 - 栈内存：
 
@@ -60,7 +149,7 @@
 
 
 
-## 3、<span style="color:brown"> 定义一个标准类：</span>
+## 4、<span style="color:brown"> 定义一个标准类：</span>
 
 1. 所有的成员变量全部使用<span style='color:blue'>private关键词私有化</span>；
 2. 为每一个成员变量编写<span style='color:blue'>一对Getter和Setter</span>；
@@ -116,24 +205,3 @@ public class DemoClass {
 
 
 
-## 4、<span style="color:brown"> Java部件组成：</span>
-
-**3.1、Java三大版本：**
-
-- JavaSE：标准版（桌面程序、控制台开发......）
-
-- JavaME：嵌入式开发（手机、小家电......）
-
-- JavaEE：E企业级开发（web端、服务器开发......）
-
-**3.2、JDK ：**
-
-`JDK`是整个Java的核心，包括了Java运行环境JRE、Java工具和Java基础类库。
-
-**3.3、JRE：** 
-
-`JRE`是运行JAVA程序所必须的环境的集合，包含JVM、Java核心类库。
-
-**3.4、JVM：**
-
-JVM 即为 Java 虚拟机，是整个java实现跨平台的最核心的部分。

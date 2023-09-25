@@ -196,31 +196,6 @@ public class Demo07 {
 }
 ```
 
-**1.10、演示：**
-
-定义一个方法，使数组{1，2，3}按指定格式拼接成新的字符串，格式例如：[word1#word2#word3]
-
-```java
-public class Demo08 {
-    public static void main(String[] args) {
-        int []array = {1,2,3};
-        String s = toArray(array);
-        System.out.println(s);//[word1#word2#word3]
-    }
-    public static String toArray(int array[]){
-        String str = "[";
-        for (int i = 0; i < array.length; i++) {
-            if(i == array.length-1){
-                str+="word"+array[i]+"]";
-            }else{
-                str+="word"+array[i]+"#";
-            }
-        }
-        return str;
-    }
-}
-```
-
 
 
 ## 2、<span style="color:brown">**StringBuilder类：**</span>Java.lang
