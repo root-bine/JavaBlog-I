@@ -17,15 +17,27 @@
 
 **1.2、Java是值传递还是引用传递？编码是什么？**
 
-- <span style="color:red">Java中只有**值传递**，没有引用传递</span>；
+- <span style="color:red">Java中只有**值传递**，<u>**`没有引用传递`**</u></span>；
+
+  ```java
+  /*将str传入test, 只是将该字符串副本传入, 在方法中修改的也是副本, 不改变原始字符串数据*/
+  public static void main(String[] args) {
+  	String str = "1234";
+      test(str);
+      System.out.println(str); // 1234
+  }
+  private static void test(String str) {
+      str = "hello";
+  }
+  ```
 
 - <span style="color:green">Java语言采用**Unicode编码标准**，它为每个字符制订了一个唯一的数值</span>；
 
 **1.3、为什么Java代码可以实现一次编写、到处运行？**
 
-​		`JVM`（`Java`虚拟机）是`Java`跨平台的关键。
+​	`JVM`（`Java`虚拟机）是`Java`跨平台的关键。
 
-​		在程序运行前，<u>`Java`源代码`(.java)`</u>需要经过编译器编译成<u>字节码`(.class)`</u>。在程序运行时，**不同平台的`JVM`**负责将字节码翻译成特定平台下的机器码并运行。
+​	在程序运行前，<u>`Java`源代码`(.java)`</u>需要经过编译器编译成<u>字节码`(.class)`</u>。在程序运行时，**不同平台的`JVM`**负责将字节码翻译成特定平台下的机器码并运行。
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Java%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6.png" alt="java运行机制" style="zoom:67%;" />
 
