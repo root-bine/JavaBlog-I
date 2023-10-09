@@ -113,11 +113,55 @@ public class Main {
 
 
 
+## 3、<span style="color:brown">Java运算符：</span>🧧🧧🧧
+
+**3.1、特殊的算术运算符：**
+
+- **`前缀自增自减法(++a,--a)`**：先进行自增或者自减运算，再进行表达式运算
+- **`后缀自增自减法(a++,a--)`**：先进行表达式运算，再进行自增或者自减运算
+
+**3.2、位运算符：**
+
+| 操作符              |                             描述                             |                   例子                    |
+| ------------------- | :----------------------------------------------------------: | :---------------------------------------: |
+| `&`（按位与）       |            如果相对应位都是1，则结果为1，否则为0             |                                           |
+| `|`（按位或）       |           如果相对应位都是 0，则结果为 0，否则为 1           |                                           |
+| `^`（按位异或）     |            如果相对应位值相同，则结果为0，否则为1            |                                           |
+| `~`（按位取反）     |             翻转操作数的每一位，即0变成1，1变成0             | 60=0011 1100，<br>`~60`=`-60`=`1100 0011` |
+| `>>`（右移）        |          左操作数<u>按位右移</u>右操作数指定的位数           |             60>>2得15（1111）             |
+| `<<`（左移）        |          左操作数<u>按位左移</u>右操作数指定的位数           |          60<<2得240（1111 0000）          |
+| `>>>`（无符号右移） | 左操作数的值按右操作数指定的位数右移，移动得到的空位以零填充 |          60>>>2得15（0000 1111）          |
+
+**3.3、赋值运算符（特殊）：**
+
+| `操作符` |       `描述`       |          `例子`          |
+| -------- | :----------------: | :----------------------: |
+| `>>=`    |  右移位赋值运算符  | C >> = 2等价于C = C >> 2 |
+| `<<=`    |  左移位赋值运算符  | C << = 2等价于C = C << 2 |
+| `&=`     |  按位与赋值运算符  |   C＆= 2等价于C = C＆2   |
+| `|=`     |  按位或赋值操作符  | C \| = 2等价于C = C \| 2 |
+| `^=`     | 按位异或赋值操作符 |  C ^ = 2等价于C = C ^ 2  |
+
+**3.4、条件运算符：**
+
+```java
+// 三元运算符
+variable x = (expression) ? value if true : value if false
+```
+
+**3.5、instanceof运算符：**
+
+<span style="color:red">**用于操作对象实例**</span>，检查该对象是否是一个<u>特定类型（类类型/接口类型）</u>。
+
+```java
+( Object reference variable ) instanceof  (class/interface type)
+```
 
 
-## 3、<span style="color:brown">Java内存分布概述：</span>🛺🛺🛺
 
-**3.1、Java内存：**
+## 4、<span style="color:brown">Java内存分布概述：</span>🛺🛺🛺
+
+**4.1、Java内存：**
 
 - 栈`(Stack)`：
 
@@ -145,7 +189,7 @@ public class Main {
 - 本地方法栈`(Native Method Stack)`：与操作系统有关；
 - 程序计数器`(pc Register)`：与CPU相关；
 
-**3.2、heap 和 stack 的区别？**
+**4.2、heap 和 stack 的区别？**
 
 > **Java 的内存分为两类，一类是栈内存，一类是堆内存**。
 
@@ -161,59 +205,50 @@ public class Main {
 
 
 
-## 4、<span style="color:brown"> 定义一个标准类：</span>
+## 5、<span style="color:brown"> 案例——无符号整数操作</span>
 
-1. 所有的成员变量全部使用<span style='color:blue'>private关键词私有化</span>；
-2. 为每一个成员变量编写<span style='color:blue'>一对Getter和Setter</span>；
-3. 编写一个<span style='color:blue'>无参数构造方法</span>；
-4. 编写一个<span style='color:blue'>有参数构造方法</span>；
+**5.1、问题描述：**
 
-```java
-public class Student {
-    private String name;
-    private int age;
+编写一个函数，输入一个<span style="color:green">无符号整数</span>，返回其二进制表达式中，数字位数为“1”的个数
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public Student() {
-    }
-
-    public Student(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-}
-
-```
+**5.2、代码实现：**
 
 ```java
-public class DemoClass {
-    public static void main(String[] args) {
-        Student stu1 = new Student();
-        stu1.setName("Java");
-        stu1.setAge(120);
-        System.out.println("姓名"+stu1.getName()+"，年龄"+stu1.getAge());
-        System.out.println("=============");
-        Student stu2 = new Student("Python",150);
-        System.out.println("姓名"+stu2.getName()+"，年龄"+stu2.getAge());
+public int hammingWeight(int n) {
+    int count = 0;
+    while(n != 0) {
+        count += n & 1;
+        n>>>=1;
     }
+    return count;
 }
-
 ```
+
+`1`的二进制表达式为：`0000 0001`。假设`n=11`，则二进制表达式为：`0000 1011`，循环体步骤详解：
+
+**`第1次`**：
+
+- `n&1`得`0000 0001`，判断出此时`n`的最后一位为1，则`count+1`；
+- `n>>>=1`得`0000 0101`，更新`n=5`；
+
+**`第2次`**：
+
+- `n&1`得`0000 0001`，判断出此时`n`的最后一位为1，则`count+1`；
+- `n>>>=1`得`0000 0010`，更新`n=4`；
+
+**`第3次`**：
+
+- `n&1`得`0000 0000`，判断出此时`n`的最后一位不是1，则`count+0`；
+- `n>>>=1`得`0000 0001`，更新`n=1`；
+
+**`第4次`**：
+
+- `n&1`得`0000 0001`，判断出此时`n`的最后一位为1，则`count+1`；
+- `n>>>=1`得`0000 0000`，更新`n=0`；
+
+**`第5次`**：
+
+- 此时`n=0`，不满足循环条件，跳出循环；
 
 
 
