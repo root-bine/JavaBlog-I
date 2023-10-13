@@ -112,7 +112,7 @@ Integer integer = Integer.valueOf(string);
 
 
 
-## 3、<span style="color:brown">案例分析：</span>🎟️🎟️🎟️
+## 3、<span style="color:brown">经典问题：</span>🎟️🎟️🎟️
 
 **3.1、分析==在Integer与int之间比较的结果？**
 
@@ -132,7 +132,7 @@ System.out.println(i6 == i7);//false
 System.out.println(i6 == i8);//true
 ```
 
-**3.2、结果分析：**
+**`结果分析`**：
 
 > <span style="color:green">Integer类的内部维护了一个缓存池，范围是 `-128` 到 `127`</span>
 
@@ -145,3 +145,66 @@ System.out.println(i6 == i8);//true
 **`i6 == i7`**：i6 和 i7 的值都是 128，<u>超出缓存池范围，就会**创建两个不同对象，此时比较的就是对象的引用**</u>；
 
 **`i6 == i8`**：i6类型为`Integer`，i8类型为`int`，在比较时i6会自动拆箱为int，最后是两个int类型数值比较；
+
+**3.2、字符串变形：**
+
+对一个包含空格的字符串，将空格隔开的单词反序，并将字母大小写互换。
+
+```java
+public String trans (String s, int strLength) {
+    if(s == null || s.length() == 0) {
+        return s;
+    }
+    char[] chars = s.toCharArray();
+    reverse(chars, 0, strLength-1);
+    int start = 0;
+    for (int i = 0; i < strLength; i++) {
+        if(chars[i] == ' ') {
+            reverse(chars, start, i-1);
+            start = i + 1;
+        }
+    }
+    reverse(chars, start, strLength - 1);
+    swap(chars, 0, strLength-1);
+    return new String(chars);
+}
+// 反转字符串
+public void reverse(char[] chars, int start, int end) {
+    while(start < end) {
+        char temp = chars[start];
+        chars[start] = chars[end];
+        chars[end] = temp;
+        start++;
+        end--;
+    }
+}
+// 大小写互换
+public void swap(char[] chars, int start, int end) {
+    for (int i = start; i <= end; i++) {
+        if(Character.isUpperCase(chars[i])) {
+            chars[i] = Character.toLowerCase(chars[i]);
+        }else if(Character.isLowerCase(chars[i])) {
+            chars[i] = Character.toUpperCase(chars[i]);
+        }
+    }
+}
+```
+
+输入测试用例：`This is a simple`、`16`，演示步骤如下：
+
+字符串转变成字符数组：`chars = ['T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 's', 'i', 'm', 'p', 'l', 'e']`
+
+调用`reserse()`方法得到：`chars = ['e', 'l', 'p', 'm', 'i', 's', 'a', ' ', 's', 'i', ' ', 's', 'i', 'h', 'T']`
+
+遍历当前的字符数组`chars`，在`chars[i]==' '`时进行反转：
+
+- `i=7`：
+  - 遇到一个空格，调用`reverse()`方法反转`[0,6]`范围内字符；
+  - 更新`start = i+1 = 8`；
+- `i=10`：
+  - 遇到第二个空格，调用`reverse()`方法反转`[8,9]`范围内字符
+  - 更新`start = i+1 = 11`；
+
+之后不再出现空格，跳出循环，<u>再次调用`reverse()`方法，将剩余内容进行反转</u>，`chars`数组内容为：`simple is a this`。
+
+调用`swap()`方法，将字符数组的内容大小写互换，得到`SIMPLE A IS tHIS`。

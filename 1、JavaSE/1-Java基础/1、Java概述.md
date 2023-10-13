@@ -33,7 +33,7 @@
 
 - <span style="color:green">Java语言采用**Unicode编码标准**，它为每个字符制订了一个唯一的数值</span>；
 
-**1.3、为什么Java代码可以实现一次编写、到处运行？**
+**1.3、为什么Java代码可以实现一次编译、到处运行？**
 
 ​	`JVM`（`Java`虚拟机）是`Java`跨平台的关键。
 
@@ -49,7 +49,7 @@
 
 **2.2、UnicodeBlock有哪些常见的字符块？ **
 
-基本拉丁字母、汉字、日文假名、希腊字母等，还包括一些特殊的字符块，如控制字符、私用区等。
+<u>**`基本拉丁字母`**、**`汉字`**、**`日文假名`**、**`希腊字母`**等</u>，还包括<u>一些特殊的字符块，</u>如控制字符、私用区等。
 
 **2.3、如何判断一个字符属于哪个UnicodeBlock？**
 
@@ -59,7 +59,7 @@ public static UnicodeBlock of(char c) {
 }
 ```
 
-**2.4、输入一个字符串，计算字符串中字符个数、汉字个数、空格个数、其它字符个数？**
+**2.4、输入一个字符串，计算字符串中字符个数、汉字个数、空格个数、数字个数、其它字符个数？**
 
 **`原理分析`**：
 
@@ -80,7 +80,7 @@ public class Main {
         Scanner scanner=new Scanner(System.in);
         String a=scanner.nextLine();
         char[] charArrays=a.toCharArray();
-        //UnicodeBlock是Java中的一个枚举类型，用于表示Unicode字符的块范围。在这段代码中，ub被赋值为null，表示还没有指定具体的Unicode块范围。
+        // ub被赋值为null，表示还没有指定具体的Unicode块范围。
         Character.UnicodeBlock ub=null;
         int chineseCount=0,englishCount=0,blankCount=0,numberCount=0,otherCharacterCount=0;
         for(int i=0;i<charArrays.length;i++){
@@ -166,17 +166,12 @@ variable x = (expression) ? value if true : value if false
 - 栈`(Stack)`：
 
   - <font color="red">**方法中的局部变量**，存放在栈中</font>；
-
-  - <font color="#0099ff">方法是要在栈中运行</font>；
-  - 局部变量：方法中的参数或者方法｛｝内部的变量；
-  - 作用域：一旦超出作用域，立刻就会从内存中释放；
+- <font color="#0099ff">方法是要在栈中运行</font>；
 - 堆`(Heap)`：
 
-  - <font color="red">**数组和new的实例对象**，都存放在Heap中</font>；
-
+  - <font color="red">**成员对象**，都存放在Heap中</font>；
   - <font color="orange">**字符串常量池也存在Heap中**</font>；【`JDK1.7`之后】
   - <u>方法中的局部变量使用 final 修饰后，放在堆中</u>；
-  - 堆内存中的东西都有一个<font color="#0099">**地址值**</font>：16进制；
   - 堆内存中的数据都有一个默认值，规则：
     - 如果是整数					默认为0；
     - 如果是浮点数				默认为0.0；
