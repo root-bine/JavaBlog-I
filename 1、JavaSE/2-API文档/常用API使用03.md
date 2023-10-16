@@ -68,7 +68,7 @@ public class DemoString02 {
         char[] charArray = {'a','b'};
         String str3 = new String(charArray);
 		String str4 = "ab";
-        String str5 = s1 + s2;
+        String str5 = str1 + str2;
         System.out.println(str1 == str2);//true
         System.out.println(str1 == str3);//false
         System.out.println(str4 == str5);//false
@@ -206,7 +206,7 @@ public class Demo07 {
 
 **2.2、StringBuilder底层：**
 
-1. StringBuilder和StringBuffer都可作为<span style="color:red">**字符缓冲区**</span>，可以提高字符串的操作效率；
+1. <span style="color:red">**`StringBuilder和StringBuffer都可作为字符缓冲区`**</span>，可以提高字符串的操作效率；
 2. <span style="color:orange">**底层是一个char[]，且长度可以变化**</span>；
 3. <span style="color:violet">StringBuilder类的初始化容量是**16字符**，若超出该范围，会自动进行扩容</span>；
 

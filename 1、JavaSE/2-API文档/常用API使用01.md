@@ -4,8 +4,6 @@
 
 `Scanner 对象名 = new Scanner(System.in)`
 
----
-
 ```java
 public class Demo01_Scanner {
     public static void main(String[] args) {
@@ -54,7 +52,7 @@ public class Demo02_hasNexts {
 
 **1.3、处理换行符：**
 
-​		<span style='color:brown'>**在读取完整数或其他类型的输入后，通常会留下一个换行符在输入缓冲区中**</span>，这会造成后续内容输入为null值。为了避免这个问题，可以在读取完整数后使用`nextLine()`来消耗掉换行符！！！
+​	<span style='color:brown'>**在读取完整数或其他类型的输入后，通常会留下一个换行符在输入缓冲区中**</span>，这会造成后续内容输入为null值。为了避免这个问题，可以在读取完整数后使用`nextLine()`来消耗掉换行符！！！
 
 ```java
 public class Main{

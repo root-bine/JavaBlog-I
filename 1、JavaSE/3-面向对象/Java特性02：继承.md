@@ -134,8 +134,6 @@ public class Text02 {
 
 ## 3、<span style="color:brown">区分子类方法中重名的三种变量：</span>
 
-<span style="color:red">父类与子类重名的三种变量，子类中调用三种变量的访问方式</span>：
-
 **本类的局部变量：**<span style="color:blue">直接编写</span>;
 
 **本类的成员变量：**<span style="color:blue">this.成员变量</span>;
@@ -243,72 +241,7 @@ public class Text {
 
 
 
-## 5、<span style="color:brown">重写（Overwrite）：</span>
-
-**5.1、概念与特点：**
-
-重写也称为<span style="color:orange">**覆盖、覆写**</span>，一般重写的方法前面会带有：@Override
-
-**5.2、注意事项：**
-
-1. <span style="color:orange">**必须保证父类与子类之间，方法名称相同，参数列表相同**</span>;
-
-2. <span style="color:orange">**子类方法的返回值  <=  父类返回值范围**</span>;
-3. <span style="color:orange">**子类方法的权限(修饰符)  >=  父类的权限(修饰符)**</span>;
-   - public > protected > (default) >private
-     - <span style="color:red">(default)不是关键词default，而是什么都不写，留空</span>;
-
-**5.3、应用场景：**		
-
-```java
-//旧手机
-public class Phone {
-    public void call(){
-        System.out.println("打电话");
-    }
-    public void send(){
-        System.out.println("发消息");
-    }
-    public void show(){
-        System.out.println("显示号码");
-    }
-}
-```
-
-```java
-//新手机
-public class NewPhone extends Phone{
-    @Override
-    public void show() {
-        super.show();
-        System.out.println("显示头像");
-        System.out.println("显示照片");
-    }
-}									                                                                                                 
-```
-
-```java
-//测试类
-public class Demo01 {
-    public static void main(String[] args) {
-        Phone phone = new Phone();
-        phone.call();
-        phone.send();
-        phone.show();
-        System.out.println("=========");
-        NewPhone newPhone = new NewPhone();
-        newPhone.call();
-        newPhone.send();
-        newPhone.show();
-    }
-}
-```
-
-
-
-## 6、<span style="color:brown">继承中构造方法的访问：</span>
-
-**6.1、继承关系中，父类与子类构造方法的访问特点：**
+## 5、<span style="color:brown">继承中构造方法的访问：</span>
 
 1. 子类构造方法中，有一个默认的**super( )**<span style="color:green">[子类中一般不会显示]</span>调用。因此，<span style="color:red">先调用父类构造，再调用子类构造</span>；
 
@@ -374,7 +307,7 @@ public class Demo01 {
 
 
 
-## 7、<span style="color:brown">Java继承的特点：</span>
+## 6、<span style="color:brown">Java继承的特点：</span>
 
 1. <span style="color:orange">单继承的</span>，<span style="color:violet">一个类的直接父类只能是一个</span>；
 

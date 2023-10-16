@@ -1,5 +1,7 @@
 ## 1、<span style="color:brown">**Date类：**</span>Java.util
 
+## Date类是一个抽象类
+
 - **Date类的介绍:**
 
   1. <span style="color:blue">**表示日期和时间的类**</span>；
@@ -21,7 +23,7 @@
      }
      ```
   
-  2. <font color="red">**Date（Long date）传递毫秒值，把毫秒转换为Date日期**</font>；
+  2. <font color="red">**Date（long time）传递毫秒值，把毫秒转换为Date日期**</font>；
   
      ```java
      public class Demo01 {

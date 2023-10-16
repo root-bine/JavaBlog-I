@@ -11,7 +11,7 @@ public class Season {
           this.seasonName = seasonName;
           this.seasonDesc = seasonDesc;
       }
-      //创建对象
+      //创建对象, 并私有
       public static final Season spring = new Season("春天","春暖花开");
       public static final Season summer = new Season("夏天","夏日炎炎");
       public static final Season autumn = new Season("秋天","硕果累累");
