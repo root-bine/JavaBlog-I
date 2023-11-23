@@ -88,7 +88,3 @@ java -jar Xxxx.jar				[在输入项目名称时, 可输入首字母, 然后点�
    - **classes文件存放<u>所有的程序</u>**；
    - **lib文件存放<u>所有的依赖</u>**；
 2. 在org文件中，存放一个独立运行Boot程序的工具；
-
-
-
-## 3、<span style="color:brown">Linux：</span>

@@ -6,7 +6,7 @@
 
 **1.2、开发实现：**
 
-​		除开：`mysql-connector-java、spring-context、spring-web、spring-webmvc、servlet-api、javax.servlet.jsp-api、C3P0`坐标外，还需要额外导入坐标：<u>***spring-jdbc、spring-tx两个坐标***</u>，内容如下：
+​	除开：`mysql-connector-java、spring-context、spring-web、spring-webmvc、servlet-api、javax.servlet.jsp-api、C3P0`坐标外，还需要额外导入坐标：<u>***spring-jdbc、spring-tx两个坐标***</u>，内容如下：
 
 ```xml
 <dependency>

@@ -2,22 +2,20 @@
 
 **1.1、创建方式：**
 
-​		通过IDEA创建一个空白项目，然后在**File中选择Setting选项中搜索Mavan**，设置Maven的基本配置。进入SpringBoot项目创建页面有两种方式：
+​	通过IDEA创建一个空白项目，然后在**File中选择Setting选项中搜索Mavan**，设置Maven的基本配置。进入SpringBoot项目创建页面有两种方式：
 
-1. File -> Project Structure -> Modules -> 选中项目，鼠标右键 -> add -> new Module -> 进入Module配置界面，选择Spring Initializr 
+1. **`File -> Project Structure -> Modules -> 选中项目`**，鼠标右键 -> add -> new Module -> 进入Module配置界面，选择Spring Initializr ；
 
-2. 在空白项目界面，选择当前项目，鼠标右键 -> 点击Module -> 进入Module配置界面，选择Spring Initializr
+2. 在空白项目界面，选择当前项目，鼠标右键 -> 点击Module -> 进入Module配置界面，选择Spring Initializr；
 
 **1.2、Spring Initializr配置：**
 
 在使用IDEA创建SpringBoot项目时，可以设置Service URL的参数：
 
-```apl
+```scss
 【国内】https://start.aliyun.com
 【国外】https://start.spring.io
 ```
-
-
 
 <img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/Spring%20Initializr.png" alt="image-20221004113311736" style="zoom:80%;" />
 
@@ -68,7 +66,7 @@
 
 点击File，选择Settings -> 搜索File Types
 
-<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C.png" alt="image-20221004163910776" style="zoom: 67%;" />
+<img src="https://raw.githubusercontent.com/root-bine/image/main/Typora-image/%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6%E5%92%8C%E7%9B%AE%E5%BD%95%E6%93%8D%E4%BD%9C.png" alt="image-20221004163910776" style="zoom: 50%;" />
 
 在其中输入：
 
