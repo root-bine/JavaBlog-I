@@ -48,7 +48,6 @@
     public static native void arraycopy(Object src,  int  srcPos,
                                         Object dest, int destPos,
                                         int length);
-    
     - Object src: 原数组
     - int  srcPos: 原数组的起始位置
     - Object dest: 目标数组
@@ -121,12 +120,12 @@ public class Test19{
 **2.1、Math工具类常用方法：**
 
 - `public static double abs(double num)`
-  - 获取绝对值，有多重重载；
-
+  - 获取绝对值；
 - `public static double pow(double base, double exponent)`
   - 用于计算一个数的指定次幂
   - base为底数，exponent是指数
-
+- `public static double sqrt(double num)`
+  - 计算一个数的平方根
 - `public static double ceil(double num)`
   - 向上取整；
   - 正数实质就是整数部分加1，无论小数点后面是否满足四舍五入；
@@ -154,38 +153,14 @@ floor:
          -4.5           -5.0
 ```
 
-**2.3、演示：**
-
-```java
-public class Demo01 {
-    public static void main(String[] args) {
-        System.out.println("===取绝对值===");
-        System.out.println(Math.abs(-12));//12
-        System.out.println(Math.abs(0));//0
-        System.out.println(Math.abs(3.14));//3.14
-        System.out.println("===向上取整===");
-        System.out.println(Math.ceil(3.9));//4.0
-        System.out.println(Math.ceil(0.9));//1.0
-        System.out.println("===向下取整===");
-        System.out.println(Math.floor(31.5));//31.0
-        System.out.println(Math.floor(32.0));//32.0
-        System.out.println(Math.floor(36.9));//36.0
-        System.out.println("===四舍五入===");
-        System.out.println(Math.round(4.15));//4
-        System.out.println(Math.round(4.6));//5
-        System.out.println(Math.round(4.46));//4
-    }
-}
-```
-
-**2.4、计算在-10.8到5.9之间，绝对值大于6或者小于2.1的整数有多少个？**
+**2.3、计算在-10.8到5.9之间，绝对值大于6或者小于2.1的整数有多少个？**
 
 ```java
 public class Practice {
     public static void main(String[] args) {
         int count = 0;
-        double num1 = Math.ceil(-10.8);
-        double num2 = Math.floor(5.9);
+        double num1 = Math.ceil(-10.8); // -10
+        double num2 = Math.floor(5.9); // 5.0
         for (int i = (int)num1; i < (int)num2; i++) {
             int num = Math.abs(i);
             if(num>6 || num<2.1){

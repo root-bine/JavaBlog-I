@@ -19,15 +19,15 @@ str1 + ch // "9c"
 
 **1.3、创建String字符串方法：**
 
-- `public  String( )`，创建一个空白字符串；
+- `String()`，创建一个空白字符串；
 
-- `public  String(char[ ] array)`，根据字符数组，创建对应的字符串；
+- `String(char[ ] array)`，根据字符数组，创建对应的字符串；
 
-- `public  String(char[ ] array, int offset, int count)`，offset：起始位置索引，count：读取的个数；
+- `String(char[ ] array, int offset, int count)`，offset：起始位置索引，count：读取的个数；
 
-- `public  String(byte[ ] array)`,   根据字节数组，创建对应的字符串；
+- `String(byte[ ] array)`,   根据字节数组，创建对应的字符串；
 
-- `public  String(byte[ ] array, int offset, int count)`，offset：起始位置索引，count：读取的个数；
+- `String(byte[ ] array, int offset, int count)`，offset：起始位置索引，count：读取的个数；
 
 - 直接调用：`String  str = "Hello"`；
 
@@ -132,11 +132,11 @@ System.out.println(str4 == str5);//false
 
 ![image-20221027201155435](https://raw.githubusercontent.com/root-bine/image/main/Typora-image/String%E3%80%81StringBuilder%E3%80%81StringBuffer.png)
 
-**2.2、StringBuilder底层：**
+**2.2、详解：**
 
 1. <span style="color:red">**`StringBuilder和StringBuffer都可作为字符缓冲区`**</span>，可以提高字符串的操作效率；
-2. <span style="color:orange">**底层是一个char[]，且长度可以变化**</span>；
-3. <span style="color:violet">StringBuilder类的初始化容量是**16字符**，若超出该范围，会自动进行扩容</span>；
+2. 底层是<span style="color:green">**char类型数组**</span>，且<span style="color:orange">**长度可以变化**</span>；
+3. 初始化容量是<span style="color:violet">**16字符**</span>，<u>若超出该范围，会自动进行扩容</u>；
 
 **2.3、构造方法：**
 

@@ -11,7 +11,7 @@ public class Season {
           this.seasonName = seasonName;
           this.seasonDesc = seasonDesc;
       }
-      //创建对象, 并私有
+      //创建对象
       public static final Season spring = new Season("春天","春暖花开");
       public static final Season summer = new Season("夏天","夏日炎炎");
       public static final Season autumn = new Season("秋天","硕果累累");
@@ -76,16 +76,6 @@ public enum Season {
     public String getSeasonDesc() {
         return seasonDesc;
     }
-    //元素输出
-    //此处的toString方法可以写出，但是本身父类Enum类中就具备了toString（）方法
-    /**
-    @Override
-    public String toString() {
-        return "Season{" +
-                "seasonName='" + seasonName + '\'' +
-                ", seasonDesc='" + seasonDesc + '\'' +
-                '}';
-    }*/
 }
 ```
 

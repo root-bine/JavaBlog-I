@@ -1,23 +1,8 @@
 ## 1、<span style='color:brown'>Scanner类：</span>java.util
 
-**1.1、Scanner格式：**
+**1.1、Scanner介绍：**
 
-`Scanner 对象名 = new Scanner(System.in)`
-
-```java
-public class Demo01_Scanner {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int num=scanner.nextInt();
-        int sum=0;
-        for (int i = 0; i < num; i++) {
-            sum+=i*2+1;
-        }
-        scanner.close();
-        System.out.println(sum);
-    }
-}
-```
+定义格式为：`Scanner 对象名 = new Scanner(System.in)`，一般在输入结束后，使用<u>`对象名.close()`</u>释放资源。
 
 **1.2、Scanner详解：**
 
@@ -52,52 +37,20 @@ public class Demo02_hasNexts {
 
 **1.3、处理换行符：**
 
-​	<span style='color:brown'>**在读取完整数或其他类型的输入后，通常会留下一个换行符在输入缓冲区中**</span>，这会造成后续内容输入为null值。为了避免这个问题，可以在读取完整数后使用`nextLine()`来消耗掉换行符！！！
+​	<span style='color:brown'>在读取完**整数**或**其他类型**的输入后，通常会留下一个换行符在输入缓冲区中</span>，这会造成后续内容输入为null值。为了避免这个问题，可以在读取完整数后使用`nextLine()`来消耗掉换行符！！！
 
 ```java
-public class Main{
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int num = scanner.nextInt();
+        int number = scanner.nextInt();
+        // 消耗掉换行符
         scanner.nextLine();
-        int line = scanner.nextInt();
-        scanner.nextLine();
-        HashMap<Integer, String> map = new HashMap<>();
-        for (int i = 0; i < line; i++) {
-            map.put(i,scanner.nextLine());
-        }
-        String[][] str = new String[line][1];
-        Set<Map.Entry<Integer, String>> set = map.entrySet();
-        for (Map.Entry<Integer, String> entry:set) {
-            String value = entry.getValue();
-            Integer key = entry.getKey();
-            System.out.println(key+value);
-        }
-    }
-}
-```
-
-**1.4、关闭Scanner对象：**
-
-<u>`对象名.close()`</u>
-
-```java
-//输入三个数，输出其中最大的值
-public class Demo03 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int []a = new int[3];
-        for (int i = 0; i < a.length; i++) {
-            a[i] = sc.nextInt();
-        }
-        int max=a[0];
-        for (int i = 0; i < a.length; i++) {
-            if(max<a[i]){
-                max=a[i];
-            }
-        }
-        System.out.println(max);
-        sc.close();
+        
+        String text = scanner.nextLine();
+        System.out.println("整数: " + number);
+        System.out.println("字符串: " + text);
+        scanner.close();
     }
 }
 ```

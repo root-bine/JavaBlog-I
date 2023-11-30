@@ -2,62 +2,52 @@
 
 ## Date类是一个抽象类
 
-- **Date类的介绍:**
+**1.1、概述：**
 
-  1. <span style="color:blue">**表示日期和时间的类**</span>；
-  2. <span style="color:green">**毫秒值的作用：可以对时间和日期进行计算**</span>；
-  
-- **构造方法：**
+1. <span style="color:blue">**表示日期和时间的类**</span>；
+2. <span style="color:green">**毫秒值的作用：可以对时间和日期进行计算**</span>；
 
-  1. <font color="red">**Date（）获取的就是当前系统的时间和日期**</font>；
+**1.2、构造方法：**
 
-     ```java
-     public class Demo01 {
-         public static void main(String[] args) {
-             demo01();
-         }
-         private static void demo01() {
-             Date date = new Date();
-             System.out.println(date);
-         }
-     }
-     ```
-  
-  2. <font color="red">**Date（long time）传递毫秒值，把毫秒转换为Date日期**</font>；
-  
-     ```java
-     public class Demo01 {
-         public static void main(String[] args) {
-             demo01();
-         }
-         private static void demo01() {
-             Date date = new Date(0L);
-             System.out.println(date);
-         }
-     }
-     ```
-  
-- **Date类的成员方法：**
-
-  <font color="orange">**long  getTime (  )：把日期转换成毫秒值**</font>;
+- <font color="red">**`Date()`**</font>：获取的就是当前系统的时间和日期
 
   ```java
-  public class Demo01 {
-      public static void main(String[] args) {
-          demo01();
-          demo02();
-      }
-      private static void demo02() {
-          Date d1 = new Date();
-          long time = d1.getTime();
-          System.out.println(time);
-      }
-      private static void demo01() {
-          Date date = new Date(0L);
-          System.out.println(date);
-      }
+  public void demo01() {
+  	Date date = new Date();
+  	System.out.println(date);
   }
   ```
+
+- <font color="red">**`Date(long time)`**</font>：传递毫秒值，把毫秒转换为Date日期
+
+  ```java
+  public void demo01() {
+  	Date date = new Date(3000L);
+  	System.out.println(date);
+  }
+  ```
+
+**1.3、成员方法：**
+
+<font color="orange">**`long  getTime()`**</font>：把日期转换成毫秒值
+
+```java
+public class Demo01 {
+    public static void main(String[] args) {
+        demo01();
+        demo02();
+    }
+    private static void demo02() {
+        Date d1 = new Date();
+        long time = d1.getTime();
+        System.out.println(time);
+    }
+    private static void demo01() {
+        Date date = new Date(0L);
+        System.out.println(date);
+    }
+}
+```
 
 
 
@@ -65,20 +55,24 @@
 
 ## <span style="color:purple">**DateFormat类是一个抽象类，SimpleDateFormat类 extends DateFormat！！！！**</span>
 
-- **DateFormat类的介绍：**
-  1. <span style="color:red">**日期/时间格式化子类的抽象类**</span>；
-  2. <span style="color:orange">**主要展示的结果不是Date类展示的纯英文日期和时间**</span>，<span style="color:green">**DateFormat类展示的是我们现实当中的时间和日期展示方式**</span>；
+**2.1、概述：**
 
-- **DateFormat类的作用：**
-  1. 格式化：Date日期------------>String类型文本；
-  2. 解析：文本-------------->Date日期；
-  3. 标准化：规范日期输出的格式；
+1. <span style="color:red">日期/时间格式化子类的**抽象类**</span>；
+2. <span style="color:green">**DateFormat类展示的是现实当中的时间和日期展示方式**</span>；
 
-- **DateFormat类的成员方法：**
-  1. String   format  ( Date   date )------->格式化
-     - <span style="color:red">**按照指定模式，把Date日期格式化为符合模式的字符串**</span>；
-  2. Date   parse  ( String   sourse )-------->解析
-     - <span style="color:red">**把符合模式的字符串解析成为Date日期**</span>；
+**2.2、使用步骤：**
+
+1. 格式化：Date日期——>String类型文本；
+2. 解析：String文本——>Date日期；
+3. 标准化：规范日期输出的格式；
+
+**2.3、成员方法：**
+
+- `String format(Date date)`：
+  - <span style="color:green">**按照指定模式，把Date日期格式化为符合模式的字符串**</span>；
+
+- `Date parse(String sourse)`：
+  - <span style="color:red">**把符合模式的字符串解析成为Date日期**</span>；
 
 
 
@@ -88,24 +82,24 @@
 
 **3.1、构造方法：**
 
-SimpleDateFormat( String   pattern )
+`SimpleDateFormat( String  pattern )`：
 
-- 用给定的模式和默认语言环境的日期格式构造SimpleDateFormat
+- 用给定的模式和默认语言环境的日期格式构造SimpleDateFormat；
 
-- <span style="color:red">**String   pattern----------->传递指定的模式**</span>
+- <span style="color:red">**String   pattern----------->传递指定的模式**</span>；
 
-- <span style="color:red">**模式区分大小写**</span>，且写对应的模式会把模式替换成对应的日期和时间
+- <span style="color:red">**模式区分大小写**</span>，且写对应的模式会把模式替换成对应的日期和时间；
 
   ***"yyyy-MM-dd  HH:mm:ss" 或者 "yyyy年MM月dd日HH时mm分ss秒"***
 
 **3.2、具体使用：**
 
-1. 使用SimpleDateFormat类创建对象；
-2. 使用Date类构造方法来获取或者转化时间和日期；
-3. 使用SimpleDateFormat类创建对象调用：`String format(Date date)`；
+1. 使用`SimpleDateFormat`类创建对象；
+2. 使用`Date`类构造方法来获取或者转化时间和日期；
+3. 使用`SimpleDateFormat`类创建对象调用：`String format(Date date)`；
 
-4. 使用SimpleDateFormat类创建对象调用：`Date parse(String sourse)`；
-   - <span style="color:red">**由于parse方法具有异常**</span>，所以需要抛出异常：try--------catch--------或者   throws  Exception；
+4. 使用`SimpleDateFormat`类创建对象调用：`Date parse(String sourse)`；
+   - <span style="color:red">**由于parse方法具有异常**</span>，所以需要抛出异常：try——catch  或者   throws  Exception；
 
 **3.3、请使用时间与日期的API，计算出一个人已经出生了多少天？**
 
@@ -130,6 +124,3 @@ public class Demo04 {
     }
 }
 ```
-
-
-

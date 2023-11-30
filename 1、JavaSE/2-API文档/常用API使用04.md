@@ -1,18 +1,16 @@
 ## 1、<span style='color:brown'> static关键词</span>：
 
-### <font color='bulue'>**在内存中是先有静态，之后才有非静态**</font>！！！
-
-### <span style="color:red">static不能修饰类，但可以修饰<u>内部类</u></span>！！！
+> <font color='bulue'>**在内存中是先有静态，之后才有非静态**</font>，<span style="color:red">static不能修饰类，但可以修饰<u>内部类</u></span>！！！
 
 **1.1、静态变量：**
 
-- `static`修饰的成员变量属于类本身，且被所有类的实例共享；
-- 静态成员变量的生命周期与类的生命周期相同，它在类加载时被初始化，直到程序结束或类被卸载时才会销毁；
+- <u>`static`修饰的成员变量属于类本身，且被所有<span style="color:green">**类的实例**</span>共享</u>；
+- 生命周期与类的生命周期相同，在类加载时被初始化，直到程序结束或类被卸载时才会销毁；
 
 **1.2、静态方法：**
 
-- `static`修饰的成员方法属于类本身，但只能访问静态成员（包括静态成员变量和静态方法）；
-- 子类不能`Overwrite`父类的静态方法；
+- <u>`static`修饰的成员方法属于类本身，但可以访问静态成员和非静态成员</u>；
+- <u>子类不能`Overrite`父类的静态方法</u>；
 
 **1.3、静态代码块：**
 
@@ -32,30 +30,11 @@ public class 类名称{
 }
 ```
 
-**2.2、作用:**
+**2.2、注意事项：**
 
 - <span style='color:orange'>**静态代码块只执行一次**，*第二次使用该类的时候静态代码块就不再执行了*</span>；
 
 - ***静态内容总是优先于非静态内容***，因此：<span style='color:red'>**静态代码块比构造方法先执行**</span>；
-
-```java
-public class StaticDemo03 {
-    public static void main(String[] args) {
-        Person one = new Person();
-    }
-}
-```
-
-```java
-public class Person {
-    static {
-        System.out.println("静态代码块执行！！");
-    }
-    public Person() {
-        System.out.println("构造方法执行！！");
-    }
-}
-```
 
 
 
@@ -63,7 +42,7 @@ public class Person {
 
 **3.1、静态变量能被this访问吗？**
 
-​		<span style='color:red'>**不能**</span>。`this`关键字是一个引用，它指向当前对象的实例。而静态变量是属于类本身的，不依赖于任何对象的实例。
+<span style='color:red'>**不能**</span>。`this`关键字是一个引用，指向<u>**当前对象的实例**</u>。而静态变量是属于类本身的，不依赖于任何对象的实例。
 
 **3.2、下列代码的结果：**
 
@@ -162,7 +141,6 @@ public class Test {
         System.out.println("test static 1");
     }
     public static void main(String[] args) {
-
     }
     static{
         System.out.println("test static 2");

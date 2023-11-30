@@ -24,7 +24,7 @@ StringTable别名：串池、字符串常量池、Stringpool，<u>*串池为Hash
 
 **1.3、位置：**
 
-​		在JDK1.6及其以前，StringTable存在在方法区中，但由于方法的常量池空间默认大小为4M，当存储内容超过这个空间大小就会抛出OutOfMemoryError异常。因而在JDK1.7、1.8以后，将StringTable存放到了Heap中。
+​	在JDK1.6及其以前，StringTable存在在方法区中，但由于方法的常量池空间默认大小为4M，当存储内容超过这个空间大小就会抛出OutOfMemoryError异常。因而在JDK1.7、1.8以后，将StringTable存放到了Heap中。
 
 
 
@@ -36,11 +36,7 @@ StringTable别名：串池、字符串常量池、Stringpool，<u>*串池为Hash
 
 > toString()方法的返回值为：`return new String(value, 0, count)`，相当于`new String(...)`
 
-```scss
-相当于创建一个StringBuilder对象: new StringBuilder(String str), 然后再调用append()将字符串逐个添加到StringBuilder中。最后, 通过调用toString()方法将StringBuilder对象转换为一个新的字符串对象
-```
-
----
+​	创建一个StringBuilder对象： `new StringBuilder(String str)`， 然后再调用`append()`将字符串逐个添加到`StringBuilder`对象中。最后，通过调用`toString()`方法将`StringBuilder`对象转换为一个新的`String`对象。
 
 <u>*代码分析：*</u>
 

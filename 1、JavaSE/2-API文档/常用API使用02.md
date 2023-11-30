@@ -162,50 +162,20 @@ public class Demo02 {
 
 - `bolean add(E e)`：
   - 向集合中添加一些数据,参数类型与泛型一致,它的返回值表示添加是否成功；
-  
 - `void add(int index, E e)`：
   - 在<u>列表指定位置</u>添加元素；
-  
+- `E set(int index, E e)`：
+  - 将指定位置的值，修改为指定值，返回被修改前的元素值；
 - `E get(int index)`：
 - 根据索引从集合中读取元素；
   - 返回值为：对应索引的元素；
-
 - `E remove(int index)`：
   - 根据索引从集合中删除元素；
   - 返回值为被删除的元素；
-  
 - `int size( )`：
   - 获取集合的尺寸长度；
   - 返回值是集合中包含元素的个数；
   
-
-```java
-public class Demo03 {
-    public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<>();
-        System.out.println(list);// [ ]
-
-        boolean success=list.add("Java");//index:0
-        System.out.println(list);// [Java]
-        //表示数据添加成功
-        System.out.println("添加动作是否成功:"+success);//添加动作是否成功:true
-        list.add("C#");
-        list.add("C++");
-        list.add("Python");
-        System.out.println(list);//[Java, C#, C++, Python]
-        //获取集合中元素
-        String str1 = list.get(0);
-        System.out.println("第0号索引位置"+str1);//第0号索引位置Java
-        //从集合中删除元素
-        String str2 = list.remove(2);
-        System.out.println("被删除元素是"+str2);//被删除元素是C++
-        System.out.println(list);//[Java, C#, Python]
-        //测量集合的尺寸长度
-        int num = list.size();
-        System.out.println(num);//3
-    }
-}
-```
 
 **2.4、遍历集合：**
 
