@@ -56,7 +56,7 @@ System.out.println(str4 == str5);//false
 2. JVM会先使用常量池来管理字符串直接量, 即将"abc"存入常量池. 然后再创建一个新的String对象, 这个对象会被保存在堆内存中. 并且, 堆中对象的数据会指向常量池中的直接量.
 ```
 
-**1.5、常用比较方法：**5个
+**1.5、常用比较方法：**7个
 
 1. `boolean equals(Object  obj)`：在判断时区分大小写
 2. `boolean equalsIgnoreCase(Object  obj)`：在判断时不区分大小写
@@ -64,12 +64,19 @@ System.out.println(str4 == str5);//false
    - 只有参数是一个字符串，并且内容相同才会返回true，否则为false；
    - 任何对象都可以用Object进行接收；
    - <span style='color:orange'>**“==”在引用类型中比较的是地址值，而比较内容就需要使用equals( )方法；**</span>
-3. `boolean stratsWith(String prefix, int offset)`
+3. `boolean isEmpty()`：判断一个字符串是否为空
+   - 长度为0；
+   - 内容为`null`；
+4. `boolean isBlank()`：判断一个字符串是否为空白
+   - 长度为0；
+   - 内容为`null`；
+   - 只包含除字符以外的其他内容，例如：空格、制表符、换行符等；
+5. `boolean stratsWith(String prefix, int offset)`
    - 比较字符串是否是以【prefix】为前缀；
    - 而【offset】表示的是开始查找位置；
-4. `boolean endsWith(String prefix, int offset)`
+6. `boolean endsWith(String prefix, int offset)`
    - 判断字符串是否以prefix为后缀；
-5. `boolean contains(String str)`
+7. `boolean contains(String str)`
    - 判断字符串是否包含某个字符串；
 
 **1.6、常用获取方法：**5个
