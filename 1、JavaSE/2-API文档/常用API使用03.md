@@ -204,7 +204,7 @@ System.out.println("bu2:"+bu2);
 
 
 
-## 3、<span style="color:brown">**编程算法：**</span>
+## 3、<span style="color:brown">**经典案例：**</span>
 
 **3.1、从第一个字符串中删除第二个字符串的全部字符？**
 
@@ -247,3 +247,58 @@ public static boolean isPalStr(String chars) {
     return true;
 }
 ```
+
+**3.3、解码字符串？**
+
+解析给定格式的字符串：`k{string}`，表示其中的string重复k次。
+
+```java
+String decodeString(String s) {
+    // 保存重复次数
+    Stack<Integer> countStack = new Stack<>();
+    // 保存字符串
+    Stack<StringBuilder> stringStack = new Stack<>();
+    // 构建当前的字符串
+    StringBuilder currentString = new StringBuilder();
+    // 保存当前的重复次数
+    int currentCount = 0;
+    for (char ch : s.toCharArray()) {
+        // 判断字符是否为数字
+        if(Character.isDigit(ch)) {
+            /*考虑数字可能为多位数*/
+            currentCount = currentCount*10 + (ch - '0');
+        }else if(ch == '{') {
+            countStack.push(currentCount);
+            stringStack.push(currentString);
+            // 重置变量 (主要关注currentString)
+            currentCount = 0;
+            currentString = new StringBuilder();
+        }else if(ch == '}') {
+            StringBuilder pop = stringStack.pop();
+            int count = countStack.pop();
+            for (int i = 0; i < count; i++) {
+                pop.append(currentString);
+            }
+            currentString = pop;
+        }else {
+            currentString.append(ch);
+        }
+    }
+    return currentString.toString();
+}
+```
+
+输入`"2{ab}"`，进入循环体遍历字符数组：
+
+- 通过字符类方法`boolean isDigit(char c)`判断字符是否为数字，然后<u>将字符转换成整数</u>（<span style="color:red">考虑数字为多位数</span>）
+
+- 遇到字符`'{'`，将`currentCount=2`和`currentString=null`分别压入两个`Stack`中，并<u>主要重置`currentString=null`备用</u>；
+
+- 之后会遍历到字符`'a'`和`'b'`，<u>直接调用`currentString.append(ch)`，添加到`currentString`中</u>；
+
+- 当遇到字符`'}'`，进行两个`Stack`的出栈操作，此时`pop=null`和`count=2`，进入重复循环体：
+
+  1. 当`i=0`，追加`currentString="ab"`到`pop`，此时`pop="ab"`；
+  2. 当`i=1`，再次追加`currentString`到`pop`，此时`pop="abab"`；
+
+  跳出循环，执行`currentString = pop`，更新`currentString="abab"`。
