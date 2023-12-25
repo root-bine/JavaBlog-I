@@ -1,8 +1,8 @@
-## 1、<span style="color:brown">final关键词概述：</span>
+## 1、<span style="color:brown">概述：</span>
 
 **1.1、概述：**
 
-final代表的是: 最终的、不可变更的。对于类、方法来说，abstract 和 final 关键词不能同时出现！！！
+final代表：最终的、不可变更的。对于类、方法来说，<span style="color:red">`static、abstract、final`不能同时出现</span>！！！
 
 **1.2、使用方法：**
 
@@ -16,65 +16,43 @@ final代表的是: 最终的、不可变更的。对于类、方法来说，abst
 
 **1.3、final、finalize 和 finally 的不同之处?**😴😴😴
 
-- final 是一个修饰符，可以修饰变量、方法和类；
-- ava 技术允许使用 finalize() 方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作；
-- finally 是一个关键字，与 try 和 catch 一起用于异常的处理；
+- `final`是一个修饰符，可以修饰变量、方法、类；
+- `Java`技术允许使用`finalize()`方法<u>在垃圾收集器将对象从内存中清除出去之前</u>做必要的清理工作；
+- `finally` 是一个关键字，与`try-catch 一起用于异常的处理；
 
 
 
-## 2、<span style="color:brown">final修饰局部变量：</span>
+## 2、<span style="color:brown">使用：</span>
 
-**2.1、实例分析：**
+**2.1、综合案例：**
 
 ```java
-public class Demo01 {
+public class FinalExample {
+    // final 修饰成员变量
+    final int MAX_COUNT = 10;
+
+    // final 修饰方法
+    public final void printMaxCount() {
+        System.out.println("MAX_COUNT: " + MAX_COUNT);
+    }
+
+    // final 修饰类
+    final class InnerClass {
+        // ...
+    }
+
     public static void main(String[] args) {
-        int num1 = 20;
-        System.out.println(num1);
-        num1 = 30;
-        System.out.println(num1);
-        //一次赋值，终身不变
-        final int  num2 = 100;
-        System.out.println(num2);
-        //错误写法
-        //num2 = 200;
-        //num2 = 100;
-        Student stu1 = new Student("Java");
-        stu1.getName();//Java
-        //引用类型的地址值不可以改变
-        //但是对象所指向对象的内容可以改变
-        stu1.setName("PHP")//PHP
-        //final修饰的引用类型变量的地址值，不可改变
-        final Student stu2 = new Student("Python");
-        stu2.getName();//Python
-        //错误写法
-        //stu2 = new Student("C++");
+        // final 修饰局部变量
+        final int num = 100;
+        System.out.println("num: " + num);
+
+        // 尝试修改 final 变量的值会导致编译错误
+        // num = 200;
     }
 }
 ```
 
-**2.2、范围的定义：**
-
-```Java
-1.对于基本数据类型，不可变是指:
-    变量的数值不可改变;
-2.对于引用类型来，不可变是指:
-    变量的地址值不可改变;
-```
-
-
-
-## 3、<span style="color:brown">final修饰成员变量：</span>
-
-**3.1、使用：**
-
-```java
-1.由于成员变量具有默认值, 所以被final修饰后, 必须手动赋值(此时成员变量没有默认值了);
-2.对于final的成员变量, 要么直接赋值, 要么构造方法赋值;
-3.必须保证类中的所有重载方法, 都最终会对final的成员变量赋值;
-```
-
-**3.2、案例实现：**
+**3.2、成员变量赋值：**
 
 1. 直接赋值：
 

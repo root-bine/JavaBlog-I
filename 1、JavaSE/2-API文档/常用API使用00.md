@@ -1,4 +1,4 @@
-## <span style="color:purple">**自定义枚举类的上层父类是Java.lang.Object**</span>，<span style="color:violet">**而enum关键词的使用的上层父类是Java.lang.Enum**</span>！！！！！！
+### <span style="color:purple">**自定义枚举类的上层父类是Java.lang.Object**</span>，<span style="color:violet">**而enum关键词的使用的上层父类是Java.lang.Enum**</span>！！！！！！
 
 ## 1、自定义枚举类：
 
