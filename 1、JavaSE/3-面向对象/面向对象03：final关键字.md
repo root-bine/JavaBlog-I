@@ -22,13 +22,13 @@ final代表：最终的、不可变更的。对于类、方法来说，<span sty
 
 
 
-## 2、<span style="color:brown">使用：</span>
+## 2、<span style="color:brown">详解：</span>
 
-**2.1、综合案例：**
+**2.1、final关键字使用：**
 
 ```java
 public class FinalExample {
-    // final 修饰成员变量
+    // final 修饰成员成员变量
     final int MAX_COUNT = 10;
 
     // final 修饰方法
@@ -62,13 +62,9 @@ public class FinalExample {
        public String getName() {
            return name;
        }
-       //由于是被final修饰，此处值不可发生值的改变
-       //public void setName(String name) {
-       //    this.name = name;
-       //}
    }
    ```
-
+   
 2. 构造方法赋值：
 
    ```java
@@ -80,15 +76,8 @@ public class FinalExample {
        public Person(String name) {
            this.name = name;
        }
-       public String getName() {
-           return name;
-       }
-       //由于是被final修饰，此处值不可发生值的改变
-       //public void setName(String name) {
-       //    this.name = name;
-       //}
    }
    ```
-
+   
    
 
