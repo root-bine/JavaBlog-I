@@ -302,3 +302,44 @@ String decodeString(String s) {
   2. 当`i=1`，再次追加`currentString`到`pop`，此时`pop="abab"`；
 
   跳出循环，执行`currentString = pop`，更新`currentString="abab"`。
+
+**3.4、找出不含重复字符的最长子串？**
+
+在一个`String`字符串中，找出**<u>不含重复字符</u>**的最长字串的长度：
+
+在代码`index[s.charAt(j)]`中，`s.charAt(j)`返回值为<u>`char`类型</u>，可<span style="color:red"><u>**自动转换成ACII码**</u></span>。另外，`index[s.charAt(j)] = j + 1`将`j`的值加`1`，主要是为了<span style="color:green">避免每次更新左边界都需要加`1`的操作</span>！！！
+
+```java
+int lengthOfSubstring(String s) {
+    int n = s.length();
+    int maxLength = 0;
+    int[] index = new int[128]; // 用于记录字符的索引位置
+    for (int i = 0, j = 0; j < n; j++) {
+        i = Math.max(index[s.charAt(j)], i); // 更新左边界i
+        maxLength = Math.max(maxLength, j - i + 1); // 更新最大长度
+        index[s.charAt(j)] = j + 1; // 记录字符的索引位置
+    }
+    return maxLength;
+}
+```
+
+以**<u>`abcabcb`</u>**为例，代码执行过程：
+
+1. 初始时，`i = 0`，`j = 0`，`maxLength = 0`，`index`数组全为0。
+2. 第一次循环：
+   - 字符 'a' 在位置0，`index['a']`为0，更新 `i = Math.max(0, 0) = 0`。
+   - `maxLength = Math.max(0, 0 - 0 + 1) = 1`，更新最大长度为1。
+   - `index['a'] = 1`，记录字符 'a' 在位置0的索引。
+3. 第二次循环：
+   - 字符 'b' 在位置1，`index['b']`为0，更新 `i = Math.max(0, 0) = 0`。
+   - `maxLength = Math.max(1, 1 - 0 + 1) = 2`，更新最大长度为2。
+   - `index['b'] = 2`，记录字符 'b' 在位置1的索引。
+4. 第三次循环：
+   - 字符 'c' 在位置2，`index['c']`为0，更新 `i = Math.max(0, 0) = 0`。
+   - `maxLength = Math.max(2, 2 - 0 + 1) = 3`，更新最大长度为3。
+   - `index['c'] = 3`，记录字符 'c' 在位置2的索引。
+5. 第四次循环：
+   - 字符 'a' 在位置3，`index['a']`为1，更新 `i = Math.max(1, 0) = 1`。
+   - `maxLength = Math.max(3, 3 - 1 + 1) = 3`，最大长度不变。
+   - `index['a'] = 4`，记录字符 'a' 在位置3的索引。
+6. 以此类推，得到最长的字串为**abc**，长度为3。
