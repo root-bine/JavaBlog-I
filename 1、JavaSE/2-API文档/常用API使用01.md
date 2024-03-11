@@ -131,3 +131,80 @@ public class Demo06 {
 
 
 
+## 3、<span style='color:brown'>Character：</span>java.lang
+
+**3.1、概述：**
+
+​	`Character类`通常用于<u>*处理单个字符的操作*</u>，提供了许多有用的<span style='color:red'>**<u>静态方法</u>**</span>和<span style='color:green'>**<u>常量</u>**</span>来操作字符数据。创建**<u>Character对象</u>**有两种方式，其中一种在JDK9之后已标记为过时，另一种较为常用：
+
+```java
+// 第1种[不推荐]
+Character ch = new Character(char c);
+// 第2种
+Character ch = 'A';
+// 第3种
+Character ch = Character.valueOf(char c);
+```
+
+**3.2、常用方法：**
+
+- 判断字符是否为数字
+
+  ```java
+  public static boolean isDigit(char ch)
+  ```
+
+- 判断字符是否为字母
+
+  ```java
+  public static boolean isLetter(char ch)
+  ```
+
+- 判断字符是否为<u>**大写**或**小写**字母</u>
+
+  ```java
+  public static boolean isUpperCase(char ch)
+  ```
+
+  ```java
+  public static boolean isLowerCase(char ch)
+  ```
+
+- 将字符转换为<u>**大写**或**小写**形式</u>
+
+  ```java
+  public static char toUpperCase(char ch)
+  ```
+
+  ```java
+  public static char toLowerCase(char ch)
+  ```
+
+- 判断字符是否为空白字符（空格、制表符等）
+
+  ```java
+  public static boolean isWhitespace(char ch)
+  ```
+
+-  获取字符的数值表示（如果字符不是数字，则返回`-1`）
+
+  ```java
+  public static int getNumericValue(char ch)
+  ```
+
+**3.3、UnicodeBlock类：**🎟️🎟️🎟️
+
+`java.lang.Character.UnicodeBlock` 类，是`Character`类中的静态内部类：
+
+```java
+public static final class UnicodeBlock extends Subset {}
+```
+
+这个类主要用于处理**<u>Unicode字符块</u>**相关内容，涉及***Unicode编码***：
+
+|   ASCII编码是   | 最早的字符编码标准            | 7位二进制数（共128个编码）        |
+| :-------------: | ----------------------------- | --------------------------------- |
+| **Unicode编码** | **全球通用的字符编码标准**    | **16位二进制数（共65536个编码）** |
+|  **UTF-8编码**  | **一种变长的Unicode编码方式** | **UTF-8编码可以兼容ASCII编码**    |
+
+在`Java`中，使用**`Unicode编码`**表示<u>字符</u>，格式：`\u`+`4位16进制数`。

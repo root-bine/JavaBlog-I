@@ -134,7 +134,7 @@ public class Test19{
   - 向下取整；
   - 保留整数部分；
   - 正数实质就是小数部分添加零，无论小数点后面是否满足四舍五入；
-- `public static long round(double num)`
+- `public static long round(double num)`、`public static int round(float num)`
   - 四舍五入；
   - 数值+0.5，然后整体向下取整；
 - `Math.PI`
