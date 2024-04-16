@@ -95,6 +95,9 @@ System.out.println(str4 == str5);//false
 - `String intern()`
   - 如果池中已经包含一个等于该String对象的字符串（由equals(Object)方法确定），则返回池中的字符串；
   - 否则，将此String对象添加到池中并返回对该String对象的引用；
+- `int compareTo(String str)`
+  - 用于比较两个字符串的；
+  - 字典顺序，是从`A(a)`到`Z(z)`的顺序；
 
 **1.7、截取方法：**2个
 
@@ -343,3 +346,25 @@ int lengthOfSubstring(String s) {
    - `maxLength = Math.max(3, 3 - 1 + 1) = 3`，最大长度不变。
    - `index['a'] = 4`，记录字符 'a' 在位置3的索引。
 6. 以此类推，得到最长的字串为**abc**，长度为3。
+
+**3.5、压缩字符串，若压缩后长度大于原始长度则输出原字符串？**
+
+```java
+public static String compressString(String str) {
+    if (str == null || str.isEmpty()) {
+        return str;
+    }
+    StringBuilder compressed = new StringBuilder();
+    int countConsecutive = 0;
+    for (int i = 0; i < str.length(); i++) {
+        countConsecutive++;
+        if (i + 1 >= str.length() || str.charAt(i) != str.charAt(i + 1)) {
+            compressed.append(str.charAt(i));
+            compressed.append(countConsecutive);
+            countConsecutive = 0;
+        }
+    }
+    return compressed.length() < str.length() ? compressed.toString() : str;
+}
+```
+

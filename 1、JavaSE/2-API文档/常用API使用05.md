@@ -9,6 +9,11 @@
   - <span style="color:red">**参数数组----->String；**</span>
   - 默认格式：[元素1，元素2，元素3  .....]
   
+- `public static <T> List<T> asList(T... a) `
+  
+  - 将传入的参数转换为一个固定大小的列表；
+  - `Arrays.asList(1, 2, 3)` 将返回一个包含整数 1、2 和 3 的列表；
+  
 - `public static void sort(数组)`
 
   - 对数组元素进行排序；
