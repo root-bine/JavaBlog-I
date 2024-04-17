@@ -47,9 +47,16 @@
 
 
 
-## 2、<span style="color:brown">包装类类型转换：</span>
+## 2、<span style="color:brown">常用方法：</span>
 
-**2.1、int 与 Integer 之间的转换**
+**2.1、包装类通用方法：**
+
+|           valueOf(...)            | <span style="color:red">一个静态方法</span>，用于将基本数据类型转换为对应的包装类对象 |
+| :-------------------------------: | :----------------------------------------------------------: |
+|          **xxxValue()**           |              **将包装类对象转换回基本数据类型**              |
+| **parseXxx(String s, int radix)** |             **将字符串转换为对应的基本数据类型**             |
+
+演示：
 
 ```java
 // int > Integer
@@ -61,44 +68,6 @@ Integer integer = 10;
 int i = integer.intValue();
 ```
 
-**2.2、float 与 Float 之间的转换**
-
-```java
-// float > Float
-float i = 13F;
-Float fo = Float.valueOf(i);
-------------------------------------------------------------------------------------------------------------
-// Float > float
-Float fo = new Float(13);
-float i = fo.floatValue();
-```
-
-**2.3、char 与 Character 之间的转换**
-
-```java
-// char > Character
-char i = 's';
-Character fo = Character.valueOf(i);
-------------------------------------------------------------------------------------------------------------
-// Character > char
-Character character = new Character('s');
-char c = character.charValue();
-```
-
-**2.4、boolean 与 Boolean 之间的转换**
-
-```java
-// boolean > Boolean
-boolean i = true;
-Boolean aBoolean = Boolean.valueOf(i);
-------------------------------------------------------------------------------------------------------------
-// Boolean > boolean
-Boolean aBoolean = new Boolean(true);
-boolean c = aBoolean.booleanValue();
-```
-
-**2.5、包装类与 String 类型的转换**
-
 ```java
 // 包装类 > String 
 // 用 Integer来举例, 其它包装类的转换方式与 Integer 相同
@@ -109,6 +78,14 @@ String string = integer.toString();
 String string = "13";
 Integer integer = Integer.valueOf(string);
 ```
+
+**2.2、整数转换成二进制字符串：**
+
+```java
+public static String toBinaryString(int i)
+```
+
+该方法是 `Integer` 类独有的！！！
 
 
 
@@ -208,3 +185,41 @@ public void swap(char[] chars, int start, int end) {
 之后不再出现空格，跳出循环，<u>再次调用`reverse()`方法，将剩余内容进行反转</u>，`chars`数组内容为：`simple is a this`。
 
 调用`swap()`方法，将字符数组的内容大小写互换，得到`SIMPLE A IS tHIS`。
+
+**3.3、偶数反转二进制表示？**
+
+输入一串以空格分隔的自然数，将其中的偶数转换成二进制格式，然后输出反转之后的结果。例如输入`1 6 5`，其中`6`是偶数，二进制表示为`110`，反转后为`011`，表示`3`，最后是输出内容为：`1 3 5`。
+
+```java
+public class Main {
+    // 将一个整数转换为二进制字符串
+    public static String toBinaryString(int n) {
+        return Integer.toBinaryString(n);
+    }
+    // 将一个二进制字符串反转
+    public static String reverseBinaryString(String binaryString) {
+        return new StringBuilder(binaryString).reverse().toString();
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String inputLine = scanner.nextLine(); // 1 6 5
+        String[] inputs = inputLine.split(" ");// [1,6,5]
+        ArrayList<Integer> result = new ArrayList<>();
+        for (String input : inputs) {
+            int num = Integer.parseInt(input); 
+            if (num % 2 == 0) { // int:6
+                String binaryString = toBinaryString(num); // 110
+                String reversedBinaryString = reverseBinaryString(binaryString); //011
+                int reversedNum = Integer.parseInt(reversedBinaryString, 2); // 3
+                result.add(reversedNum);
+            } else {
+                result.add(num);
+            }
+        }
+        for (int num : result) {
+            System.out.print(num + " "); // 1 3 5 
+        }
+    }
+}
+```
+
