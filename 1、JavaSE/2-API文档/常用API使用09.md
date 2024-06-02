@@ -171,7 +171,7 @@ public void swap(char[] chars, int start, int end) {
 
 字符串转变成字符数组：`chars = ['T', 'h', 'i', 's', ' ', 'i', 's', ' ', 'a', ' ', 's', 'i', 'm', 'p', 'l', 'e']`
 
-调用`reserse()`方法得到：`chars = ['e', 'l', 'p', 'm', 'i', 's', 'a', ' ', 's', 'i', ' ', 's', 'i', 'h', 'T']`
+调用`reserse()`方法：`chars = ['e', 'l', 'p', 'm', 'i', 's',' ','a', ' ', 's', 'i', ' ', 's', 'i', 'h', 'T']`
 
 遍历当前的字符数组`chars`，在`chars[i]==' '`时进行反转：
 

@@ -368,3 +368,18 @@ public static String compressString(String str) {
 }
 ```
 
+**<u>*思路解析：*</u>**
+
+​	采用`StringBuilder`类中`append()`进行累计添加，目标是将多个重复的字符以**<u>字符+数字</u>**表示。定义`countConsecutive`用于<span style="color:red">**统计字符重复次数**</span>。执行过程如下：
+
+1. 整体遍历目标字符串**`str`**，然后一开始就进行`countConsecutive++`；
+2. 判定进行`append()`累加的条件是：
+   - 当前位置`Idex+1`，若超出str.length()；
+   - 当前`Idex`对应字符，不等于下一位置的字符；
+3. 若执行了`append()`，则将`countConsecutive`重置为`0`，目的是为了<span style="color:green"><u>对**新字符重复次数**进行统计</u></span>；
+
+​	当完全遍历str之后，进行一个<u>**题意条件判定**</u>：`compressed.length() < str.length() ? compressed.toString() : str`，结果如下：
+
+- 压缩字符串 < 原字符串，则输出压缩结果；
+- 压缩字符串 >= 原字符串，则输出原字符串；
+
