@@ -56,83 +56,63 @@ System.out.println(str4 == str5);//false
 2. JVM会先使用常量池来管理字符串直接量, 即将"abc"存入常量池. 然后再创建一个新的String对象, 这个对象会被保存在堆内存中. 并且, 堆中对象的数据会指向常量池中的直接量.
 ```
 
-**1.5、常用比较方法：**7个
+**1.5、字符串比较：**
 
-1. `boolean equals(Object  obj)`：在判断时区分大小写
-2. `boolean equalsIgnoreCase(Object  obj)`：在判断时不区分大小写
-   - 参数可以是任何对象；
-   - 只有参数是一个字符串，并且内容相同才会返回true，否则为false；
-   - 任何对象都可以用Object进行接收；
-   - <span style='color:orange'>**“==”在引用类型中比较的是地址值，而比较内容就需要使用equals( )方法；**</span>
-3. `boolean isEmpty()`：判断一个字符串是否为空
-   - 长度为0；
-   - 内容为`null`；
-4. `boolean isBlank()`：判断一个字符串是否为空白
-   - 长度为0；
-   - 内容为`null`；
-   - 只包含除字符以外的其他内容，例如：空格、制表符、换行符等；
-5. `boolean stratsWith(String prefix, int offset)`
-   - 比较字符串是否是以【prefix】为前缀；
-   - 而【offset】表示的是开始查找位置；
-6. `boolean endsWith(String prefix, int offset)`
-   - 判断字符串是否以prefix为后缀；
-7. `boolean contains(String str)`
-   - 判断字符串是否包含某个字符串；
+ <span style='color:orange'>**“==”在引用类型中比较的是地址值，而比较内容就需要使用equals( )方法**</span>。
 
-**1.6、常用获取方法：**5个
+|                      方法                       |               功能                | 说明                                                       |
+| :---------------------------------------------: | :-------------------------------: | ---------------------------------------------------------- |
+|          `boolean equals(Object  obj)`          |           比较是否相等            | 任何对象都用Object进行接收；<br>在判断时**不区分大小写**； |
+|     `boolean equalsIgnoreCase(Object  obj)`     |           比较是否相等            | 在判断时**区分大小写**                                     |
+|               `boolean isEmpty()`               |   判断一个<u>字符串是否为空</u>   | <u>长度为0</u>，或者<u>内容为NULL</u>                      |
+|               `boolean isBlank()`               |  判断一个<u>字符串是否为空白</u>  |                                                            |
+| `boolean stratsWith(String prefix, int offset)` |   比较字符串**前缀**为`prefix`    | `offset`表示开始查找位置                                   |
+|  `boolean endsWith(String prefix, int offset)`  |   判断字符串**后缀**为`prefix`    |                                                            |
+|         `boolean contains(String str)`          | 判断字符串<u>是否包含某字符串</u> |                                                            |
 
-- `int length()`
-  - 获取字符串中的字符个数，拿到字符串长度；
-- `String concat(String  str)`
-  - 将当前字符串和参数字符串拼接成一个新的字符串，并返回；
-  - <span style='color:red'>**此方法只是单纯的拼接字符串，并不是改变了字符串的内容;**</span>
-  - <span style='color:red'>**字符串的内容是不可以改变的;**</span>
-- `char charAt(int  index)`
-  - 获取索引位置的单个字符  (索引从0开始)；
-- `int indexOf(String  str)`
-  - 查找参数字符串在本字符串当中首次出现的索引位置；
-  - 如果没有返回-1；
-- `String intern()`
-  - 如果池中已经包含一个等于该String对象的字符串（由equals(Object)方法确定），则返回池中的字符串；
-  - 否则，将此String对象添加到池中并返回对该String对象的引用；
-- `int compareTo(String str)`
-  - 用于比较两个字符串的；
-  - 字典顺序，是从`A(a)`到`Z(z)`的顺序；
+**1.6、字符串获取：**
 
-**1.7、截取方法：**2个
+|             方法             |                             功能                             | 说明                                                         |
+| :--------------------------: | :----------------------------------------------------------: | ------------------------------------------------------------ |
+|        `int length()`        |            获取字符串中的字符个数，拿到字符串长度            |                                                              |
+| `String concat(String  str)` |  将<u>**当前字符串**和**`str`**</u>拼接成一个**`New str`**   | 由于<span style='color:red'>字符串的不可变性</span>，<br><u>**不能改变字符串内容**</u> |
+|  `char charAt(int  index)`   |                    获取索引位置的单个字符                    | `Index`从0开始                                               |
+|  `int indexOf(String  str)`  | 查找**`str`在本字符串当中**<span style='color:red'>`first`出现的`Index`</span> | 没有，则返回-1                                               |
+|      `String intern()`       | 1、**字符串常量池**中已经<u>包含一个等于<br>该String对象的字符串</u>，则返回<span style='color:red'>池中的字符串</span>；<br>2、**<u>如果没有</u>**，将**此String对象**<u>添加到池中</u>，<br><u>返回对该String对象的引用</u>； | 等于字符串<u>**由equals(Object)方法**</u>确定                |
+| `int compareTo(String str)`  | 按字典顺序比较两个字符串；<br>字典顺序，是从`A(a)`到`Z(z)`的顺序； | 返回一个整数：<br><0：当前字符串小于 `str`；<br>=0：当前字符串等于 `str`；<br>>0：当前字符串大于 `str`；<br> |
 
-1. `String substring(int  index)`
+**1.7、截取字符串：**
 
-   - 截取从参数位置开始到字符串结尾处，并返回一个新的字符串；
+|                 方法                  |                             功能                             | 说明                     |
+| :-----------------------------------: | :----------------------------------------------------------: | ------------------------ |
+|    `String substring(int  index)`     |         截取`[index, length)`，并返回一个`New str`；         |                          |
+| `String subsring(int begin, int end)` | 截取一个范围：<span style='color:green'>**`[begin, end)`**</span>，<br>并返回一个`New str`； | 从`begin`，到`end-1`结束 |
 
-2. `String subsring(int begin, int end)`
+**1.8、字符串转换：**
 
-   - <span style='color:violet'>**截取一个范围：[ begin，end )，从begin位置开始，到end-1位置处结束**</span>；
-   - 结果返回一个<u>**`新的字符串`**</u>；
+| 方法                                                         | 功能                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `char[] toCharArray()`                                       | 将字符串转换成字符数组                                       |
+| `byte[] getBytes()`                                          | 获取字符串底层的字节数组                                     |
+| `String replace(CharSequence  oldString, CharSequence  newString)` | 将所有的`oldString`替换成newString，<br>并返回一个`New str`； |
+| `String replaceAll(String regex, String replacement)`        | 将字符串满足<u>正则表达式 `regex` 的部分</u>，<br>替换为`replacement` |
+| `String toLowerCase()`                                       | 将字符串转换成**小写格式**                                   |
+| `String toUpperCase()`                                       | 将字符串转换成**大写格式**                                   |
 
-**1.8、转换方法：**6个
+**1.9、分割字符串：**
 
-1. `char[] toCharArray()`
-   - 将字符串转换成字符数组；
-2. `byte[] getBytes()`
-   - 获取字符串底层的字节数组；
-3. `String replace(CharSequence  oldString, CharSequence  newString)`
-   - 将所有出现的旧字符串替换成新的字符串，并返回新字符串；
-   - <span style='color:orange'>**CharSequence  :  可以接受字符串类型**</span>；
-4. `String replaceAll(String regex, String replacement)`
-   - 替换字符串中满足正则表达式 `regex` 的部分为指定的替换字符串
-5. `String toLowerCase()`
-   - 将字符串转换成小写格式
+|              方法               |                        功能                         | 说明                                                         |
+| :-----------------------------: | :-------------------------------------------------: | ------------------------------------------------------------ |
+| `String[] split (String regex)` | 按照`String  regex`规则，把**字符串分割成若干部分** | <span style='color:green'>**以`String  regex`为分界线**</span>来**分割字符串**，但是如果要<u>以英语句点" `.` "作为分割</u>，必须改写成为" `\\.` "； |
 
-6. `String toUpperCase()`
-   - 将字符串转换成大写格式
+**1.10、去空格字符**
 
-**1.9、分割方法：**1个
-
-`String[] split (String regex)`
-
-- 按照参数的规则，把字符串分割成若干部分；
-- <span style='color:green'>**String  regex  :  分割目标，以该目标为分界线来分割字符串，但是如果要以英语句点" . "作为分割，必须改写成为" \\\\. "**</span>；
+|           方法           |            功能             | 说明                                                         |
+| :----------------------: | :-------------------------: | ------------------------------------------------------------ |
+|     `String trim()`      |  去除字符串两端的空白字符   | 1、返回一个字符串的副本，忽略前导空白和尾部空白；<br/>2、**空白字符**：<u>空格（' '）、制表符（'\t'）、换行符（'\n'）、<br>回车符（'\r'）等</u> |
+|     `String strip()`     | 去除**所有Unicode空白字符** |                                                              |
+| `String stripLeading()`  |    去除**前导空白字符**     |                                                              |
+| `String stripTrailing()` |    去除**尾部空白字符**     |                                                              |
 
 
 
@@ -150,11 +130,10 @@ System.out.println(str4 == str5);//false
 
 **2.3、构造方法：**
 
-1. `StringBuilder()`
-   - 构造一个空的StringBuilder容器；
-2. `StringBuilder(String str)`
-   - 构造一个StringBuilder容器，并将字符串添加进去；
-   - <font color="red">**String对象 -------> StringBuilder对象**</font>；
+|            方法             |                         功能                          | 说明                                                         |
+| :-------------------------: | :---------------------------------------------------: | ------------------------------------------------------------ |
+|      `StringBuilder()`      |      构造一个<u>**空的**`StringBuilder`容器</u>       |                                                              |
+| `StringBuilder(String str)` | 构造一个`StringBuilder`容器，并<u>将`str`添加进去</u> | <font color="red">**String对象 -------> StringBuilder对象**</font> |
 
 ```java
 StringBuilder bu1 = new StringBuilder();
@@ -165,45 +144,20 @@ System.out.println("bu2:"+bu2);
 
 **2.4、成员方法：**
 
-1. `StringBuilder append(...)`------->链式编程方法！！！！
+​	使用`append()`方法，相当于将<u>**两个字符串`str1`和`str2`拼接在一起**</u>，但会<font color="blue">`New str`中产生多余的空格</font>。因此，在特定的编程需要时，<u>需要使用`trim()`方法，去除`New str`两端的空格字符</u>！！！
 
-   - 参数：<span style="color:red">**可以同时添加任意数据类型的数据**</span>；
-   - 返回当前对象自身；
-   - 为StringBuilder添加数据的作用；
+| 方法                               | 功能                                                    | 说明                                                         |
+| ---------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------ |
+| `StringBuilder append(Object obj)` | 为`StringBuilder`添加数据的作用                         | 链式编程方法：<br>`sbl.append(1).append("Hello").`<br>`append('C').append(6.2)` |
+| `String toString()`                | 转换<u>`StringBuilder`对象</u>**为**<u>`String`对象</u> |                                                              |
+| `StringBuilder reverse()`          | 将传入StringBuilder的数据，**倒序排列**                 |                                                              |
 
-   ```java
-   StringBuilder bu1 = new StringBuilder();
-   bu1.append("abc").append(123).append(5.3).append(true); // 多个对象的地址值相同
-   System.out.println(bu1); // abc1235.3true
-   ```
-   
-2. `String toString()`
-
-   - 将StringBuilder对象转换成String对象；
-
-   ```java
-   //String ------> StringBuilder
-   String str = "hello";
-   StringBuilder bu1 = new StringBuilder(str);
-   System.out.println("str:"+bu1);
-   //StringBuilder ------> String
-   StringBuilder bu2 = new StringBuilder(str);
-   bu2.append(" world");
-   System.out.println("bu2:"+bu2);
-   String str1 = bu2.toString();
-   System.out.println(str1);
-   ```
-   
-3. `StringBuilder reverse()`
-
-   - 将传入StringBuilder的数据，**倒序排列**；
-
-   ```java
-   StringBuilder stringBuilder = new StringBuilder();
-   stringBuilder.append(1).append(2).append("nihao");
-   StringBuilder reverse = stringBuilder.reverse();
-   System.out.println(reverse);//oahin21
-   ```
+```java
+StringBuilder stringBuilder = new StringBuilder();
+stringBuilder.append(1).append(2).append("nihao");
+StringBuilder reverse = stringBuilder.reverse();
+System.out.println(reverse);//oahin21
+```
 
 
 
